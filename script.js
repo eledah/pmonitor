@@ -54,8 +54,8 @@ function drawScatterPlot(filename) {
 
             const layout = {
                 title: '', // Empty title (no need for a title as <h3> contains the chart name)
-                xaxis: { title: 'Date' },
-                yaxis: { title: 'Price' }
+                xaxis: { title: 'تاریخ' },
+                yaxis: { title: 'قیمت' }
             };
 
             const plotData = [trace];
