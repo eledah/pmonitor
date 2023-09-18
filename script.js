@@ -18,7 +18,8 @@ const fileNames = [
     'items/کتاب هر دو در نهایت می میرند.json',
     'items/کنسول Playstation 5.json',
     'items/کیف کمری چرمی.json',
-    'items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json'
+    'items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json',
+    'items/sample.json'
 ];
 
 // Function to fetch and draw scatter plot from a local JSON file

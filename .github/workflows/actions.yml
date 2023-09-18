@@ -1,27 +1,34 @@
 name: Daily Automation
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 8 * * *'
 
 jobs:
-  run-scripts:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
-        
-    - name: Install Dependencies
-      run: npm install
+        node-version: 14
 
-    - name: Run webScraping.js
-      run: node webScraping.js
+    - name: Install dependencies
+      run: |
+        cd scripts
+        npm install
 
-    - name: Run xl-json.js
-      run: node xl-json.js
+    - name: Run webScraping.js script
+      run: |
+        cd scripts
+        node webScraping.js
+
+    - name: Run xl-json.js script
+      run: |
+        cd scripts
+        node xl-json.js
