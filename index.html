@@ -1,67 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="script.js"></script>
 </head>
-<body>
-
-<div id="scatter-plots"></div>
-
-<script>
-    // Function to fetch and draw scatter plot from a local JSON file
-    function drawScatterPlot(filename) {
-        fetch(filename)
-            .then(response => response.json())
-            .then(data => {
-                const dates = data.map(item => item.Date);
-                const prices = data.map(item => parseFloat(item.Price));
-                const discounts = data.map(item => parseFloat(item.Discount));
-
-                const trace = {
-                    x: dates,
-                    y: prices,
-                    mode: 'markers+lines',
-                    type: 'scatter',
-                    marker: {
-                        size: 8,
-                        color: discounts.map(d => d > 0 ? 'red' : 'green')
-                    },
-                    line: {
-                        color: discounts.map(d => d > 0 ? 'lightred' : 'lightgreen')
-                    }
-                };
-
-                const layout = {
-                    title: 'Price Over Time',
-                    xaxis: { title: 'Date' },
-                    yaxis: { title: 'Price' }
-                };
-
-                const plotData = [trace];
-
-                // Create a new div for each plot
-                const div = document.createElement('div');
-                div.className = 'scatter-plot';
-                document.getElementById('scatter-plots').appendChild(div);
-
-                // Render the scatter chart in the new div
-                Plotly.newPlot(div, plotData, layout);
-            })
-            .catch(error => console.error('Error loading data:', error));
-    }
-
-    // Array of local JSON file names in the folder
-    const fileNames = [
-        'items/item1.json',
-        'items/item2.json',
-        'items/item3.json'
-    ];
-
-    // Loop through the file names and draw scatter plots
-    for (const fileName of fileNames) {
-        drawScatterPlot(fileName);
-    }
-</script>
-
-</body>
+    <body>
+        <div id="scatter-plots"></div>
+    </body>
 </html>
