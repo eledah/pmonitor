@@ -24,14 +24,15 @@ const fileNames = [
 
 // Function to fetch and draw scatter plot from a local JSON file
 function drawScatterPlot(filename) {
-    // Extract the chart name from the filename (remove ".json" at the end)
-    const chartName = filename.replace('.json', '');
+    // Extract the chart name from the filename (remove ".json" at the end and "items/")
+    const chartName = filename.replace('items/', '').replace('.json', '');
 
     fetch(filename)
         .then(response => response.json())
         .then(data => {
             const dates = data.map(item => item.Date);
             const prices = data.map(item => parseFloat(item.Price));
+            const discounts = data.map(item => parseFloat(item.Discount || 0)); // Default to 0 if Discount is not present
 
             // Format dates to display only Day, Month, and Year
             const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
@@ -41,13 +42,20 @@ function drawScatterPlot(filename) {
                 y: prices,
                 mode: 'markers',
                 type: 'scatter',
-                marker: { size: 8 }
+                marker: { 
+                    size: 8,
+                    color: discounts.map(discount => discount > 0 ? 'red' : 'green') // Color points based on discount
+                },
+                line: {
+                    color: discounts.map(discount => discount > 0 ? 'lightred' : 'lightgreen'), // Color lines based on discount
+                    width: 1 // Line width
+                }
             };
 
             const layout = {
-                title: `قیمت - ${chartName}`, // Display chart name as title
-                xaxis: { title: 'تاریخ' },
-                yaxis: { title: 'قیمت' }
+                title: '', // Empty title (no need for a title as <h3> contains the chart name)
+                xaxis: { title: 'Date' },
+                yaxis: { title: 'Price' }
             };
 
             const plotData = [trace];
@@ -57,9 +65,9 @@ function drawScatterPlot(filename) {
             div.className = 'scatter-plot';
             document.getElementById('scatter-plots').appendChild(div);
 
-            // Create an <h3> tag for the chart name
+            // Create an <h3> tag for the chart name and set its text content
             const chartTitle = document.createElement('h3');
-            chartTitle.textContent = chartName; // Set the chart name as text content
+            chartTitle.textContent = chartName; // Set the chart name
             chartTitle.style.color = 'darkblue'; // Apply dark blue color
             div.appendChild(chartTitle);
 
