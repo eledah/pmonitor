@@ -76,3 +76,9 @@ body {
 .chart-title:hover {
   color: black; /* Change text color to black on hover */
 }
+
+.title-line {
+  border: none; /* Remove the default border */
+  border-top: 2px solid darkgray; /* Set the border to a solid line */
+  margin: 10px 0; /* Add margin for spacing */
+}
