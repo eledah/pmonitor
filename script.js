@@ -64,14 +64,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const div = document.createElement('div');
                 div.className = 'scatter-plot';
-                document.getElementById('scatter-plots').appendChild(div);
 
                 const chartTitle = document.createElement('h3');
                 chartTitle.textContent = chartName;
-                chartTitle.style.color = 'rgb(3, 155, 229)';
+                chartTitle.style.color = 'rgb(239, 108, 0)';
                 chartTitle.id = `chart-${i + 1}`;
                 chartTitle.className = 'chart-title'
-                div.appendChild(chartTitle);
+                
+                scatterContainer = document.getElementById('scatter-plots')
+
+                scatterContainer.appendChild(document.createElement('br'));
+                scatterContainer.appendChild(chartTitle);
+                scatterContainer.appendChild(div);
 
                 Plotly.newPlot(div, plotData, layout);
             })
