@@ -1,31 +1,31 @@
 const fileNames = [
-    'items/آویز گردنبند طلا 18 عیار زنانه.json',
-    'items/آیفون ۱۳ نان‌اکتیو.json',
-    'items/آینه بغل پراید.json',
-    'items/برنج هاشمی ممتاز طبیعت - 10 کیلوگرم.json',
-    'items/تلویزیون ال ای دی هوشمند ایکس ویژن.json',
-    'items/تونر پاک کننده صورت لافارر.json',
-    'items/خیار شور سالی - 1.5 کیلوگرم.json',
-    'items/رژ لب جامد الیزا مدل Mini.json',
-    'items/زیرپوش رکابی مردانه امیدنو.json',
-    'items/عسل طبیعی سبلان.json',
-    'items/فلش مموری کوئین تک.json',
-    'items/ماشین لباسشویی دوو.json',
-    'items/موتور برق آسترا.json',
-    'items/هندزفری تسکو مدل TH 5052.json',
-    'items/پنیر سفید فتا کاله.json',
-    'items/پوشک بچه هانیز.json',
-    'items/کتاب هر دو در نهایت می میرند.json',
-    'items/کنسول Playstation 5.json',
-    'items/کیف کمری چرمی.json',
-    'items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json',
-    'items/sample.json'
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/آویز گردنبند طلا 18 عیار زنانه.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/آیفون ۱۳ نان‌اکتیو.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/آینه بغل پراید.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/برنج هاشمی ممتاز طبیعت - 10 کیلوگرم.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/تلویزیون ال ای دی هوشمند ایکس ویژن.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/تونر پاک کننده صورت لافارر.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/خیار شور سالی - 1.5 کیلوگرم.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/رژ لب جامد الیزا مدل Mini.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/زیرپوش رکابی مردانه امیدنو.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/عسل طبیعی سبلان.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/فلش مموری کوئین تک.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/ماشین لباسشویی دوو.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/موتور برق آسترا.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/هندزفری تسکو مدل TH 5052.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/پنیر سفید فتا کاله.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/پوشک بچه هانیز.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کتاب هر دو در نهایت می میرند.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کنسول Playstation 5.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کیف کمری چرمی.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/sample.json'
 ];
 
 document.addEventListener('DOMContentLoaded', function () {
     for (let i = 0; i < fileNames.length; i++) {
         const fileName = fileNames[i];
-        const chartName = fileName.replace('items/', '').replace('.json', '');
+        const chartName = fileName.replace('https://raw.githubusercontent.com/eledah/pmonitor/master/items/', '').replace('.json', '');
 
         fetch(fileName)
             .then(response => response.json())
@@ -39,15 +39,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 const trace = {
                     x: formattedDates,
                     y: prices,
-                    mode: 'line+markers',
+                    mode: 'lines+markers',
                     type: 'scatter',
                     marker: {
                         size: 8,
-                        color: discounts.map(discount => discount > 0 ? 'red' : 'green')
+                        color: discounts.map(discount => discount > 0 ? 'rgb(198, 40, 40)' : 'rgb(46, 125, 50)')
                     },
                     line: {
-                        color: discounts.map(discount => discount > 0 ? 'lightred' : 'lightgreen'),
-                        width: 1
+                        color: 'rgb(165, 214, 167)',
+                        width: 2
                     }
                 };
 
@@ -68,8 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const chartTitle = document.createElement('h3');
                 chartTitle.textContent = chartName;
-                chartTitle.style.color = 'darkblue';
+                chartTitle.style.color = 'rgb(3, 155, 229)';
                 chartTitle.id = `chart-${i + 1}`;
+                chartTitle.className = 'chart-title'
                 div.appendChild(chartTitle);
 
                 Plotly.newPlot(div, plotData, layout);

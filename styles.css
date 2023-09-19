@@ -98,3 +98,6 @@ body {
   }
 }
 
+.chart-title {
+  direction: rtl;
+}
