@@ -3,5 +3,15 @@
     "Date": "2023-09-17",
     "Price": "75560",
     "Discount": "3"
+  },
+  {
+    "Date": "2023-09-19",
+    "Price": "Price not found",
+    "Discount": "3"
+  },
+  {
+    "Date": "2023-09-19",
+    "Price": "Price not found",
+    "Discount": "3"
   }
 ]
