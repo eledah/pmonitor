@@ -35,7 +35,7 @@ async function scrapeWebpages() {
 
     // Check if the page is loaded
     const isPageLoaded = await page.evaluate(() => {
-      return document.querySelector('div.pos-relative.w-full.w-auto-lg.px-4-lg.pb-4-lg') !== null;
+      return document.querySelector('div.w-full.px-4.flex.items-center') !== null;
     });
 
     if (isPageLoaded) {
@@ -50,8 +50,9 @@ async function scrapeWebpages() {
             .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728)) // Convert Farsi numbers to English
         : 'Price not found';
 
-      const masterDivSelector = '.d-flex.ai-center.jc-end.w-100'
-      const discountDivSelector = '.px-1.color-white.radius-large.d-flex.ai-center.jc-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-p-700.shrink-0.mr-1';
+      const masterDivSelector = '.flex.items-center.justify-end.w-full'
+      const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-primary-700.shrink-0.mr-1';
+                        
       const masterDiv = await page.$(masterDivSelector)
       const discountContainer = await masterDiv.$(discountDivSelector);
 
