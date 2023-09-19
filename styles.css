@@ -2,9 +2,14 @@
   font-family: 'Sahel', sans-serif;
 }
 
+
+
 /* Body styles */
 body {
-  background-color: #f5f5dc; /* Slightly beige background color */
+  background-color: #d8eeff;
+  background-image:  linear-gradient(#cee6fa 1.6px, transparent 1.6px), linear-gradient(90deg, #cee6fa 1.6px, transparent 1.6px), linear-gradient(#cee6fa 0.8px, transparent 0.8px), linear-gradient(90deg, #cee6fa 0.8px, #d8eeff 0.8px);
+  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
+  background-position: -1.6px -1.6px, -1.6px -1.6px, -0.8px -0.8px, -0.8px -0.8px;
   text-align: center; /* Center text within the body */
   font-family: Arial, sans-serif; /* Specify a font */
   margin: 0; /* Remove default body margin */
@@ -12,13 +17,13 @@ body {
 
 /* Style for the page title */
 .page-title {
-  color: darkgray; /* Dark gray text color */
+  color: #039BE5; /* Dark gray text color */
   transition: color 0.3s; /* Smooth color transition on hover */
 }
 
 /* Hover effect for the page title */
 .page-title:hover {
-  color: black; /* Change text color to black on hover */
+  color: #0D47A1; /* Change text color to black on hover */
 }
 
 /* Style for the container of each scatter plot */
@@ -79,8 +84,14 @@ body {
 
 .title-line {
   border: none; /* Remove the default border */
-  border-top: 2px solid darkgray; /* Set the border to a solid line */
-  margin: 10px 0; /* Add margin for spacing */
+  border-top: 2px solid #039BE5; /* Set the border to a solid line */
+  margin: auto ; /* Add margin for spacing */
+
+  
+  /* Media query for desktop screens (e.g., screens wider than 768px) */
+  @media (min-width: 769px) {
+    width: 60%; /* Set the width to 60% for desktops */
+  }
 }
 
 /* Center-align the table of contents horizontally and vertically */

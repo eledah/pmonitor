@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const chartTitle = document.createElement('h3');
                 chartTitle.textContent = chartName;
-                chartTitle.style.color = 'rgb(239, 108, 0)';
+                chartTitle.style.color = 'rgb(0, 102, 217)';
                 chartTitle.id = `chart-${i + 1}`;
                 chartTitle.className = 'chart-title'
                 
