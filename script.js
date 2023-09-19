@@ -52,8 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
 
                 const layout = {
+                    autosize: false,
+                    width: 1000,
+                    height: 500,
                     xaxis: { title: 'Date' },
                     yaxis: { title: 'Price' }
+
                 };
 
                 const plotData = [trace];
