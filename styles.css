@@ -82,3 +82,13 @@ body {
   border-top: 2px solid darkgray; /* Set the border to a solid line */
   margin: 10px 0; /* Add margin for spacing */
 }
+
+/* Style for the table of contents <p> */
+#table-of-contents p {
+  width: 100%; /* Set the width to 100% by default for all devices */
+
+  /* Media query for desktop screens (e.g., screens wider than 768px) */
+  @media (min-width: 769px) {
+      width: 60%; /* Set the width to 60% for desktops */
+  }
+}
