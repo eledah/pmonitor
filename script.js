@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 const dates = data.map(item => item.Date);
-                const prices = data.map(item => parseFloat(item.Price));
-                const discounts = data.map(item => parseFloat(item.Discount || 0));
+                const prices = data.map(item => parseInt(item.Price));
+                const discounts = data.map(item => parseInt(item.Discount || 0));
 
                 const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
 

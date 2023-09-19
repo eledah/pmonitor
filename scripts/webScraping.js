@@ -43,7 +43,7 @@ async function scrapeWebpages() {
         console.log(`Page loaded successfully for item: ${itemName}`);
       }
 
-      const priceElement = await page.$('span.color-800.ml-1.text-h4');
+      const priceElement = await page.$('span.text-neutral-800.ml-1.text-h4');
       const price = priceElement
         ? (await (await priceElement.getProperty('textContent')).jsonValue())
             .replace(/,/g, '') // Remove commas

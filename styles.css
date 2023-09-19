@@ -83,12 +83,17 @@ body {
   margin: 10px 0; /* Add margin for spacing */
 }
 
-/* Style for the table of contents <p> */
-#table-of-contents p {
-  width: 100%; /* Set the width to 100% by default for all devices */
-
-  /* Media query for desktop screens (e.g., screens wider than 768px) */
+/* Center-align the table of contents horizontally and vertically */
+#table-of-contents {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Set the desired width (e.g., 60% of the screen) for desktops */
+  width: 100%;
   @media (min-width: 769px) {
-      width: 60%; /* Set the width to 60% for desktops */
+      width: 60%;
   }
 }
+
