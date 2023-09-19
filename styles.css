@@ -2,23 +2,24 @@
   font-family: 'Sahel', sans-serif;
 }
 
-/* Define styles for the header */
-header {
-    text-align: center;
-    background-color: darkgray;
-    padding: 10px;
+/* Body styles */
+body {
+  background-color: #f5f5dc; /* Slightly beige background color */
+  text-align: center; /* Center text within the body */
+  font-family: Arial, sans-serif; /* Specify a font */
+  margin: 0; /* Remove default body margin */
 }
 
-/* Style for the header text color on hover */
-header:hover h1 {
-    color: black; /* Change the text color to black on hover */
+/* Style for the page title */
+.page-title {
+  color: darkgray; /* Dark gray text color */
+  transition: color 0.3s; /* Smooth color transition on hover */
 }
 
-/* Define the default text color */
-header h1 {
-    color: darkgray; /* Initial text color (dark gray) */
+/* Hover effect for the page title */
+.page-title:hover {
+  color: black; /* Change text color to black on hover */
 }
-
 
 /* Style for the container of each scatter plot */
 .scatter-plot {
@@ -27,19 +28,18 @@ header h1 {
   border: 2px solid gray; /* Add a gray border */
   border-radius: 10px; /* Add rounded corners */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
-  height: 30vh; /* Set the height to 30% of the viewport height */
-
-  /* Set the width to 60% of the screen width for desktops */
-  width: 100%; /* Set the width to 100% by default for non-desktop devices */
+  background-color: white; /* Set the background color to white */
+  text-align: center; /* Center text within the chart container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Set the width to 100% by default for all devices */
 
   /* Media query for desktop screens (e.g., screens wider than 768px) */
   @media (min-width: 769px) {
       width: 60%; /* Set the width to 60% for desktops */
   }
-  
-  /* Center the chart horizontally */
-  display: flex;
-  justify-content: center;
 }
 
 /* Style for the Date axis (X) */
@@ -52,9 +52,27 @@ header h1 {
   display: initial; /* Display Day, Month, and Year */
 }
 
-/* Style for the <h3> tag */
+/* Style for the <h3> tag within each chart container */
 .scatter-plot h3 {
   margin: 0; /* Remove margin for <h3> */
   color: darkblue; /* Set text color to dark blue */
   text-align: center; /* Center the text horizontally */
+}
+
+/* Style for the Y-axis labels (round to 1 decimal place) */
+.yaxis text {
+  font-size: 14px; /* Adjust font size */
+}
+
+/* Style for the chart title <h3> */
+.chart-title {
+  margin-bottom: 20px; /* Add spacing between the page title and charts */
+  color: darkgray; /* Dark gray text color */
+  font-size: 24px; /* Adjust font size */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+/* Hover effect for the chart title <h3> */
+.chart-title:hover {
+  color: black; /* Change text color to black on hover */
 }

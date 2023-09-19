@@ -54,8 +54,8 @@ function drawScatterPlot(filename) {
 
             const layout = {
                 title: '', // Empty title (no need for a title as <h3> contains the chart name)
-                xaxis: { title: 'تاریخ' },
-                yaxis: { title: 'قیمت' }
+                xaxis: { title: 'Date' },
+                yaxis: { title: 'Price' }
             };
 
             const plotData = [trace];
@@ -69,7 +69,17 @@ function drawScatterPlot(filename) {
             const chartTitle = document.createElement('h3');
             chartTitle.textContent = chartName; // Set the chart name
             chartTitle.style.color = 'darkblue'; // Apply dark blue color
-            div.appendChild(chartTitle);
+
+            // Create a container <div> for <h3> and the scatter plot
+            const chartContainer = document.createElement('div');
+            chartContainer.className = 'chart-container';
+
+            // Append the <h3> and the scatter plot to the container <div>
+            chartContainer.appendChild(chartTitle);
+            chartContainer.appendChild(div);
+
+            // Append the container <div> to the scatter-plots container
+            document.getElementById('scatter-plots').appendChild(chartContainer);
 
             // Render the scatter chart in the new div
             Plotly.newPlot(div, plotData, layout);

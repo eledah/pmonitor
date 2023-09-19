@@ -32,3 +32,11 @@ jobs:
       run: |
         cd scripts
         node xl-json.js
+    
+    - name: Commit changes
+      run: |
+        git config --global user.name "eledah"
+        git config --global user.email "eledah@eledah.com"
+        git add .
+        git commit -m "Automated commit at 8 AM"
+        git push
