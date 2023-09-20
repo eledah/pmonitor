@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     xaxis: { title: 'تاریخ' },
                     yaxis: { title: 'قیمت' },
                     font: {
-                        family: 'Roboto',
+                        family: 'Sahel FD',
                         size: 12,
                         color: '#7f7f7f'
                     },
