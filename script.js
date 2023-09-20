@@ -18,8 +18,8 @@ const fileNames = [
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کتاب هر دو در نهایت می میرند.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کنسول Playstation 5.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کیف کمری چرمی.json',
-    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json',
-    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/sample.json'
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/گوشی موبایل شیائومی مدل Redmi Note 12 4G.json'
+    // 'https://raw.githubusercontent.com/eledah/pmonitor/master/items/sample.json'
 ];
 
 document.addEventListener('DOMContentLoaded', function () {

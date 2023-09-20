@@ -50,6 +50,8 @@ async function scrapeWebpages() {
             .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728)) // Convert Farsi numbers to English
         : 'Price not found';
 
+      console.log("Price: ", price);
+
       const masterDivSelector = '.flex.items-center.justify-end.w-full'
       const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-primary-700.shrink-0.mr-1';
                         
@@ -68,7 +70,7 @@ async function scrapeWebpages() {
           discount = await (await page.evaluate(element => element.innerHTML, discountHandle))
             .replace("٪", "")
             .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728))
-          console.log("innerHTML of the selected span:", discount);
+          console.log("Discount Percentage: ", discount);
         } else {
           console.log("No span with class 'text-body2-strong' found inside the first div.");
           discount = "0"
