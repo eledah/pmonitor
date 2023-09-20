@@ -13,7 +13,7 @@ const fileNames = [
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/ماشین لباسشویی دوو.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/موتور برق آسترا.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/هندزفری تسکو مدل TH 5052.json',
-    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/پنیر سفید فتا کاله.json',
+    'https://raw.githubusercontent.com/eledah/pmonitor/master/items/پنیر فتا دوشه هراز- 400 گرم.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/پوشک بچه هانیز.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کتاب هر دو در نهایت می میرند.json',
     'https://raw.githubusercontent.com/eledah/pmonitor/master/items/کنسول Playstation 5.json',
@@ -52,32 +52,42 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
 
                 const layout = {
-                    autosize: false,
-                    width: 1000,
-                    height: 500,
-                    xaxis: { title: 'Date' },
-                    yaxis: { title: 'Price' }
+                    // autosize: false,
+                    // width: 1000,
+                    // height: 500,
+                    xaxis: { title: 'تاریخ' },
+                    yaxis: { title: 'قیمت', },
+                    font: {
+                        family: 'Sahel FD',
+                        size: 12,
+                        color: '#7f7f7f'
+                    }
 
                 };
 
                 const plotData = [trace];
 
-                const div = document.createElement('div');
-                div.className = 'scatter-plot';
 
-                const chartTitle = document.createElement('h3');
+                const mainContainer = document.getElementById('scatter-plots')
+                const containerDiv = document.createElement('div');
+                const scatterDiv = document.createElement('div');
+                const chartTitle = document.createElement('h2');
+
+                containerDiv.className = 'container-div';
+                scatterDiv.className = 'scatter-plot';
+                chartTitle.className = 'chart-title';
+
                 chartTitle.textContent = chartName;
                 chartTitle.style.color = 'rgb(0, 102, 217)';
                 chartTitle.id = `chart-${i + 1}`;
-                chartTitle.className = 'chart-title'
                 
-                scatterContainer = document.getElementById('scatter-plots')
+                containerDiv.appendChild(chartTitle)
+                containerDiv.appendChild(scatterDiv)
+                
+                // mainContainer.appendChild(document.createElement('br'));
+                mainContainer.appendChild(containerDiv);
 
-                scatterContainer.appendChild(document.createElement('br'));
-                scatterContainer.appendChild(chartTitle);
-                scatterContainer.appendChild(div);
-
-                Plotly.newPlot(div, plotData, layout);
+                Plotly.newPlot(scatterDiv, plotData, layout);
             })
             .catch(error => console.error('Error loading data:', error));
     }

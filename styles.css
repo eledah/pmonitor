@@ -6,12 +6,13 @@
 
 /* Body styles */
 body {
-  background-color: #d8eeff;
-  background-image:  linear-gradient(#cee6fa 1.6px, transparent 1.6px), linear-gradient(90deg, #cee6fa 1.6px, transparent 1.6px), linear-gradient(#cee6fa 0.8px, transparent 0.8px), linear-gradient(90deg, #cee6fa 0.8px, #d8eeff 0.8px);
-  background-size: 40px 40px, 40px 40px, 8px 8px, 8px 8px;
-  background-position: -1.6px -1.6px, -1.6px -1.6px, -0.8px -0.8px, -0.8px -0.8px;
+  background-color: #ffffff;
+  opacity: 1;
+  background-image:  linear-gradient(#f3f3f3 2px, transparent 2px), linear-gradient(90deg, #f3f3f3 2px, transparent 2px), linear-gradient(#f3f3f3 1px, transparent 1px), linear-gradient(90deg, #f3f3f3 1px, #ffffff 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
   text-align: center; /* Center text within the body */
-  font-family: Arial, sans-serif; /* Specify a font */
+  font-family: Sahel, sans-serif; /* Specify a font */
   margin: 0; /* Remove default body margin */
 }
 
@@ -26,26 +27,38 @@ body {
   color: #0D47A1; /* Change text color to black on hover */
 }
 
+/* Style for the container of all scatter plots */
+#scatter-plots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Style for the container of each scatter plot */
+.container-div {
+  padding: 30px; /* Add margin between each chart container */
+  flex: 0 0 calc(50% - 20px); /* Set each chart to occupy 50% width with a gap */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
 /* Style for the container of each scatter plot */
 .scatter-plot {
-  margin: 20px auto; /* Center the chart container horizontally */
-  padding: 20px; /* Add padding to each chart container */
-  border: 2px solid gray; /* Add a gray border */
-  border-radius: 10px; /* Add rounded corners */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
   background-color: white; /* Set the background color to white */
   text-align: center; /* Center text within the chart container */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* Set the width to 100% by default for all devices */
+  width: 100%; /* Set the width to 100% for all devices */
+}
 
-  /* Media query for desktop screens (e.g., screens wider than 768px) */
-  @media (min-width: 769px) {
-      width: 60%; /* Set the width to 60% for desktops */
+/* Media query for smaller screens (e.g., screens up to 768px wide) */
+@media (max-width: 768px) {
+  .container-div {
+    flex: 0 0 100%;
   }
 }
+
 
 /* Style for the Date axis (X) */
 .xaxis text {
@@ -72,6 +85,7 @@ body {
 /* Style for the chart title <h3> */
 .chart-title {
   margin-bottom: 20px; /* Add spacing between the page title and charts */
+  margin-top: 0px;
   color: darkgray; /* Dark gray text color */
   font-size: 24px; /* Adjust font size */
   transition: color 0.3s; /* Smooth color transition on hover */
