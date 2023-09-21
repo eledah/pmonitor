@@ -2,7 +2,20 @@
   font-family: 'Sahel', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
 
+/* Slower scroll animation */
+@keyframes scroll {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-100%);
+  }
+}
 
 /* Body styles */
 body {
@@ -18,13 +31,23 @@ body {
 
 /* Style for the page title */
 .page-title {
+  font-size: 51px;
   color: #039BE5; /* Dark gray text color */
   transition: color 0.3s; /* Smooth color transition on hover */
+  margin-bottom: unset;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
 }
 
 /* Hover effect for the page title */
 .page-title:hover {
   color: #0D47A1; /* Change text color to black on hover */
+}
+
+.sub-title {
+  margin-top: -20px;
+  color: #0D47A1;
+  font-weight: 300;
+  font-size: 16px;
 }
 
 /* Style for the container of all scatter plots */
@@ -84,16 +107,24 @@ body {
 
 /* Style for the chart title <h3> */
 .chart-title {
-  margin-bottom: 20px; /* Add spacing between the page title and charts */
-  margin-top: 0px;
-  color: darkgray; /* Dark gray text color */
-  font-size: 24px; /* Adjust font size */
-  transition: color 0.3s; /* Smooth color transition on hover */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #039BE5;
+  transition: ease-in-out 200ms;
 }
 
 /* Hover effect for the chart title <h3> */
 .chart-title:hover {
-  color: black; /* Change text color to black on hover */
+  color: #0D47A1;
+  text-decoration: underline;
 }
 
 .title-line {
@@ -125,4 +156,16 @@ body {
 
 .chart-title {
   direction: rtl;
+}
+
+span > a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #039BE5;
+  transition: ease-in-out 200ms;
+}
+
+span > a:hover {
+  color: #0D47A1;
 }
