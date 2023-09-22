@@ -20,7 +20,7 @@ async function scrapeWebpages() {
 
   const outputWorkbook = new ExcelJS.Workbook();
 
-  for (let i = 1; i <= worksheet.rowCount; i++) {
+  for (let i = 2; i <= worksheet.rowCount; i++) {
     const url = worksheet.getCell(`A${i}`).value;
     const itemName = worksheet.getCell(`B${i}`).value;
 
