@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #039BE5;
+  --secondary-color: #0D47A1;
+}
+
 * {
   font-family: 'Sahel', sans-serif;
 }
@@ -32,22 +37,52 @@ body {
 /* Style for the page title */
 .page-title {
   font-size: 51px;
-  color: #039BE5; /* Dark gray text color */
+  color: var(--primary-color); /* Dark gray text color */
   transition: color 0.3s; /* Smooth color transition on hover */
+  margin-top: 17px;
   margin-bottom: unset;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
 }
 
 /* Hover effect for the page title */
 .page-title:hover {
-  color: #0D47A1; /* Change text color to black on hover */
+  color: var(--secondary-color); /* Change text color to black on hover */
 }
 
 .sub-title {
   margin-top: -20px;
-  color: #0D47A1;
+  color: var(--secondary-color);
   font-weight: 300;
   font-size: 16px;
+}
+
+.h2 {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 19px;
+}
+
+.item-heading {
+  margin-top: 15px;
+  margin-bottom: unset;
+}
+
+.chart-heading {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.footer {
+  display: block;
+  text-decoration: unset;
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.footer:hover {
+  text-decoration: underline;
 }
 
 /* Style for the container of all scatter plots */
@@ -67,11 +102,6 @@ body {
   text-align: center; /* Center text within the chart container */
   width: 100%; /* Set the width to 100% for all devices */
   margin: 10px;
-}
-
-/* Style for the container of each scatter plot */
-.scatter-plot {
-  
 }
 
 /* Style for the Date axis (X) */
@@ -108,20 +138,22 @@ body {
   text-decoration: none;
   font-size: 24px;
   font-weight: 600;
-  margin: 20px 0px;
-  color: #006ba0;
+  margin: 25px 200px;
+  color: var(--primary-color);
   transition: ease-in-out 200ms;
+
+  border-bottom: solid var(--primary-color) 2px;
 }
 
 /* Hover effect for the chart title <h3> */
 .chart-title:hover {
-  color: #0D47A1;
-  text-decoration: underline;
+  color: var(--secondary-color);
+  border-bottom: solid var(--secondary-color) 2px;
 }
 
 .title-line {
   border: none; /* Remove the default border */
-  border-top: 2px solid #039BE5; /* Set the border to a solid line */
+  border-top: 2px solid var(--primary-color); /* Set the border to a solid line */
   margin: auto ; /* Add margin for spacing */
 }
 
@@ -139,14 +171,14 @@ body {
 
 span > a {
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: #039BE5;
+  color: var(--primary-color);
   transition: ease-in-out 200ms;
 }
 
 span > a:hover {
-  color: #0D47A1;
+  color: var(--secondary-color);
 }
 
 
@@ -175,7 +207,7 @@ span > a:hover {
   position: fixed;
   bottom: 15px;
   right: 15px;
-  background-color: #007BFF; /* Background color of the button */
+  background-color: var(--primary-color); /* Background color of the button */
   color: #fff; /* Text color */
   border: none;
   border-radius: 50px;
@@ -186,5 +218,5 @@ span > a:hover {
 }
 
 .scroll-to-top-button:hover {
-  background-color: #0056b3; /* Background color on hover */
+  background-color: var(--secondary-color); /* Background color on hover */
 }
