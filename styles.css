@@ -56,32 +56,23 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 0 auto;
-  width: 100%;
 }
 
 /* Style for the container of each scatter plot */
 .container-div {
-  padding: 30px; /* Add margin between each chart container */
   flex: 0 0 calc(50% - 20px); /* Set each chart to occupy 50% width with a gap */
   box-sizing: border-box; /* Include padding and border in width calculation */
-}
-
-/* Style for the container of each scatter plot */
-.scatter-plot {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
   background-color: white; /* Set the background color to white */
   text-align: center; /* Center text within the chart container */
   width: 100%; /* Set the width to 100% for all devices */
+  margin: 10px;
 }
 
-/* Media query for smaller screens (e.g., screens up to 768px wide) */
-@media (max-width: 768px) {
-  .container-div {
-    flex: 0 0 100%;
-  }
+/* Style for the container of each scatter plot */
+.scatter-plot {
+  
 }
-
 
 /* Style for the Date axis (X) */
 .xaxis text {
@@ -113,11 +104,12 @@ body {
   justify-content: center;
   text-align: center;
 
+  direction: rtl;
   text-decoration: none;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 20px;
-  color: #039BE5;
+  margin: 20px 0px;
+  color: #006ba0;
   transition: ease-in-out 200ms;
 }
 
@@ -131,12 +123,6 @@ body {
   border: none; /* Remove the default border */
   border-top: 2px solid #039BE5; /* Set the border to a solid line */
   margin: auto ; /* Add margin for spacing */
-
-  
-  /* Media query for desktop screens (e.g., screens wider than 768px) */
-  @media (min-width: 769px) {
-    width: 60%; /* Set the width to 60% for desktops */
-  }
 }
 
 /* Center-align the table of contents horizontally and vertically */
@@ -149,13 +135,6 @@ body {
   margin: auto;
   /* Set the desired width (e.g., 60% of the screen) for desktops */
   width: 100%;
-  @media (min-width: 769px) {
-      width: 60%;
-  }
-}
-
-.chart-title {
-  direction: rtl;
 }
 
 span > a {
@@ -168,4 +147,44 @@ span > a {
 
 span > a:hover {
   color: #0D47A1;
+}
+
+
+@media (min-width: 769px) {
+  #table-of-contents {
+    width: 60%;
+  }
+}
+
+/* Media query for smaller screens (e.g., screens up to 768px wide) */
+@media (max-width: 768px) {
+  .container-div {
+    flex: 0 0 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .title-line {
+    width: 60%; /* Set the width to 60% for desktops */
+  }
+}
+
+/* Define a CSS class for the scroll-to-top button */
+.scroll-to-top-button {
+  display: none; /* Initially, hide the button */
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  background-color: #007BFF; /* Background color of the button */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.3s; /* Add a smooth fade-in effect */
+  z-index: 9999; /* Set a high z-index to place the button on top */
+}
+
+.scroll-to-top-button:hover {
+  background-color: #0056b3; /* Background color on hover */
 }

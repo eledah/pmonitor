@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 linkElement.className ='chart-title'
                 linkElement.target = '_blank'; // Open link in a new tab
                 linkElement.textContent = chartName;
-                linkElement.id = `chart-${i + 1}`;
 
                 // Create a <span> tag to wrap the link
                 const spanElement = document.createElement('span');
@@ -41,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Create a container <div> for the chart
                 const containerDiv = document.createElement('div');
                 containerDiv.className = 'container-div';
+                containerDiv.id = `chart-${i + 1}`;
 
                 // Create a scatter plot <div> for the chart
                 const scatterDiv = document.createElement('div');
@@ -85,9 +85,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             text: discounts
                         };
 
+                        
+
                         const layout = {
-                            xaxis: { title: 'تاریخ' },
-                            yaxis: { title: 'قیمت' },
+                            xaxis: {
+                                title: 'تاریخ',
+                                automargin: true
+                            },
+                            yaxis: {
+                                title: 'قیمت',
+                                automargin: true
+                            },
                             font: {
                                 family: 'Sahel FD',
                                 size: 12,
@@ -98,7 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                   family: 'Sahel FD', // Specify the desired font family
                                   size: 12, // Specify the font size
                                 }
-                            }
+                            },
+                            margin: {l:70, t:0, r:30, b:70},
                         };
 
                         const config = {
@@ -115,4 +124,23 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => console.error('Error loading data:', error));
+});
+
+// Function to scroll to the top of the page
+function scrollToTop() {
+    // Scroll to the top of the page smoothly
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Add a scroll event listener to show/hide the button
+window.addEventListener('scroll', function() {
+    var button = document.getElementById('button');
+    if (window.scrollY > 500) {
+        button.style.display = 'block';
+    } else {
+        button.style.display = 'none';
+    }
 });
