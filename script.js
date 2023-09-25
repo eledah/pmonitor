@@ -59,7 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         const prices = data.map(item => parseInt(item.Price));
                         const discounts = data.map(item => parseInt(item.Discount || 0));
 
-                        const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
+                        // const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
+
+                        // Convert Gregorian dates to Persian (Jalali) dates
+                        const formattedDates = dates.map(date => {
+                            const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
+                            return jalaliDate;
+                        });
 
                         const trace = {
                             name: '',
@@ -95,9 +101,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             }
                         };
 
+                        const config = {
+                            locale: 'fa',
+                            responsive: true,
+                            displaylogo: false
+                        }
+
                         const plotData = [trace];
 
-                        Plotly.newPlot(scatterDiv, plotData, layout);
+                        Plotly.newPlot(scatterDiv, plotData, layout, config);
                     })
                     .catch(error => console.error('Error loading data:', error));
             }
