@@ -138,11 +138,12 @@ body {
   text-decoration: none;
   font-size: 24px;
   font-weight: 600;
-  margin: 25px 200px;
+  margin: 5px 20px 20px 10px;
+  padding: 17px;
   color: var(--primary-color);
   transition: ease-in-out 200ms;
 
-  border-bottom: solid var(--primary-color) 2px;
+  border-bottom: solid lightgray 2px;
 }
 
 /* Hover effect for the chart title <h3> */
