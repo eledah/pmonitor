@@ -17,8 +17,10 @@ const OUTPUT_FILE_PATH = '../output.xlsx';
 const currentDate = new Date().toISOString().split('T')[0];
 
 async function getPrice(page) {
-  const discountedSelector = '.line-through.text-body-2.ml-1.text-neutral-300'
-  const discounted = await page.$(discountedSelector);
+  const discountDivSelector = '.flex.items-center.justify-end.w-full'
+  const discountedSelector = 'span.line-through.text-body-2.ml-1.text-neutral-300'
+  const discountDiv = await page.$(discountDivSelector)
+  const discounted = await discountDiv.$(discountedSelector);
 
   let masterDivSelector = ''
   let masterDiv = ''
@@ -126,7 +128,7 @@ async function scrapeWebpages() {
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     // Wait for 10 seconds (adjust as needed)
-    await new Promise((resolve) => setTimeout(resolve, 10000)); // 15 seconds
+    await new Promise((resolve) => setTimeout(resolve, 17000)); // 17 seconds
 
     // Check if the page is loaded
     const isPageLoaded = await page.evaluate(() => {
