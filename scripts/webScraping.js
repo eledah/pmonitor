@@ -54,7 +54,7 @@ async function getPrice(page) {
 
 async function getDiscount(page) {
   const masterDivSelector = '.flex.items-center.justify-end.w-full'
-  const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-primary-700.shrink-0.mr-1';
+  const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-hint-object-error.shrink-0.mr-1';
 
   const masterDiv = await page.$(masterDivSelector)
   const discountContainer = await masterDiv.$(discountDivSelector);
@@ -77,7 +77,7 @@ async function getDiscount(page) {
       discount = "0"
     }
   } else {
-    console.log("No div with the specified class found on the page.");
+    console.log("No discount div with the specified class found on the page.");
     discount = "0"
   }
 
@@ -144,6 +144,7 @@ async function scrapeWebpages() {
       console.log("Price: ", price);
 
       const discount = await getDiscount(page);
+      console.log("Price: ", discount);
 
       if (OUTPUT) {
         await writeToExcel(itemName, price, discount);
