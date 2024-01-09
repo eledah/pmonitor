@@ -1,3 +1,16 @@
+const colors = {
+    purple: {
+      default: "rgba(149, 76, 233, 1)",
+      half: "rgba(149, 76, 233, 0.5)",
+      quarter: "rgba(149, 76, 233, 0.25)",
+      zero: "rgba(149, 76, 233, 0)"
+    },
+    indigo: {
+      default: "rgba(80, 102, 120, 1)",
+      quarter: "rgba(80, 102, 120, 0.25)"
+    }
+  };
+
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch the JSON file from the URL
     fetch('https://raw.githubusercontent.com/eledah/pmonitor/master/items.json')
@@ -67,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             return jalaliDate;
                         });
 
+
                         const trace = {
                             name: '',
                             x: formattedDates,
@@ -75,11 +89,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             type: 'scatter',
                             marker: {
                                 size: 8,
-                                color: discounts.map(discount => discount > 0 ? 'rgb(198, 40, 40)' : 'rgb(46, 125, 50)'),
+                                color: discounts.map(discount => discount > 0 ? '#D81B60' : '#546E7A'), 
                             },
                             line: {
                                 color: 'rgb(200, 200, 200)',
-                                width: 2
+                                width: 2,
                             },
                             hovertemplate: '<b>%{y}</b><br>%{text}% OFF',
                             text: discounts
@@ -88,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         
 
                         const layout = {
+                            plot_bgcolor: 'rgb(25, 32, 39)',
+                            paper_bgcolor: 'rgb(25, 32, 39)',
                             xaxis: {
                                 title: 'تاریخ',
                                 automargin: true
@@ -107,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                   size: 12, // Specify the font size
                                 }
                             },
-                            margin: {l:70, t:0, r:30, b:70},
+                            margin: {l:70, t:0, r:30, b:70}
                         };
 
                         const config = {

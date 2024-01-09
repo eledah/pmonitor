@@ -1,6 +1,8 @@
 :root {
-  --primary-color: #039BE5;
-  --secondary-color: #0D47A1;
+  --chart-color: #607D8B;
+  --primary-color: #80929b;
+  --secondary-color: #90A4AE;
+  --bg-color: rgb(25, 32, 39);
 }
 
 * {
@@ -24,9 +26,9 @@ html {
 
 /* Body styles */
 body {
-  background-color: #ffffff;
+  background-color: var(--bg-color);
   opacity: 1;
-  background-image:  linear-gradient(#f3f3f3 2px, transparent 2px), linear-gradient(90deg, #f3f3f3 2px, transparent 2px), linear-gradient(#f3f3f3 1px, transparent 1px), linear-gradient(90deg, #f3f3f3 1px, #ffffff 1px);
+  /* background-image:  linear-gradient(#f3f3f3 2px, transparent 2px), linear-gradient(90deg, #f3f3f3 2px, transparent 2px), linear-gradient(#f3f3f3 1px, transparent 1px), linear-gradient(90deg, #f3f3f3 1px, #ffffff 1px); */
   background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
   text-align: center; /* Center text within the body */
@@ -97,8 +99,8 @@ body {
 .container-div {
   flex: 0 0 calc(50% - 20px); /* Set each chart to occupy 50% width with a gap */
   box-sizing: border-box; /* Include padding and border in width calculation */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
-  background-color: white; /* Set the background color to white */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */
+  /* background-color: var(--chart-color); Set the background color to white */
   text-align: center; /* Center text within the chart container */
   width: 100%; /* Set the width to 100% for all devices */
   margin: 10px;
@@ -140,10 +142,10 @@ body {
   font-weight: 600;
   margin: 5px 20px 20px 10px;
   padding: 17px;
-  color: var(--primary-color);
+  color: var(--chart-color);
   transition: ease-in-out 200ms;
 
-  border-bottom: solid lightgray 2px;
+  border-bottom: solid var(--secondary-color) 2px;
 }
 
 /* Hover effect for the chart title <h3> */
@@ -154,7 +156,7 @@ body {
 
 .title-line {
   border: none; /* Remove the default border */
-  border-top: 2px solid var(--primary-color); /* Set the border to a solid line */
+  border-top: 2px solid var(--secondary-color); /* Set the border to a solid line */
   margin: auto ; /* Add margin for spacing */
 }
 
@@ -209,7 +211,7 @@ span > a:hover {
   bottom: 15px;
   right: 15px;
   background-color: var(--primary-color); /* Background color of the button */
-  color: #fff; /* Text color */
+  color: var(--secondary-color); /* Text color */
   border: none;
   border-radius: 50px;
   padding: 10px 20px;
