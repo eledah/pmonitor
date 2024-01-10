@@ -1,12 +1,9 @@
 :root {
-  --chart-color: #607D8B;
-  --primary-color: #80929b;
-  --secondary-color: #90A4AE;
-  --bg-color: rgb(25, 32, 39);
-}
-
-* {
-  font-family: 'Sahel', sans-serif;
+  --chart-color: #1C1B1A;
+  --primary-color: #878580;
+  --secondary-color: #CECDC3;
+  --bg-color: #100F0F;
+  --hover-color: rgb(243, 57, 119);
 }
 
 html {
@@ -28,18 +25,18 @@ html {
 body {
   background-color: var(--bg-color);
   opacity: 1;
-  /* background-image:  linear-gradient(#f3f3f3 2px, transparent 2px), linear-gradient(90deg, #f3f3f3 2px, transparent 2px), linear-gradient(#f3f3f3 1px, transparent 1px), linear-gradient(90deg, #f3f3f3 1px, #ffffff 1px); */
   background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
   text-align: center; /* Center text within the body */
-  font-family: Sahel, sans-serif; /* Specify a font */
+  font-family: "Vazir", sans-serif; /* Specify a font */
   margin: 0; /* Remove default body margin */
 }
 
 /* Style for the page title */
 .page-title {
   font-size: 51px;
-  color: var(--primary-color); /* Dark gray text color */
+  font-family: 'Orbitron', sans-serif;
+  color: var(--secondary-color); /* Dark gray text color */
   transition: color 0.3s; /* Smooth color transition on hover */
   margin-top: 17px;
   margin-bottom: unset;
@@ -48,11 +45,12 @@ body {
 
 /* Hover effect for the page title */
 .page-title:hover {
-  color: var(--secondary-color); /* Change text color to black on hover */
+  color: var(--hover-color); /* Change text color to black on hover */
 }
 
 .sub-title {
-  margin-top: -20px;
+  margin-top: -10px;
+  font-family: 'Orbitron', sans-serif !important;
   color: var(--secondary-color);
   font-weight: 300;
   font-size: 16px;
@@ -76,6 +74,7 @@ body {
 
 .footer {
   display: block;
+  font-family: 'Orbitron', sans-serif;
   text-decoration: unset;
   color: var(--secondary-color);
   font-weight: 700;
@@ -100,7 +99,7 @@ body {
   flex: 0 0 calc(50% - 20px); /* Set each chart to occupy 50% width with a gap */
   box-sizing: border-box; /* Include padding and border in width calculation */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle shadow effect */
-  /* background-color: var(--chart-color); Set the background color to white */
+  background-color: var(--chart-color);
   text-align: center; /* Center text within the chart container */
   width: 100%; /* Set the width to 100% for all devices */
   margin: 10px;
@@ -138,20 +137,20 @@ body {
 
   direction: rtl;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 600;
   margin: 5px 20px 20px 10px;
   padding: 17px;
-  color: var(--chart-color);
+  color: var(--secondary-color);
   transition: ease-in-out 200ms;
 
-  border-bottom: solid var(--secondary-color) 2px;
+  border-bottom: solid var(--primary-color) 1px;
 }
 
 /* Hover effect for the chart title <h3> */
 .chart-title:hover {
-  color: var(--secondary-color);
-  border-bottom: solid var(--secondary-color) 2px;
+  color: var(--hover-color);
+  /* border-bottom: solid var(--hover-color) 2px; */
 }
 
 .title-line {
@@ -172,16 +171,20 @@ body {
   width: 100%;
 }
 
+span {
+  color: var(--secondary-color);
+}
+
 span > a {
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   transition: ease-in-out 200ms;
 }
 
 span > a:hover {
-  color: var(--secondary-color);
+  color: var(--hover-color);
 }
 
 
@@ -221,5 +224,50 @@ span > a:hover {
 }
 
 .scroll-to-top-button:hover {
-  background-color: var(--secondary-color); /* Background color on hover */
+  background-color: var(--hover-color); /* Background color on hover */
+}
+
+/* CSS */
+button {
+  align-items: center;
+  background-color: var(--bg-color);
+  border: 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Vazir";
+  font-size: 12;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  overflow: hidden;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+button:hover,
+button:focus { 
+  background-color: rgb(243, 57, 119);
+  color: #ffffff;
+}
+
+button:active {
+  background: rgb(116, 26, 56);
+  color: rgb(255, 255, 255, .7);
+}
+
+button:disabled { 
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, .08);
+  color: rgba(0, 0, 0, .3);
 }

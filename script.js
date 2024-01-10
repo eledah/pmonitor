@@ -1,14 +1,14 @@
 const colors = {
-    purple: {
-      default: "rgba(149, 76, 233, 1)",
-      half: "rgba(149, 76, 233, 0.5)",
-      quarter: "rgba(149, 76, 233, 0.25)",
-      zero: "rgba(149, 76, 233, 0)"
-    },
-    indigo: {
-      default: "rgba(80, 102, 120, 1)",
-      quarter: "rgba(80, 102, 120, 0.25)"
-    }
+    black: "#100F0F",
+    bg2: "#1C1B1A",
+    ui: "#282726",
+    ui2: "#343331",
+    ui3: "#403E3C",
+    tx3: "#575653",
+    tx2: "#878580",
+    tx: "#CECDC3",
+    red: "#D81B60",
+    green: "#879A39"
   };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 linkElement.href = item.link;
                 linkElement.className ='chart-title'
                 linkElement.target = '_blank'; // Open link in a new tab
-                linkElement.textContent = chartName;
+                linkElement.textContent = "- " + chartName + " -";
 
                 // Create a <span> tag to wrap the link
                 const spanElement = document.createElement('span');
@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // Convert Gregorian dates to Persian (Jalali) dates
                         const formattedDates = dates.map(date => {
-                            const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
+                            // const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
+                            const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jMM/jDD');
                             return jalaliDate;
                         });
 
@@ -89,10 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             type: 'scatter',
                             marker: {
                                 size: 8,
-                                color: discounts.map(discount => discount > 0 ? '#D81B60' : '#546E7A'), 
+                                color: discounts.map(discount => discount > 0 ? colors.red : colors.tx2), 
                             },
                             line: {
-                                color: 'rgb(200, 200, 200)',
+                                color: colors.tx3,
                                 width: 2,
                             },
                             hovertemplate: '<b>%{y}</b><br>%{text}% OFF',
@@ -102,15 +103,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         
 
                         const layout = {
-                            plot_bgcolor: 'rgb(25, 32, 39)',
-                            paper_bgcolor: 'rgb(25, 32, 39)',
+                            plot_bgcolor: colors.bg2,
+                            paper_bgcolor: colors.bg2,
                             xaxis: {
-                                title: 'تاریخ',
-                                automargin: true
+                                // title: 'تاریخ',
+                                automargin: true,
+                                color: colors.tx,
+                                gridcolor: colors.ui2,
+                                zerolinecolor: colors.ui2
                             },
                             yaxis: {
-                                title: 'قیمت',
-                                automargin: true
+                                // title: 'قیمت',
+                                automargin: true,
+                                color: colors.tx,
+                                gridcolor: colors.ui2,
+                                zerolinecolor: colors.ui2
                             },
                             font: {
                                 family: 'Sahel FD',
@@ -129,7 +136,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         const config = {
                             locale: 'fa',
                             responsive: true,
-                            displaylogo: false
+                            displaylogo: false,
+                            displayModeBar: false
                         }
 
                         const plotData = [trace];
@@ -160,3 +168,47 @@ window.addEventListener('scroll', function() {
         button.style.display = 'none';
     }
 });
+
+
+function adjustChartLayout(chartsPerRow) {
+    const containerDivs = document.querySelectorAll('.container-div');
+
+    // Assign the scatterPlots variable here
+    scatterPlots = document.querySelectorAll('.scatter-plot');
+    
+    // Adjust the width of each chart container
+    containerDivs.forEach(container => {
+        container.style.flex = `0 0 calc(${100 / chartsPerRow}% - 20px)`;
+    });
+
+    // Adjust the marker size based on the number of charts per row
+    const { markerSize, lineWidth } = calculateSizes(chartsPerRow);
+    scatterPlots.forEach(scatter => {
+        updateMarkerAndLineWidth(scatter, markerSize, lineWidth);
+    });
+
+    // Trigger the resize event to notify the charts about the size change
+    window.dispatchEvent(new Event('resize'));
+}
+
+function calculateSizes(chartsPerRow) {
+    switch (chartsPerRow) {
+        case 1:
+            return { markerSize: 10, lineWidth: 3 };
+        case 2:
+            return { markerSize: 8, lineWidth: 2 };
+        case 4:
+            return { markerSize: 6, lineWidth: 1 };
+        default:
+            return { markerSize: 6, lineWidth: 1 };
+    }
+}
+
+// Function to update marker size and line width for a specific chart
+function updateMarkerAndLineWidth(scatter, markerSize, lineWidth) {
+    const traces = scatter.data;
+    traces.forEach(trace => {
+        trace.marker.size = markerSize;
+        trace.line.width = lineWidth;
+    });
+}

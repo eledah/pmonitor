@@ -4,6 +4,8 @@
     <title>Monitor</title>
     <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-locale-fa-latest.js"></script>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet" type="text/css" />
@@ -15,19 +17,29 @@
 </head>
 <body>
     <a id="button" class="scroll-to-top-button" onclick="scrollToTop()"><b>^</b></a>
+    <br>
+    <hr class="title-line">
     <h1 class="page-title">pMonitor</h1>
-    <h2 class="sub-title"><i>Automated Price Monitor</i></h2>
+    <h2 class="sub-title">Automated Price Monitor</h2>
+    <div id="buttons-container">
+        <button onclick="adjustChartLayout(1)">بزرگ</button>
+        <button onclick="adjustChartLayout(2)" class="active">متوسط</button>
+        <button onclick="adjustChartLayout(4)">کوچک</button>
+    </div>
+    <br>
     <hr class="title-line">
     <div id="table-of-contents">
-        <h2 class="h2 item-heading">فهرست اقلام</h2>
-        <p dir="rtl" id="p-table-of-content"">
+        <!-- <h2 class="h2 item-heading">فهرست اقلام</h2> -->
+        <p dir="rtl" id="p-table-of-content">
         </p>
     </div>
+    <!-- <hr class="title-line"> -->
+    <!-- <h2 class="h2 chart-heading">نمودارهای قیمت</h2> -->
     <hr class="title-line">
-    <h2 class="h2 chart-heading">نمودارهای قیمت</h2>
-    <hr class="title-line">
+    <br>
     <div id="scatter-plots"></div>
+    <br>
     <hr class="title-line">
-    <a href="https://github.com/eledah/pmonitor" class="h2 footer" target="_blank"><i>Source Code</i></a>
+    <a href="https://github.com/eledah/pmonitor" class="h2 footer" target="_blank">~SOURCE CODE~</a>
 </body>
 </html>
