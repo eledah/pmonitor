@@ -1,13 +1,13 @@
 [
   {
     "Name": "آیفون ۱۳ نان‌اکتیو",
-    "Price": "35560000",
+    "Price": "35200000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-8366616/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%A7%D9%BE%D9%84-%D9%85%D8%AF%D9%84-iphone-13-ch-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-4-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%86%D8%A7%D8%AA-%D8%A7%DA%A9%D8%AA%DB%8C%D9%88/"
   },
   {
     "Name": "آینه بغل پراید",
-    "Price": "178530",
+    "Price": "178410",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-6180864/%D8%A7%DB%8C%D9%86%D9%87-%D8%A8%D8%BA%D9%84-%D8%AE%D9%88%D8%AF%D8%B1%D9%88-%DA%A9%D8%AF-2040-%D9%85%D9%86%D8%A7%D8%B3%D8%A8-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%BE%D8%B1%D8%A7%DB%8C%D8%AF-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C/"
   },
@@ -30,16 +30,28 @@
     "Link": "https://www.digikala.com/product/dkp-12457748/%D9%BE%D8%B3%D8%AA%D9%87-%D8%A7%DA%A9%D8%A8%D8%B1%DB%8C-%D8%AA%D8%B1%D8%AF-%D9%86%D9%85%DA%A9%DB%8C-%D8%AF%D8%B3%D8%AA-%DA%86%DB%8C%D9%86-%D8%B4%D9%88%D8%AF%DB%8C%DA%A9-1000-%DA%AF%D8%B1%D9%85/"
   },
   {
+    "Name": "پنیر فتا دوشه هراز- 400 گرم",
+    "Price": "51800",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-1485597/%D9%BE%D9%86%DB%8C%D8%B1-%D9%81%D8%AA%D8%A7-%D8%AF%D9%88%D8%B4%D9%87-%D9%87%D8%B1%D8%A7%D8%B2-%D9%85%D9%82%D8%AF%D8%A7%D8%B1-400-%DA%AF%D8%B1%D9%85/"
+  },
+  {
     "Name": "پوشک بچه هانیز",
-    "Price": "123000",
-    "Discount": "21",
+    "Price": "155000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-7932748/%D9%BE%D9%88%D8%B4%DA%A9-%D8%A8%DA%86%D9%87-%D9%87%D8%A7%D9%86%DB%8C%D8%B2-%D8%B3%D8%A7%DB%8C%D8%B2-4-%D8%A8%D8%B3%D8%AA%D9%87-34-%D8%B9%D8%AF%D8%AF%DB%8C"
   },
   {
     "Name": "پوشک مولفیکس سایز ۴",
-    "Price": "155000",
-    "Discount": "0",
+    "Price": "140600",
+    "Discount": "9",
     "Link": "https://www.digikala.com/product/dkp-3765912/%D9%BE%D9%88%D8%B4%DA%A9-%DA%A9%D9%88%D8%AF%DA%A9-%D9%85%D9%88%D9%84%D9%81%DB%8C%DA%A9%D8%B3-%D8%B3%D8%A7%DB%8C%D8%B2-4-%D8%A8%D8%B3%D8%AA%D9%87-34-%D8%B9%D8%AF%D8%AF%DB%8C/"
+  },
+  {
+    "Name": "ترازو دیجیتال کمری فیت",
+    "Price": "410000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-1787072/%D8%AA%D8%B1%D8%A7%D8%B2%D9%88-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%DA%A9%D9%85%D8%B1%DB%8C-%D9%81%DB%8C%D8%AA-%D9%85%D8%AF%D9%84-ps-2019-%D8%B7%D8%B1%D8%AD-b-wave/"
   },
   {
     "Name": "تشک دو نفره رویا مدل اولترا 3",
@@ -49,20 +61,20 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "1628000",
+    "Price": "1617000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/%D8%AA%D9%84%D9%81%D9%86-%D8%A8%DB%8C-%D8%B3%DB%8C%D9%85-%D9%BE%D8%A7%D9%86%D8%A7%D8%B3%D9%88%D9%86%DB%8C%DA%A9-%D9%85%D8%AF%D9%84-kx-tg3611bx/"
   },
   {
     "Name": "تلویزیون ال ای دی هوشمند ایکس ویژن",
-    "Price": "16900000",
+    "Price": "16890000",
     "Discount": "13",
     "Link": "https://www.digikala.com/product/dkp-11214427/%D8%AA%D9%84%D9%88%DB%8C%D8%B2%DB%8C%D9%88%D9%86-%D8%A7%D9%84-%D8%A7%DB%8C-%D8%AF%DB%8C-%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF-%D8%A7%DB%8C%DA%A9%D8%B3-%D9%88%DB%8C%DA%98%D9%86-%D9%85%D8%AF%D9%84-50xyu755-%D8%B3%D8%A7%DB%8C%D8%B2-50-%D8%A7%DB%8C%D9%86%DA%86/"
   },
   {
     "Name": "تونر پاک کننده صورت لافارر",
-    "Price": "135880",
-    "Discount": "20",
+    "Price": "99900",
+    "Discount": "41",
     "Link": "https://www.digikala.com/product/dkp-4012333/%D8%AA%D9%88%D9%86%D8%B1-%D9%BE%D8%A7%DA%A9-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D8%B5%D9%88%D8%B1%D8%AA-%D9%84%D8%A7%D9%81%D8%A7%D8%B1%D8%B1-%D9%85%D8%AF%D9%84-%D8%A2%D8%A8%D8%B1%D8%B3%D8%A7%D9%86-1-%D8%AD%D8%AC%D9%85-170-%D9%85%DB%8C%D9%84%DB%8C-%D9%84%DB%8C%D8%AA%D8%B1/"
   },
   {
@@ -73,8 +85,8 @@
   },
   {
     "Name": "چای سیاه گلستان مدل ممتاز هندوستان - 500 گرم",
-    "Price": "236000",
-    "Discount": "6",
+    "Price": "213000",
+    "Discount": "15",
     "Link": "https://www.digikala.com/product/dkp-581175/%DA%86%D8%A7%DB%8C-%D8%B3%DB%8C%D8%A7%D9%87-%DA%AF%D9%84%D8%B3%D8%AA%D8%A7%D9%86-%D9%85%D8%AF%D9%84-%D9%85%D9%85%D8%AA%D8%A7%D8%B2-%D9%87%D9%86%D8%AF%D9%88%D8%B3%D8%AA%D8%A7%D9%86-500-%DA%AF%D8%B1%D9%85/"
   },
   {
@@ -85,7 +97,7 @@
   },
   {
     "Name": "دوربین دیجیتال کانن مدل EOS 5D Mark IV",
-    "Price": "91335000",
+    "Price": "92335000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-170831/%D8%AF%D9%88%D8%B1%D8%A8%DB%8C%D9%86-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%DA%A9%D8%A7%D9%86%D9%86-%D9%85%D8%AF%D9%84-eos-5d-mark-iv/"
   },
@@ -109,8 +121,8 @@
   },
   {
     "Name": "ژل شستشوی صورت لافارر",
-    "Price": "250000",
-    "Discount": "32",
+    "Price": "294450",
+    "Discount": "20",
     "Link": "https://www.digikala.com/product/dkp-515367/%DA%98%D9%84-%D8%B4%D8%B3%D8%AA%D8%B4%D9%88-%D9%88-%D9%84%D8%A7%DB%8C%D9%87-%D8%A8%D8%B1%D8%AF%D8%A7%D8%B1-%D8%B5%D9%88%D8%B1%D8%AA-%D9%84%D8%A7%D9%81%D8%A7%D8%B1%D8%B1-%D9%85%D8%AF%D9%84-01-%D9%85%D9%86%D8%A7%D8%B3%D8%A8-%D9%BE%D9%88%D8%B3%D8%AA-%D9%87%D8%A7%DB%8C-%DA%86%D8%B1%D8%A8-%D8%AD%D8%AC%D9%85-150-%D9%85%DB%8C%D9%84%DB%8C-%D9%84%DB%8C%D8%AA%D8%B1/"
   },
   {
@@ -163,8 +175,8 @@
   },
   {
     "Name": "فلش مموری کوئین تک",
-    "Price": "165000",
-    "Discount": "19",
+    "Price": "175000",
+    "Discount": "14",
     "Link": "https://www.digikala.com/product/dkp-9089262/%D9%81%D9%84%D8%B4-%D9%85%D9%85%D9%88%D8%B1%DB%8C-%DA%A9%D9%88%D8%A6%DB%8C%D9%86-%D8%AA%DA%A9-%D9%85%D8%AF%D9%84-glink-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-64-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/"
   },
   {
@@ -204,9 +216,15 @@
     "Link": "https://www.digikala.com/product/dkp-11602682/%DA%A9%D8%AA%D8%A7%D8%A8-%D9%87%D8%B1-%D8%AF%D9%88-%D8%AF%D8%B1-%D9%86%D9%87%D8%A7%DB%8C%D8%AA-%D9%85%DB%8C-%D9%85%DB%8C%D8%B1%D9%86%D8%AF-%D8%A7%D8%AB%D8%B1-%D8%A2%D8%AF%D8%A7%D9%85-%D8%B3%DB%8C%D9%84%D9%88%D8%B1%D8%A7-%D9%86%D8%B4%D8%B1-%D8%A2%D8%B0%D8%B1%DA%AF%D9%88%D9%86/"
   },
   {
-    "Name": "کفش پیاده روی مردانه",
-    "Price": "203000",
+    "Name": "کره حیوانی پاستوریزه میهن - 100 گرم",
+    "Price": "32500",
     "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-939272/%DA%A9%D8%B1%D9%87-%D8%AD%DB%8C%D9%88%D8%A7%D9%86%DB%8C-%D9%BE%D8%A7%D8%B3%D8%AA%D9%88%D8%B1%DB%8C%D8%B2%D9%87-%D9%85%DB%8C%D9%87%D9%86-100-%DA%AF%D8%B1%D9%85/"
+  },
+  {
+    "Name": "کفش پیاده روی مردانه",
+    "Price": "201000",
+    "Discount": "26",
     "Link": "https://www.digikala.com/product/dkp-4262387/%DA%A9%D9%81%D8%B4-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B1%D9%88%DB%8C-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-%D9%85%D8%AF%D9%84-%D8%B1/"
   },
   {
@@ -217,7 +235,7 @@
   },
   {
     "Name": "کنسول Playstation 5",
-    "Price": "26119000",
+    "Price": "25970000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-3737956/%DA%A9%D9%86%D8%B3%D9%88%D9%84-%D8%A8%D8%A7%D8%B2%DB%8C-%D8%B3%D9%88%D9%86%DB%8C-%D9%85%D8%AF%D9%84-playstation-5-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-825-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/"
   },
@@ -228,6 +246,12 @@
     "Link": "https://www.digikala.com/product/dkp-7963070/%DA%A9%DB%8C%D9%81-%DA%A9%D9%85%D8%B1%DB%8C-%DA%86%D8%B1%D9%85%DB%8C-%D9%85%D8%AF%D9%84-m-1/"
   },
   {
+    "Name": "گوشی موبایل شیائومی مدل Redmi Note 12 4G",
+    "Price": "7039000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-11153044/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B4%DB%8C%D8%A7%D8%A6%D9%88%D9%85%DB%8C-%D9%85%D8%AF%D9%84-redmi-note-12-4g-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-8-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%DA%AF%D9%84%D9%88%D8%A8%D8%A7%D9%84/"
+  },
+  {
     "Name": "ماکارونی پنه زر ماکارون 500 گرم",
     "Price": "22200",
     "Discount": "0",
@@ -235,7 +259,7 @@
   },
   {
     "Name": "مانیتور جی پلاس 24 اینچ",
-    "Price": "4300000",
+    "Price": "4250000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-7917881/%D9%85%D8%A7%D9%86%DB%8C%D8%AA%D9%88%D8%B1-%D8%AC%DB%8C-%D9%BE%D9%84%D8%A7%D8%B3-%D9%85%D8%AF%D9%84-gdm-245ln-%D8%B3%D8%A7%DB%8C%D8%B2-24-%D8%A7%DB%8C%D9%86%DA%86/"
   },
@@ -253,19 +277,19 @@
   },
   {
     "Name": "نوشابه  پپسی - 1.5 لیتر بسته 6 عددی",
-    "Price": "170000",
-    "Discount": "4",
+    "Price": "171690",
+    "Discount": "3",
     "Link": "https://www.digikala.com/product/dkp-1923615/%D9%86%D9%88%D8%B4%D8%A7%D8%A8%D9%87-%DA%A9%D9%88%D9%84%D8%A7-%D9%BE%D9%BE%D8%B3%DB%8C-15-%D9%84%DB%8C%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-6-%D8%B9%D8%AF%D8%AF%DB%8C/"
   },
   {
     "Name": "نیم‌بوت زنانه چرم مشهد",
-    "Price": "7947000",
-    "Discount": "0",
+    "Price": "2283600",
+    "Discount": "71",
     "Link": "https://www.digikala.com/product/dkp-13259064/%D9%86%DB%8C%D9%85-%D8%A8%D9%88%D8%AA-%D8%B2%D9%86%D8%A7%D9%86%D9%87-%DA%86%D8%B1%D9%85-%D9%85%D8%B4%D9%87%D8%AF-%D9%85%D8%AF%D9%84-j2503-001/"
   },
   {
     "Name": "هارد اکسترنال وسترن دیجیتال 1 ترابایت",
-    "Price": "2870000",
+    "Price": "2890000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-2309086/%D9%87%D8%A7%D8%B1%D8%AF-%D8%A7%DA%A9%D8%B3%D8%AA%D8%B1%D9%86%D8%A7%D9%84-%D9%88%D8%B3%D8%AA%D8%B1%D9%86-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%D9%85%D8%AF%D9%84-my-passport-wdbyvg0010bbk-wesn-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-1-%D8%AA%D8%B1%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/"
   },
@@ -277,14 +301,14 @@
   },
   {
     "Name": "ویدئو پروژکتور T2 Max",
-    "Price": "8980000",
+    "Price": "8970000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-5604484/%D9%88%DB%8C%D8%AF%D8%A6%D9%88-%D9%BE%D8%B1%D9%88%DA%98%DA%A9%D8%AA%D9%88%D8%B1-%D9%88%D9%86%D8%A8%D9%88-%D9%85%D8%AF%D9%84-t2-max/"
   },
   {
     "Name": "یخچال و فریزر برفاب",
-    "Price": "11555000",
-    "Discount": "0",
+    "Price": "9899000",
+    "Discount": "14",
     "Link": "https://www.digikala.com/product/dkp-330265/%DB%8C%D8%AE%DA%86%D8%A7%D9%84-%D9%88-%D9%81%D8%B1%DB%8C%D8%B2%D8%B1-%D8%A8%D8%B1%D9%81%D8%A7%D8%A8-%D9%85%D8%AF%D9%84-70-30/"
   }
 ]
