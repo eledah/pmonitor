@@ -1,15 +1,21 @@
 [
   {
     "Name": "آب معدنی میوا - 1.5 لیتر بسته 6 عددی ",
-    "Price": "40800",
-    "Discount": "0",
+    "Price": "32500",
+    "Discount": "20",
     "Link": "https://www.digikala.com/product/dkp-3439306/%D8%A2%D8%A8-%D9%85%D8%B9%D8%AF%D9%86%DB%8C-%D9%85%DB%8C%D9%88%D8%A7-15-%D9%84%DB%8C%D8%AA%D8%B1-%D8%A8%D8%B3%D8%AA%D9%87-6-%D8%B9%D8%AF%D8%AF%DB%8C/"
   },
   {
     "Name": "آیفون ۱۳ نان‌اکتیو",
-    "Price": "41250000",
+    "Price": "41090000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-8366616/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%A7%D9%BE%D9%84-%D9%85%D8%AF%D9%84-iphone-13-ch-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-4-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%86%D8%A7%D8%AA-%D8%A7%DA%A9%D8%AA%DB%8C%D9%88/"
+  },
+  {
+    "Name": "آینه بغل پراید",
+    "Price": "215000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-6180864/%D8%A7%DB%8C%D9%86%D9%87-%D8%A8%D8%BA%D9%84-%D8%AE%D9%88%D8%AF%D8%B1%D9%88-%DA%A9%D8%AF-2040-%D9%85%D9%86%D8%A7%D8%B3%D8%A8-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%BE%D8%B1%D8%A7%DB%8C%D8%AF-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C/"
   },
   {
     "Name": "بخاری برقی پارس خزر",
@@ -37,8 +43,8 @@
   },
   {
     "Name": "پنیر فتا دوشه هراز- 400 گرم",
-    "Price": "43990",
-    "Discount": "15",
+    "Price": "51800",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-1485597/%D9%BE%D9%86%DB%8C%D8%B1-%D9%81%D8%AA%D8%A7-%D8%AF%D9%88%D8%B4%D9%87-%D9%87%D8%B1%D8%A7%D8%B2-%D9%85%D9%82%D8%AF%D8%A7%D8%B1-400-%DA%AF%D8%B1%D9%85/"
   },
   {
@@ -67,14 +73,14 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "1739000",
+    "Price": "1807000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/%D8%AA%D9%84%D9%81%D9%86-%D8%A8%DB%8C-%D8%B3%DB%8C%D9%85-%D9%BE%D8%A7%D9%86%D8%A7%D8%B3%D9%88%D9%86%DB%8C%DA%A9-%D9%85%D8%AF%D9%84-kx-tg3611bx/"
   },
   {
     "Name": "تلویزیون ال ای دی هوشمند ایکس ویژن",
-    "Price": "17699000",
-    "Discount": "9",
+    "Price": "18900000",
+    "Discount": "3",
     "Link": "https://www.digikala.com/product/dkp-11214427/%D8%AA%D9%84%D9%88%DB%8C%D8%B2%DB%8C%D9%88%D9%86-%D8%A7%D9%84-%D8%A7%DB%8C-%D8%AF%DB%8C-%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF-%D8%A7%DB%8C%DA%A9%D8%B3-%D9%88%DB%8C%DA%98%D9%86-%D9%85%D8%AF%D9%84-50xyu755-%D8%B3%D8%A7%DB%8C%D8%B2-50-%D8%A7%DB%8C%D9%86%DA%86/"
   },
   {
@@ -85,7 +91,7 @@
   },
   {
     "Name": "جعبه ابزار 100 عددی",
-    "Price": "1386000",
+    "Price": "1386400",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-8472321/%D8%AC%D8%B9%D8%A8%D9%87-%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1-%D9%85%D8%AF%D9%84-life-style-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D9%87-100-%D8%B9%D8%AF%D8%AF%DB%8C/"
   },
@@ -127,8 +133,8 @@
   },
   {
     "Name": "ساعت هوشمند مدل K59pro",
-    "Price": "2290000",
-    "Discount": "5",
+    "Price": "2280000",
+    "Discount": "8",
     "Link": "https://www.digikala.com/product/dkp-12896479/%D8%B3%D8%A7%D8%B9%D8%AA-%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF-%D9%85%D8%AF%D9%84-k59pro/"
   },
   {
@@ -163,8 +169,8 @@
   },
   {
     "Name": "فلش مموری کوئین تک",
-    "Price": "212500",
-    "Discount": "15",
+    "Price": "207000",
+    "Discount": "37",
     "Link": "https://www.digikala.com/product/dkp-9089262/%D9%81%D9%84%D8%B4-%D9%85%D9%85%D9%88%D8%B1%DB%8C-%DA%A9%D9%88%D8%A6%DB%8C%D9%86-%D8%AA%DA%A9-%D9%85%D8%AF%D9%84-glink-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-64-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/"
   },
   {
@@ -222,6 +228,12 @@
     "Link": "https://www.digikala.com/product/dkp-797406/%DA%A9%D9%86%D8%B3%D8%B1%D9%88-%D9%85%D8%A7%D9%87%DB%8C-%D8%AA%D9%86-%D8%AF%D8%B1-%D8%B1%D9%88%D8%BA%D9%86-%D9%85%D8%A7%DB%8C%D8%B9-%D8%B3%D8%A7%D8%AD%D9%84-180-%DA%AF%D8%B1%D9%85/"
   },
   {
+    "Name": "کنسول Playstation 5",
+    "Price": "30200000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-3737956/%DA%A9%D9%86%D8%B3%D9%88%D9%84-%D8%A8%D8%A7%D8%B2%DB%8C-%D8%B3%D9%88%D9%86%DB%8C-%D9%85%D8%AF%D9%84-playstation-5-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-825-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/"
+  },
+  {
     "Name": "کیف کمری چرمی",
     "Price": "900000",
     "Discount": "0",
@@ -229,7 +241,7 @@
   },
   {
     "Name": "گوشی موبایل شیائومی مدل Redmi Note 12 4G",
-    "Price": "8360000",
+    "Price": "8309000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-11153044/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%B4%DB%8C%D8%A7%D8%A6%D9%88%D9%85%DB%8C-%D9%85%D8%AF%D9%84-redmi-note-12-4g-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-8-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%DA%AF%D9%84%D9%88%D8%A8%D8%A7%D9%84/"
   },
