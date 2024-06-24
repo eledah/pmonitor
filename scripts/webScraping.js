@@ -32,18 +32,20 @@ async function getPrice(page) {
     // Use page.$() to select the <div> element
     masterDiv = await page.$('div.items-end:nth-child(2) > div:nth-child(2)');
 
+    var priceDivSelector = 'span.ml-1.text-neutral-800.text-h4-compact'
+
   } else {
     VERBOSE ? console.log('Item is not discounted') : null;
 
     masterDivSelector = '.flex.items-center.justify-end.w-full'
     masterDiv = await page.$(masterDivSelector)
+
+    var priceDivSelector = 'span.text-neutral-800.ml-1.text-h4'
   }
 
   console.log(masterDiv)
 
-  const priceDivSelector = 'span.text-neutral-800.ml-1.text-h4'
   const priceElement = await masterDiv.$(priceDivSelector);
-
 
   return priceElement
     ? (await (await priceElement.getProperty('textContent')).jsonValue())
