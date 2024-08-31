@@ -1178,5 +1178,10 @@
     "Date": "2024-08-28",
     "Price": "142200",
     "Discount": "0"
+  },
+  {
+    "Date": "2024-08-31",
+    "Price": "Price not found",
+    "Discount": "2"
   }
 ]
