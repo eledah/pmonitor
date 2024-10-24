@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // Convert Gregorian dates to Persian (Jalali) dates
                         const formattedDates = dates.map(date => {
-                            // const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
-                            const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jMM/jDD');
+                            const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
+                            // const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jMM/jDD');
                             return jalaliDate;
                         });
 
