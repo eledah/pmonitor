@@ -112,6 +112,7 @@ async function writeToExcel(itemName, price, discount) {
 async function scrapeWebpages() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  page.setDefaultNavigationTimeout(0); 
 
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.readFile(INPUT_FILE_PATH);
@@ -127,7 +128,7 @@ async function scrapeWebpages() {
       console.log(`Loading ${url}`);
     }
 
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 0 });
 
     // Wait for 10 seconds (adjust as needed)
     await new Promise((resolve) => setTimeout(resolve, 17000)); // 17 seconds
