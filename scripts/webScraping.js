@@ -40,7 +40,7 @@ async function getPrice(page) {
 }
 
 async function getDiscount(page) {
-  const masterDivSelector = '.flex.items-center.justify-end.w-full.gap-1'
+  const masterDivSelector = '.flex.items-center.justify-end.w-full.gap-1';
   const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-hint-object-error.shrink-0.mr-1.mb-1';
 
   const masterDiv = await page.$(masterDivSelector)
