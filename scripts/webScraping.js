@@ -17,41 +17,26 @@ const OUTPUT_FILE_PATH = '../output.xlsx';
 const currentDate = new Date().toISOString().split('T')[0];
 
 async function getPrice(page) {
-  const discountDivSelector = '.flex.items-center.justify-end.w-full'
-  const discountedSelector = 'span.line-through.text-body-2.ml-1.text-neutral-300'
-  const discountDiv = await page.$(discountDivSelector)
-  const discounted = await discountDiv.$(discountedSelector);
+  const productScript = await page.evaluate(() => {
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+    for (const script of scripts) {
+      try {
+        const data = JSON.parse(script.textContent);
+        if (data['@type'] === 'Product') {
+          return data;
+        }
+      } catch (e) {
+        continue;
+      }
+    }
+    return null;
+  });
 
-  let masterDivSelector = ''
-  let masterDiv = ''
-
-  // If an item is discounted, then its nesting price <div> differs for some reason.
-  if (discounted) {
-    VERBOSE ? console.log('Item is discounted') : null;
-
-    // Use page.$() to select the <div> element
-    masterDiv = await page.$('div.items-end:nth-child(2) > div:nth-child(2)');
-
-    var priceDivSelector = 'span.ml-1.text-neutral-800.text-h4-compact'
-
-  } else {
-    VERBOSE ? console.log('Item is not discounted') : null;
-
-    masterDivSelector = '.flex.items-center.justify-end.w-full'
-    masterDiv = await page.$(masterDivSelector)
-
-    var priceDivSelector = 'span.text-neutral-800.ml-1.text-h4'
+  if (!productScript || !productScript.offers) {
+    return 'Price not found';
   }
 
-  console.log(masterDiv)
-
-  const priceElement = await masterDiv.$(priceDivSelector);
-
-  return priceElement
-    ? (await (await priceElement.getProperty('textContent')).jsonValue())
-        .replace(/,/g, '') // Remove commas
-        .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728)) // Convert Farsi numbers to English
-    : 'Price not found';
+  return String(productScript.offers.price / 10);
 }
 
 async function getDiscount(page) {
@@ -73,7 +58,7 @@ async function getDiscount(page) {
       discount = await (await page.evaluate(element => element.innerHTML, discountHandle))
         .replace("٪", "")
         .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728))
-      console.log("Discount Percentage: ", discount);
+      // console.log("Discount Percentage: ", discount);
     } else {
       console.log("No span with class 'text-body2-strong' found inside the first div.");
       discount = "0"
@@ -86,7 +71,20 @@ async function getDiscount(page) {
   return discount;
 }
 
-async function writeToExcel(itemName, price, discount) {
+async function getIncredible(page) {
+  const hasIncredible = await page.evaluate(() => {
+    const imgs = document.querySelectorAll('img');
+    for (const img of imgs) {
+      if (img.src.includes('IncredibleOffer.svg')) {
+        return true;
+      }
+    }
+    return false;
+  });
+  return hasIncredible ? "1" : "0";
+}
+
+async function writeToExcel(itemName, price, discount, incredible) {
   // Create an Excel file for each item and append data
   const itemFileName = `${itemName}.xlsx`;
   const itemFilePath = path.join(OUTPUT_DIRECTORY, itemFileName);
@@ -99,14 +97,25 @@ async function writeToExcel(itemName, price, discount) {
   let itemWorksheet = itemWorkbook.getWorksheet(1);
   if (!itemWorksheet) {
     itemWorksheet = itemWorkbook.addWorksheet('Sheet 1');
-    itemWorksheet.addRow(['Date', 'Price', 'Discount']); // Header row
+    itemWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
   }
 
-  itemWorksheet.addRow([currentDate, price, discount]);
+  // Check if last row has today's date
+  const lastRow = itemWorksheet.lastRow;
+  if (lastRow && lastRow.getCell(1).value === currentDate) {
+    // Overwrite the last row
+    lastRow.getCell(1).value = currentDate;
+    lastRow.getCell(2).value = price;
+    lastRow.getCell(3).value = discount;
+    lastRow.getCell(4).value = incredible;
+    console.log(`Data updated in ${itemFileName} for ${currentDate}`);
+  } else {
+    // Add new row
+    itemWorksheet.addRow([currentDate, price, discount, incredible]);
+    console.log(`Data appended to ${itemFileName}`);
+  }
 
   await itemWorkbook.xlsx.writeFile(itemFilePath);
-
-  console.log(`Data appended to ${itemFileName}`);
 }
 
 async function scrapeWebpages() {
@@ -147,20 +156,23 @@ async function scrapeWebpages() {
       console.log("Price: ", price);
 
       const discount = await getDiscount(page);
-      console.log("Price: ", discount);
+      console.log("Discount: ", discount);
+
+      const incredible = await getIncredible(page);
+      console.log("Incredible: ", incredible);
 
       if (OUTPUT) {
-        await writeToExcel(itemName, price, discount);
+        await writeToExcel(itemName, price, discount, incredible);
       }
       
       // Add the program's output to the outputWorkbook
       let outputSheet = outputWorkbook.getWorksheet(currentDate);
       if (!outputSheet) {
         outputSheet = outputWorkbook.addWorksheet(currentDate);
-        outputSheet.addRow(['Name', 'Price', 'Discount', 'Link']); // Header row
+        outputSheet.addRow(['Name', 'Price', 'Discount', 'Link', 'Incredible']); // Header row
       }
 
-      outputSheet.addRow([itemName, price, discount, url]);
+      outputSheet.addRow([itemName, price, discount, url, incredible]);
       console.log(`Data appended to output.xlsx for item: ${itemName}`);
     } else {
       console.log(`Item: ${itemName}`);

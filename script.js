@@ -8,7 +8,8 @@ const colors = {
     tx2: "#878580",
     tx: "#CECDC3",
     red: "#D81B60",
-    green: "#879A39"
+    green: "#879A39",
+    orange: "#FFB64B"
   };
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -71,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         const dates = data.map(item => item.Date);
                         const prices = data.map(item => parseInt(item.Price));
                         const discounts = data.map(item => parseInt(item.Discount || 0));
+                        const incredibles = data.map(item => parseInt(item.Incredible || 0));
 
                         // const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
 
@@ -91,7 +93,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             type: 'scatter',
                             marker: {
                                 size: 8,
-                                color: discounts.map(discount => discount > 0 ? colors.red : colors.tx2), 
+                                color: discounts.map((discount, index) => 
+                                    incredibles[index] === 1 ? colors.orange : 
+                                    discount > 0 ? colors.red : colors.tx2
+                                ),
                             },
                             line: {
                                 color: colors.tx3,

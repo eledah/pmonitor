@@ -2,1956 +2,2353 @@
   {
     "Date": "2023-09-19",
     "Price": "50960",
-    "Discount": 70
+    "Discount": 70,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-20",
     "Price": "119800",
-    "Discount": 29
+    "Discount": 29,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-21",
     "Price": "114000",
-    "Discount": 33
+    "Discount": 33,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-22",
     "Price": "118200",
-    "Discount": 30
+    "Discount": 30,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-23",
     "Price": "118200",
-    "Discount": 30
+    "Discount": 30,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-24",
     "Price": "118200",
-    "Discount": 30
+    "Discount": 30,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-25",
     "Price": "114800",
-    "Discount": 32
+    "Discount": 32,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-26",
     "Price": "113600",
-    "Discount": 33
+    "Discount": 33,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-27",
     "Price": "50960",
-    "Discount": 70
+    "Discount": 70,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-28",
     "Price": "51210",
-    "Discount": 70
+    "Discount": 70,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-29",
     "Price": "113310",
-    "Discount": 33
+    "Discount": 33,
+    "Incredible": "0"
   },
   {
     "Date": "2023-09-30",
     "Price": "114500",
-    "Discount": 33
+    "Discount": 33,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-01",
     "Price": "113810",
-    "Discount": 33
+    "Discount": 33,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-02",
     "Price": "112050",
-    "Discount": 34
+    "Discount": 34,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-03",
     "Price": "106860",
-    "Discount": 37
+    "Discount": 37,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-04",
     "Price": "65870",
-    "Discount": 61
+    "Discount": 61,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-05",
     "Price": "105000",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-06",
     "Price": "111700",
-    "Discount": 34
+    "Discount": 34,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-07",
     "Price": "103650",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-08",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-09",
     "Price": "91900",
-    "Discount": 46
+    "Discount": 46,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-10",
     "Price": "88600",
-    "Discount": 48
+    "Discount": 48,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-11",
     "Price": "108000",
-    "Discount": 36
+    "Discount": 36,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-12",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-13",
     "Price": "109160",
-    "Discount": 36
+    "Discount": 36,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-14",
     "Price": "103000",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-15",
     "Price": "110110",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-16",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-17",
     "Price": "104360",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-18",
     "Price": "103680",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-19",
     "Price": "103800",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-20",
     "Price": "103620",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-21",
     "Price": "74500",
-    "Discount": 56
+    "Discount": 56,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-22",
     "Price": "74500",
-    "Discount": 56
+    "Discount": 56,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-23",
     "Price": "104960",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-24",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-25",
     "Price": "105000",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-26",
     "Price": "105000",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-27",
     "Price": "70000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-28",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-29",
     "Price": "101000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-30",
     "Price": "117000",
-    "Discount": 31
+    "Discount": 31,
+    "Incredible": "0"
   },
   {
     "Date": "2023-10-31",
     "Price": "104200",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-01",
     "Price": "104200",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-02",
     "Price": "103000",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-03",
     "Price": "102000",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-04",
     "Price": "102000",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-05",
     "Price": "102000",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-06",
     "Price": "101000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-07",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-08",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-09",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-10",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-12",
     "Price": "99700",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-13",
     "Price": "99600",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-14",
     "Price": "99500",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-15",
     "Price": "99500",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-16",
     "Price": "104700",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-17",
     "Price": "104700",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-18",
     "Price": "104000",
-    "Discount": 39
+    "Discount": 39,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-19",
     "Price": "104500",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-20",
     "Price": "92700",
-    "Discount": 45
+    "Discount": 45,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-21",
     "Price": "102600",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-22",
     "Price": "67900",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-23",
     "Price": "67900",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-24",
     "Price": "67900",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-25",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-26",
     "Price": "67940",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-27",
     "Price": "67940",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-28",
     "Price": "67940",
-    "Discount": 60
+    "Discount": 60,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-29",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-11-30",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-01",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-02",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-03",
     "Price": "84920",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-04",
     "Price": "100000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-05",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-06",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-07",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-08",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-09",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-10",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-11",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-12",
     "Price": "101650",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-13",
     "Price": "101000",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-14",
     "Price": "101650",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-15",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-16",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-17",
     "Price": "101900",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-18",
     "Price": "118000",
-    "Discount": 31
+    "Discount": 31,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-19",
     "Price": "118000",
-    "Discount": 31
+    "Discount": 31,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-20",
     "Price": "144000",
-    "Discount": 15
+    "Discount": 15,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-21",
     "Price": "144000",
-    "Discount": 15
+    "Discount": 15,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-22",
     "Price": "80000",
-    "Discount": 53
+    "Discount": 53,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-23",
     "Price": "80000",
-    "Discount": 53
+    "Discount": 53,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-24",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-25",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-26",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-27",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-28",
     "Price": "140000",
-    "Discount": 18
+    "Discount": 18,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-29",
     "Price": "142000",
-    "Discount": 16
+    "Discount": 16,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-30",
     "Price": "118000",
-    "Discount": 31
+    "Discount": 31,
+    "Incredible": "0"
   },
   {
     "Date": "2023-12-31",
     "Price": "142000",
-    "Discount": 16
+    "Discount": 16,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-01",
     "Price": "152800",
-    "Discount": 10
+    "Discount": 10,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-02",
     "Price": "142000",
-    "Discount": 16
+    "Discount": 16,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-03",
     "Price": "69000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-04",
     "Price": "64900",
-    "Discount": 62
+    "Discount": 62,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-05",
     "Price": "64900",
-    "Discount": 62
+    "Discount": 62,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-06",
     "Price": "98990",
-    "Discount": 42
+    "Discount": 42,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-07",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-08",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-09",
     "Price": "125000",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-10",
     "Price": "135880",
-    "Discount": 20
+    "Discount": 20,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-11",
     "Price": "135880",
-    "Discount": 20
+    "Discount": 20,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-12",
     "Price": "135880",
-    "Discount": 20
+    "Discount": 20,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-13",
     "Price": "99900",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-14",
     "Price": "98490",
-    "Discount": 42
+    "Discount": 42,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-15",
     "Price": "83500",
-    "Discount": 51
+    "Discount": 51,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-16",
     "Price": "83500",
-    "Discount": 51
+    "Discount": 51,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-17",
     "Price": "69000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-18",
     "Price": "68900",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-19",
     "Price": "69000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-20",
     "Price": "68900",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-21",
     "Price": "83500",
-    "Discount": 51
+    "Discount": 51,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-22",
     "Price": "109000",
-    "Discount": 36
+    "Discount": 36,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-23",
     "Price": "118000",
-    "Discount": 31
+    "Discount": 31,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-24",
     "Price": "125000",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-25",
     "Price": "124000",
-    "Discount": 27
+    "Discount": 27,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-26",
     "Price": "67000",
-    "Discount": 61
+    "Discount": 61,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-27",
     "Price": "67000",
-    "Discount": 61
+    "Discount": 61,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-28",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-30",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-01-31",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-01",
     "Price": "69000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-02",
     "Price": "69000",
-    "Discount": 59
+    "Discount": 59,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-03",
     "Price": "93420",
-    "Discount": 45
+    "Discount": 45,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-04",
     "Price": "90020",
-    "Discount": 47
+    "Discount": 47,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-05",
     "Price": "93420",
-    "Discount": 45
+    "Discount": 45,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-06",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-07",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-08",
     "Price": "67000",
-    "Discount": 61
+    "Discount": 61,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-09",
     "Price": "67000",
-    "Discount": 61
+    "Discount": 61,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-10",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-11",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-12",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-13",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-14",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-15",
     "Price": "84930",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-16",
     "Price": "84930",
-    "Discount": 50
+    "Discount": 50,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-17",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-18",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-19",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-22",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-23",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-24",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-25",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-28",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-02-29",
     "Price": "110000",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-02",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-03",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-04",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-05",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-06",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-07",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-08",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-09",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-10",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-11",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-12",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-13",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-16",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-17",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-18",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-19",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-20",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-21",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-22",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-23",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-24",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-25",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-26",
     "Price": "110400",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-27",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-28",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-29",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-30",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-03-31",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-01",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-02",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-03",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-04",
     "Price": "90000",
-    "Discount": 47
+    "Discount": 47,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-05",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-06",
     "Price": "118900",
-    "Discount": 30
+    "Discount": 30,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-07",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-08",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-09",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-10",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-11",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-12",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-13",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-14",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-15",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-16",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-17",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-21",
     "Price": "135880",
-    "Discount": 20
+    "Discount": 20,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-22",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-23",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-24",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-25",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-26",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-27",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-28",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-29",
     "Price": "93000",
-    "Discount": 45
+    "Discount": 45,
+    "Incredible": "0"
   },
   {
     "Date": "2024-04-30",
     "Price": "93000",
-    "Discount": 45
+    "Discount": 45,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-01",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-05",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-06",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-07",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-08",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-09",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-10",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-11",
     "Price": "101910",
-    "Discount": 40
+    "Discount": 40,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-12",
     "Price": "127300",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-13",
     "Price": "127300",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-14",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-15",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-16",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-17",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-18",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-19",
     "Price": "127300.0",
-    "Discount": 25
+    "Discount": 25,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-20",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-21",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-22",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-23",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-24",
     "Price": "86623.5",
-    "Discount": 49
+    "Discount": 49,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-25",
     "Price": "86623.5",
-    "Discount": 49
+    "Discount": 49,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-26",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-27",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-28",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-30",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-05-31",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-01",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-02",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-03",
     "Price": "125689.0",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-04",
     "Price": "125689.0",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-05",
     "Price": "125689.0",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-06",
     "Price": "125689.0",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-07",
     "Price": "125689.0",
-    "Discount": 26
+    "Discount": 26,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-08",
     "Price": "110402.5",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-09",
     "Price": "105307.0",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-10",
     "Price": "105307.0",
-    "Discount": 38
+    "Discount": 38,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-11",
     "Price": "110402.5",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-12",
     "Price": "110402.5",
-    "Discount": 35
+    "Discount": 35,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-13",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-14",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-15",
     "Price": "100211.5",
-    "Discount": 41
+    "Discount": 41,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-16",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-17",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-18",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-20",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-21",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-22",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-23",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-24",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-24",
     "Price": "169850",
-    "Discount": 0
+    "Discount": 0,
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-25",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-26",
     "Price": "101500",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-27",
     "Price": "101500",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-28",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-29",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-06-30",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-01",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-02",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-03",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-04",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-05",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-06",
     "Price": "101900",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-07",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-08",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-09",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-10",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-11",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-12",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-13",
     "Price": "109900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-14",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-15",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-16",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-17",
     "Price": "169850",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-18",
     "Price": "99900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-19",
     "Price": "99900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-20",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-21",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-22",
     "Price": "142630",
-    "Discount": "34"
+    "Discount": "34",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-23",
     "Price": "142630",
-    "Discount": "34"
+    "Discount": "34",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-24",
     "Price": "142630",
-    "Discount": "34"
+    "Discount": "34",
+    "Incredible": "0"
   },
   {
     "Date": "2024-07-31",
     "Price": "139900",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-01",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-02",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-03",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-04",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-05",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-06",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-07",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-08",
     "Price": "126900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-09",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-10",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-11",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-12",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-13",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-14",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-15",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-16",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-17",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-18",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-19",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-20",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-21",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-22",
     "Price": "125900",
-    "Discount": "42"
+    "Discount": "42",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-23",
     "Price": "216000",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-24",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-25",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-26",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-27",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-28",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-29",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-30",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-08-31",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-01",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-02",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-03",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-04",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-05",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-06",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-07",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-08",
     "Price": "126900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-09",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-10",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-11",
     "Price": "140470",
-    "Discount": "35"
+    "Discount": "35",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-12",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-13",
     "Price": "123180",
-    "Discount": "43"
+    "Discount": "43",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-14",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-15",
     "Price": "125900",
-    "Discount": "42"
+    "Discount": "42",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-16",
     "Price": "125900",
-    "Discount": "42"
+    "Discount": "42",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-17",
     "Price": "108050",
-    "Discount": "50"
+    "Discount": "50",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-18",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-19",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-20",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-21",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-22",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-23",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-24",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-25",
     "Price": "123180",
-    "Discount": "43"
+    "Discount": "43",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-26",
     "Price": "216100",
-    "Discount": "0"
+    "Discount": "0",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-27",
     "Price": "99900",
-    "Discount": "54"
+    "Discount": "54",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-28",
     "Price": "99900",
-    "Discount": "54"
+    "Discount": "54",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-29",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-09-30",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-01",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-02",
     "Price": "109900",
-    "Discount": "49"
+    "Discount": "49",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-03",
     "Price": "109900",
-    "Discount": "49"
+    "Discount": "49",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-04",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-05",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-06",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-07",
     "Price": "125330",
-    "Discount": "42"
+    "Discount": "42",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-08",
     "Price": "125330",
-    "Discount": "42"
+    "Discount": "42",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-09",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-10",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-11",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-12",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-13",
     "Price": "138300",
-    "Discount": "36"
+    "Discount": "36",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-15",
     "Price": "114530",
-    "Discount": "47"
+    "Discount": "47",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-16",
     "Price": "129660",
-    "Discount": "40"
+    "Discount": "40",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-17",
     "Price": "126900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-18",
     "Price": "126900",
-    "Discount": "41"
+    "Discount": "41",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-20",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-21",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-22",
     "Price": "133980",
-    "Discount": "38"
+    "Discount": "38",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-23",
     "Price": "123180",
-    "Discount": "43"
+    "Discount": "43",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-24",
     "Price": "123180",
-    "Discount": "43"
+    "Discount": "43",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-25",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-26",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-27",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-30",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-10-31",
     "Price": "136140",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-01",
     "Price": "135990",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-02",
     "Price": "135990",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-03",
     "Price": "135990",
-    "Discount": "37"
+    "Discount": "37",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-04",
     "Price": "123900",
-    "Discount": "43"
+    "Discount": "43",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-06",
     "Price": "172880",
-    "Discount": "20"
+    "Discount": "20",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-07",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-08",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
   },
   {
     "Date": "2024-11-09",
     "Price": "131820",
-    "Discount": "39"
+    "Discount": "39",
+    "Incredible": "0"
+  },
+  {
+    "Date": "2024-11-11",
+    "Price": "138300",
+    "Discount": "36",
+    "Incredible": "0"
   }
 ]
