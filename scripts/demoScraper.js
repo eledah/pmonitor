@@ -103,4 +103,4 @@ async function scrapeProduct(url) {
 }
 
 // Run the scraper with the sample URL
-scrapeProduct("https://www.digikala.com/fresh/product/dkp-4714424/");
+scrapeProduct("https://www.digikala.com/fresh/product/dkp-1023378/");

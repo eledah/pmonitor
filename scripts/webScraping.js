@@ -40,37 +40,26 @@ async function getPrice(page) {
 }
 
 async function getDiscount(page) {
-  const masterDivSelector = '.flex.items-center.justify-end.w-full.gap-1';
   const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-hint-object-error.shrink-0.mr-1.mb-1';
+  const discountSpanSelector = 'span.text-body2-strong[data-testid="price-discount-percent"]';
 
-  const masterDiv = await page.$(masterDivSelector)
-  if (!masterDiv) {
-    console.log("Master div not found - no discount section on page");
-    return "0";
-  }
-
-  const discountContainer = await masterDiv.$(discountDivSelector);
-
+  const discountContainer = await page.$(discountDivSelector);
   let discount = "0";
 
   if (discountContainer) {
-    // Use divHandle.$ to select the nested span
-    const nestedSpanSelector = 'span.text-body2-strong';
-    const discountHandle = await discountContainer.$(nestedSpanSelector);
+    const discountSpan = await discountContainer.$(discountSpanSelector);
 
-    if (discountHandle) {
-      // Get the innerHTML of the selected span
-      discount = await (await page.evaluate(element => element.innerHTML, discountHandle))
-        .replace("٪", "")
-        .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, (match) => String.fromCharCode(match.charCodeAt(0) - 1728))
-      // console.log("Discount Percentage: ", discount);
+    if (discountSpan) {
+      discount = await page.evaluate(element => element.innerHTML, discountSpan)
+        .then(text => text
+          .replace("٪", "") // Remove percent symbol
+          .replace(/[۱۲۳۴۵۶۷۸۹۰]/g, match => String.fromCharCode(match.charCodeAt(0) - 1728)) // Convert Persian numbers
+        );
     } else {
-      console.log("No span with class 'text-body2-strong' found inside the first div.");
-      discount = "0"
+      console.log("Discount span not found");
     }
   } else {
-    console.log("No discount div with the specified class found on the page.");
-    discount = "0"
+    console.log("Discount container not found");
   }
 
   return discount;
