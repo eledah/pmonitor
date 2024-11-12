@@ -1249,7 +1249,6 @@
   },
   {
     "Date": "2024-06-25",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1507,7 +1506,6 @@
   },
   {
     "Date": "2024-08-13",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1537,7 +1535,6 @@
   },
   {
     "Date": "2024-08-18",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1549,13 +1546,11 @@
   },
   {
     "Date": "2024-08-20",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-21",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1573,37 +1568,31 @@
   },
   {
     "Date": "2024-08-24",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-25",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-26",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-27",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-28",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
   {
     "Date": "2024-08-29",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1964,6 +1953,12 @@
   {
     "Date": "2024-11-07",
     "Price": "319000",
+    "Discount": "0",
+    "Incredible": "0"
+  },
+  {
+    "Date": "2024-11-12",
+    "Price": "319900",
     "Discount": "0",
     "Incredible": "0"
   }
