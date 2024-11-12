@@ -141,8 +141,14 @@ async function scrapeWebpages() {
     if (VERBOSE) {
       console.log(`Loading ${url}`);
     }
+    
+    // await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 0 });
 
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 0 });
+    await page.goto(url, {
+      waitUntil: 'networkidle0', // Wait until there are no more network requests
+      timeout: 60000 // 60 seconds
+    });
+    
 
     // Wait for 10 seconds (adjust as needed)
     await new Promise((resolve) => setTimeout(resolve, 17000)); // 17 seconds
