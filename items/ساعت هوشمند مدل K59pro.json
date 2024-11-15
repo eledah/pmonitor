@@ -979,7 +979,6 @@
   },
   {
     "Date": "2024-07-07",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1021,7 +1020,6 @@
   },
   {
     "Date": "2024-07-14",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1111,7 +1109,6 @@
   },
   {
     "Date": "2024-08-04",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1129,7 +1126,6 @@
   },
   {
     "Date": "2024-08-07",
-    "Price": "",
     "Discount": "0",
     "Incredible": "0"
   },
@@ -1653,6 +1649,12 @@
     "Date": "2024-11-09",
     "Price": "2550000",
     "Discount": "0",
+    "Incredible": "0"
+  },
+  {
+    "Date": "2024-11-15",
+    "Price": "2400000",
+    "Discount": "8",
     "Incredible": "0"
   }
 ]
