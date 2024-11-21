@@ -1945,5 +1945,11 @@
     "Price": "467700",
     "Discount": "0",
     "Incredible": "0"
+  },
+  {
+    "Date": "2024-11-21",
+    "Price": "210000",
+    "Discount": "55",
+    "Incredible": "1"
   }
 ]
