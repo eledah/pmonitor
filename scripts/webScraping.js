@@ -44,7 +44,7 @@ async function getDiscount(page) {
   const discountDivSelector2 = '[class*="px-1"][class*="text-white"][class*="rounded-large"][class*="flex"][class*="items-center"][class*="justify-center"][class*="ProductPrice_ProductPrice__discountWrapper__1Ru_1"]';
   const discountSpanSelector = 'span.text-body2-strong[data-testid="price-discount-percent"]';
 
-  const discountContainer = await page.$(discountDivSelector1) || await page.$(discountDivSelector2);
+  const discountContainer = await page.$(`div[data-testid="buy-box"] ${discountDivSelector1}`) || await page.$(`div[data-testid="buy-box"] ${discountDivSelector2}`);
   let discount = "0";
 
   if (discountContainer) {
