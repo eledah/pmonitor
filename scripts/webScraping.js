@@ -40,10 +40,12 @@ async function getPrice(page) {
 }
 
 async function getDiscount(page) {
-  const discountDivSelector = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-hint-object-error.shrink-0.mr-1.mb-1';
+  const discountDivSelector1 = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-hint-object-error.shrink-0.mr-1.mb-1';
+  const discountDivSelector2 = '.px-1.text-white.rounded-large.flex.items-center.justify-center.ProductPrice_ProductPrice__discountWrapper__1Ru_1.bg-[#2E3638].shrink-0.mr-1'; // New selector
+
   const discountSpanSelector = 'span.text-body2-strong[data-testid="price-discount-percent"]';
 
-  const discountContainer = await page.$(discountDivSelector);
+  const discountContainer = await page.$(discountDivSelector1) || await page.$(discountDivSelector2);
   let discount = "0";
 
   if (discountContainer) {
