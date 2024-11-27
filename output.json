@@ -1,14 +1,14 @@
 [
   {
     "Name": "آب معدنی میوا - 1.5 لیتر بسته 6 عددی ",
-    "Price": "60000",
-    "Discount": "0",
+    "Price": "36000",
+    "Discount": "40",
     "Link": "https://www.digikala.com/fresh/product/dkp-3439306/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "آیفون ۱۳ نان‌اکتیو",
-    "Price": "42599000",
+    "Price": "41990000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-8366616/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%A7%D9%BE%D9%84-%D9%85%D8%AF%D9%84-iphone-13-ch-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-4-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%86%D8%A7%D8%AA-%D8%A7%DA%A9%D8%AA%DB%8C%D9%88/",
     "Incredible": "0"
@@ -22,7 +22,7 @@
   },
   {
     "Name": "بخاری برقی پارس خزر",
-    "Price": "2012000",
+    "Price": "2015000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-3986553/%D8%A8%D8%AE%D8%A7%D8%B1%DB%8C-%D8%A8%D8%B1%D9%82%DB%8C-%D9%BE%D8%A7%D8%B1%D8%B3-%D8%AE%D8%B2%D8%B1-%D9%85%D8%AF%D9%84-sh2000e/",
     "Incredible": "0"
@@ -43,10 +43,10 @@
   },
   {
     "Name": "پنیر پیتزا رنده شده کالین - 1000 گرم",
-    "Price": "362000",
-    "Discount": "0",
+    "Price": "197990",
+    "Discount": "45",
     "Link": "https://www.digikala.com/fresh/product/dkp-1023378/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "پنیر فتا دوشه هراز- 400 گرم",
@@ -64,9 +64,16 @@
   },
   {
     "Name": "پوشک مولفیکس سایز ۴",
-    "Price": "230000",
+    "Price": "210000",
     "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-3765912/",
+    "Incredible": "0"
+  },
+  {
+    "Name": "تخم مرغ گرید B پروتانا بسته 20 عددی",
+    "Price": "113660",
+    "Discount": "4",
+    "Link": "https://www.digikala.com/fresh/product/dkp-1433777/",
     "Incredible": "0"
   },
   {
@@ -85,24 +92,17 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "1831060",
+    "Price": "1870000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/%D8%AA%D9%84%D9%81%D9%86-%D8%A8%DB%8C-%D8%B3%DB%8C%D9%85-%D9%BE%D8%A7%D9%86%D8%A7%D8%B3%D9%88%D9%86%DB%8C%DA%A9-%D9%85%D8%AF%D9%84-kx-tg3611bx/",
     "Incredible": "0"
   },
   {
-    "Name": "تلویزیون ال ای دی هوشمند ایکس ویژن",
-    "Price": "20290000",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/product/dkp-11214427/%D8%AA%D9%84%D9%88%DB%8C%D8%B2%DB%8C%D9%88%D9%86-%D8%A7%D9%84-%D8%A7%DB%8C-%D8%AF%DB%8C-%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF-%D8%A7%DB%8C%DA%A9%D8%B3-%D9%88%DB%8C%DA%98%D9%86-%D9%85%D8%AF%D9%84-50xyu755-%D8%B3%D8%A7%DB%8C%D8%B2-50-%D8%A7%DB%8C%D9%86%DA%86/",
-    "Incredible": "0"
-  },
-  {
     "Name": "تونر پاک کننده صورت لافارر",
-    "Price": "99900",
+    "Price": "118850",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-4012333/%D8%AA%D9%88%D9%86%D8%B1-%D9%BE%D8%A7%DA%A9-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D8%B5%D9%88%D8%B1%D8%AA-%D9%84%D8%A7%D9%81%D8%A7%D8%B1%D8%B1-%D9%85%D8%AF%D9%84-%D8%A2%D8%A8%D8%B1%D8%B3%D8%A7%D9%86-1-%D8%AD%D8%AC%D9%85-170-%D9%85%DB%8C%D9%84%DB%8C-%D9%84%DB%8C%D8%AA%D8%B1/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "جعبه ابزار 100 عددی",
@@ -120,21 +120,21 @@
   },
   {
     "Name": "خیار شور سالی - 1.5 کیلوگرم",
-    "Price": "189900",
-    "Discount": "0",
+    "Price": "99900",
+    "Discount": "47",
     "Link": "https://www.digikala.com/fresh/product/dkp-2462482/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "دوربین دیجیتال کانن مدل EOS 5D Mark IV",
-    "Price": "127500000",
+    "Price": "124950000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-170831/%D8%AF%D9%88%D8%B1%D8%A8%DB%8C%D9%86-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%DA%A9%D8%A7%D9%86%D9%86-%D9%85%D8%AF%D9%84-eos-5d-mark-iv/",
     "Incredible": "0"
   },
   {
     "Name": "رژ لب جامد الیزا مدل Mini",
-    "Price": "72000",
+    "Price": "42000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-2578874/%D8%B1%DA%98-%D9%84%D8%A8-%D8%AC%D8%A7%D9%85%D8%AF-%D8%A7%D9%84%DB%8C%D8%B2%D8%A7-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%DB%B2%DB%B2/",
     "Incredible": "0"
@@ -190,7 +190,7 @@
   },
   {
     "Name": "عسل طبیعی سبلان",
-    "Price": "350000",
+    "Price": "300000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-10462969/%D8%B9%D8%B3%D9%84-%D8%B7%D8%A8%DB%8C%D8%B9%DB%8C-%D8%B3%D8%A8%D9%84%D8%A7%D9%86-%D8%A8%D8%AF%D9%88%D9%86-%D9%85%D9%88%D9%85-1-%DA%A9%DB%8C%D9%84%D9%88%DA%AF%D8%B1%D9%85",
     "Incredible": "0"
@@ -204,7 +204,7 @@
   },
   {
     "Name": "غذای خشک گربه 2 کیلوگرم ",
-    "Price": "258840",
+    "Price": "285000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-3540612/%D8%BA%D8%B0%D8%A7%DB%8C-%D8%AE%D8%B4%DA%A9-%DA%AF%D8%B1%D8%A8%D9%87-%D9%85%D9%81%DB%8C%D8%AF-%D9%85%D8%AF%D9%84-adult1400-%D9%88%D8%B2%D9%86-2-%DA%A9%DB%8C%D9%84%D9%88%DA%AF%D8%B1%D9%85/",
     "Incredible": "0"
@@ -225,10 +225,10 @@
   },
   {
     "Name": "قرص ماشین ظرفشویی هوم پلاس 48 عددی",
-    "Price": "238900",
-    "Discount": "25",
+    "Price": "317800",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-4714424/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "کپسول آتش نشانی دریا 3 کیلوگرم",
@@ -259,6 +259,13 @@
     "Incredible": "0"
   },
   {
+    "Name": "کنسول Playstation 5",
+    "Price": "33900000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-3737956/%DA%A9%D9%86%D8%B3%D9%88%D9%84-%D8%A8%D8%A7%D8%B2%DB%8C-%D8%B3%D9%88%D9%86%DB%8C-%D9%85%D8%AF%D9%84-playstation-5-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-825-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/",
+    "Incredible": "0"
+  },
+  {
     "Name": "کیف کمری چرمی",
     "Price": "990000",
     "Discount": "0",
@@ -274,7 +281,7 @@
   },
   {
     "Name": "مانیتور جی پلاس 24 اینچ",
-    "Price": "7114800",
+    "Price": "7550000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-7917881/%D9%85%D8%A7%D9%86%DB%8C%D8%AA%D9%88%D8%B1-%D8%AC%DB%8C-%D9%BE%D9%84%D8%A7%D8%B3-%D9%85%D8%AF%D9%84-gdm-245ln-%D8%B3%D8%A7%DB%8C%D8%B2-24-%D8%A7%DB%8C%D9%86%DA%86/",
     "Incredible": "0"
@@ -288,17 +295,17 @@
   },
   {
     "Name": "موتور برق آسترا",
-    "Price": "7700000",
+    "Price": "7900000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-9192254/%D9%85%D9%88%D8%AA%D9%88%D8%B1-%D8%A8%D8%B1%D9%82-%D8%A2%D8%B3%D8%AA%D8%B1%D8%A7-%D9%85%D8%AF%D9%84-ast3700/",
     "Incredible": "0"
   },
   {
     "Name": "نوشابه  پپسی - 1.5 لیتر بسته 6 عددی",
-    "Price": "196100",
-    "Discount": "10",
+    "Price": "152460",
+    "Discount": "30",
     "Link": "https://www.digikala.com/fresh/product/dkp-1923615/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "هارد اکسترنال وسترن دیجیتال 1 ترابایت",
