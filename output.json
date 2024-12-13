@@ -1,31 +1,38 @@
 [
   {
     "Name": "آب معدنی میوا - 1.5 لیتر بسته 6 عددی ",
-    "Price": "42000",
-    "Discount": "30",
+    "Price": "60000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-3439306/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "آیفون ۱۳ نان‌اکتیو",
-    "Price": "42629000",
+    "Price": "42100000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-8366616/%DA%AF%D9%88%D8%B4%DB%8C-%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84-%D8%A7%D9%BE%D9%84-%D9%85%D8%AF%D9%84-iphone-13-ch-%D8%AF%D9%88-%D8%B3%DB%8C%D9%85-%DA%A9%D8%A7%D8%B1%D8%AA-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-128-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%88-%D8%B1%D9%85-4-%DA%AF%DB%8C%DA%AF%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA-%D9%86%D8%A7%D8%AA-%D8%A7%DA%A9%D8%AA%DB%8C%D9%88/",
     "Incredible": "0"
   },
   {
     "Name": "آینه بغل پراید",
-    "Price": "180000",
+    "Price": "192000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-6180864/%D8%A7%DB%8C%D9%86%D9%87-%D8%A8%D8%BA%D9%84-%D8%AE%D9%88%D8%AF%D8%B1%D9%88-%DA%A9%D8%AF-2040-%D9%85%D9%86%D8%A7%D8%B3%D8%A8-%D8%A8%D8%B1%D8%A7%DB%8C-%D9%BE%D8%B1%D8%A7%DB%8C%D8%AF-%D9%85%D8%AC%D9%85%D9%88%D8%B9%D9%87-2-%D8%B9%D8%AF%D8%AF%DB%8C/",
     "Incredible": "0"
   },
   {
+    "Name": "بخاری برقی پارس خزر",
+    "Price": "2390000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/product/dkp-3986553/%D8%A8%D8%AE%D8%A7%D8%B1%DB%8C-%D8%A8%D8%B1%D9%82%DB%8C-%D9%BE%D8%A7%D8%B1%D8%B3-%D8%AE%D8%B2%D8%B1-%D9%85%D8%AF%D9%84-sh2000e/",
+    "Incredible": "0"
+  },
+  {
     "Name": "برنج هاشمی ممتاز طبیعت - 10 کیلوگرم",
-    "Price": "1223200",
-    "Discount": "20",
+    "Price": "1529000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-3175459/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "پنیر پیتزا رنده شده کالین - 1000 گرم",
@@ -43,10 +50,10 @@
   },
   {
     "Name": "پوشک بچه هانیز",
-    "Price": "180600",
-    "Discount": "18",
+    "Price": "220000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-7932748/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "پوشک مولفیکس سایز ۴",
@@ -78,10 +85,10 @@
   },
   {
     "Name": "تونر پاک کننده صورت لافارر",
-    "Price": "129900",
+    "Price": "216100",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-4012333/%D8%AA%D9%88%D9%86%D8%B1-%D9%BE%D8%A7%DA%A9-%DA%A9%D9%86%D9%86%D8%AF%D9%87-%D8%B5%D9%88%D8%B1%D8%AA-%D9%84%D8%A7%D9%81%D8%A7%D8%B1%D8%B1-%D9%85%D8%AF%D9%84-%D8%A2%D8%A8%D8%B1%D8%B3%D8%A7%D9%86-1-%D8%AD%D8%AC%D9%85-170-%D9%85%DB%8C%D9%84%DB%8C-%D9%84%DB%8C%D8%AA%D8%B1/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "جعبه ابزار 100 عددی",
@@ -106,9 +113,16 @@
   },
   {
     "Name": "دوربین دیجیتال کانن مدل EOS 5D Mark IV",
-    "Price": "127200000",
+    "Price": "127000000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-170831/%D8%AF%D9%88%D8%B1%D8%A8%DB%8C%D9%86-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%DA%A9%D8%A7%D9%86%D9%86-%D9%85%D8%AF%D9%84-eos-5d-mark-iv/",
+    "Incredible": "0"
+  },
+  {
+    "Name": "راسته گوسفند مهتا پروتئین - 1 کیلوگرم - با ارز نیمایی",
+    "Price": "310000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/fresh/product/dkp-1553412/",
     "Incredible": "0"
   },
   {
@@ -134,10 +148,10 @@
   },
   {
     "Name": "ساعت هوشمند مدل K59pro",
-    "Price": "2400000",
+    "Price": "1890000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-12896479/%D8%B3%D8%A7%D8%B9%D8%AA-%D9%87%D9%88%D8%B4%D9%85%D9%86%D8%AF-%D9%85%D8%AF%D9%84-k59pro/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "ست لوازم تحریر 21 عددی",
@@ -151,6 +165,13 @@
     "Price": "2500000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-12278475/%D8%B3%D8%B1%D9%88%D9%8A%D8%B3-26-%D9%BE%D8%A7%D8%B1%DA%86%D9%87-%D8%A7%D9%BE%D8%A7%D9%84-%D9%85%D8%AF%D9%84-%D8%A2%D8%B1%D8%AA%D9%88%D8%B1/",
+    "Incredible": "0"
+  },
+  {
+    "Name": "سیب زمینی طلایی منجمد - 750 گرم",
+    "Price": "78000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/fresh/product/dkp-757476/",
     "Incredible": "0"
   },
   {
@@ -176,7 +197,7 @@
   },
   {
     "Name": "غذای خشک گربه 2 کیلوگرم ",
-    "Price": "266120",
+    "Price": "265580",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-3540612/%D8%BA%D8%B0%D8%A7%DB%8C-%D8%AE%D8%B4%DA%A9-%DA%AF%D8%B1%D8%A8%D9%87-%D9%85%D9%81%DB%8C%D8%AF-%D9%85%D8%AF%D9%84-adult1400-%D9%88%D8%B2%D9%86-2-%DA%A9%DB%8C%D9%84%D9%88%DA%AF%D8%B1%D9%85/",
     "Incredible": "0"
@@ -197,10 +218,10 @@
   },
   {
     "Name": "قرص ماشین ظرفشویی هوم پلاس 48 عددی",
-    "Price": "317800",
-    "Discount": "0",
+    "Price": "248900",
+    "Discount": "22",
     "Link": "https://www.digikala.com/fresh/product/dkp-4714424/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "کپسول آتش نشانی دریا 3 کیلوگرم",
@@ -218,7 +239,7 @@
   },
   {
     "Name": "کفش پیاده روی مردانه",
-    "Price": "220000",
+    "Price": "201150",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-4262387/%DA%A9%D9%81%D8%B4-%D9%BE%DB%8C%D8%A7%D8%AF%D9%87-%D8%B1%D9%88%DB%8C-%D9%85%D8%B1%D8%AF%D8%A7%D9%86%D9%87-%D9%85%D8%AF%D9%84-%D8%B1/",
     "Incredible": "0"
@@ -239,10 +260,10 @@
   },
   {
     "Name": "ماکارونی پنه زر ماکارون 500 گرم",
-    "Price": "22180",
-    "Discount": "14",
+    "Price": "25800",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-633507/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "نوشابه  پپسی - 1.5 لیتر بسته 6 عددی",
@@ -253,7 +274,7 @@
   },
   {
     "Name": "هارد اکسترنال وسترن دیجیتال 1 ترابایت",
-    "Price": "3530000",
+    "Price": "3540000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-2309086/%D9%87%D8%A7%D8%B1%D8%AF-%D8%A7%DA%A9%D8%B3%D8%AA%D8%B1%D9%86%D8%A7%D9%84-%D9%88%D8%B3%D8%AA%D8%B1%D9%86-%D8%AF%DB%8C%D8%AC%DB%8C%D8%AA%D8%A7%D9%84-%D9%85%D8%AF%D9%84-my-passport-wdbyvg0010bbk-wesn-%D8%B8%D8%B1%D9%81%DB%8C%D8%AA-1-%D8%AA%D8%B1%D8%A7%D8%A8%D8%A7%DB%8C%D8%AA/",
     "Incredible": "0"
