@@ -2113,5 +2113,11 @@
     "Price": "230000",
     "Discount": "0",
     "Incredible": "0"
+  },
+  {
+    "Date": "2024-12-31",
+    "Price": "201900",
+    "Discount": "12",
+    "Incredible": "1"
   }
 ]
