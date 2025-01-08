@@ -2442,5 +2442,11 @@
     "Price": "60000",
     "Discount": "0",
     "Incredible": "0"
+  },
+  {
+    "Date": "2025-01-08",
+    "Price": "42000",
+    "Discount": "30",
+    "Incredible": "1"
   }
 ]
