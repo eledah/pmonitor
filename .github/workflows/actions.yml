@@ -11,32 +11,37 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Setup Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: 19
+        node-version: 20
+        cache: 'npm'
+        cache-dependency-path: 'scripts/package-lock.json'
 
     - name: Install dependencies
       run: |
         cd scripts
-        npm install
+        npm ci
+      timeout-minutes: 5
 
     - name: Run webScraping.js script
       run: |
         cd scripts
         node webScraping.js
+      timeout-minutes: 30
 
     - name: Run xl-json.js script
       run: |
         cd scripts
         node xl-json.js
-    
+      timeout-minutes: 10
+
     - name: Commit changes
       run: |
         git config --global user.name "eledah"
         git config --global user.email "eledah@eledah.com"
         git add .
-        git commit -m "Automated commit at 8 AM"
+        git commit -m "Automated commit at 8 AM" || echo "No changes to commit"
         git push

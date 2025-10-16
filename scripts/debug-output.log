@@ -1,0 +1,100 @@
+🚀 Starting pMonitor scraping session...
+
+📅 Date: 2025-10-16
+
+📊 Total items to process: 60
+
+
+🔍 [1/60] Processing: آب معدنی میوا - ۱٫۵ لیتر بسته ۶ عددی 
+📦 Product ID: 3439306 for "آب معدنی میوا - ۱٫۵ لیتر بسته ۶ عددی "
+
+   🔧 Calling getProductData for ID: 3439306
+   🌐 Making HTTP request to: api.digikala.com/v2/product/3439306/
+
+   📡 HTTP Response status: 200
+
+   📄 Response data keys: [ 'status', 'redirect_url' ]
+
+📡 Response status: 200
+   🔄 REDIRECT DETECTED!
+
+   📋 Redirect data: {
+  base: null,
+  uri: '/fresh/product/dkp-3439306/?utm_source=digikala-superapp&utm_medium=pdp'
+}
+🔄 Got redirect response for product 3439306
+   🔗 Raw redirect URI: "/fresh/product/dkp-3439306/?utm_source=digikala-superapp&utm_medium=pdp"
+   🎯 Extracted product ID from redirect: 3439306
+   🔗 Original URI: /fresh/product/dkp-3439306/?utm_source=digikala-superapp&utm_medium=pdp
+
+   🆕 Fresh API URI: /fresh/v1/product/3439306/
+🔗 Original URI: /fresh/product/dkp-3439306/?utm_source=digikala-superapp&utm_medium=pdp
+🆕 Fresh API URI: /fresh/v1/product/3439306/
+   🌐 Making fresh API request to: api.digikala.com/fresh/v1/product/3439306/
+
+   📡 Fresh API HTTP status: 200
+
+   📄 Fresh API response keys: [ 'status', 'data' ]
+🆕 Fresh API response status: 200
+   ✅ Fresh API returned 200 - checking structure...
+
+   📋 Fresh response data keys: [ 'status', 'data' ]
+   ❌ Fresh API missing data.default_variant
+
+   📋 Available paths: { 'data exists': true, 'default_variant exists': false }
+   ❌ No price data found in fresh API response
+   🚨 Fresh API response issue - status: 200
+
+❌ Failed to retrieve data for "آب معدنی میوا - ۱٫۵ لیتر بسته ۶ عددی " (Product ID: 3439306)
+⏳ Waiting 3s before next request...
+
+
+🔍 [2/60] Processing: شمش طلا ۲۴ عیار پارسیس مدل 01
+
+📦 Product ID: 9565621 for "شمش طلا ۲۴ عیار پارسیس مدل 01"
+   🔧 Calling getProductData for ID: 9565621
+   🌐 Making HTTP request to:    
+
+   📡 HTTP Response status: 200
+
+   📄 Response data keys: [ 'status', 'data' ]
+📡 Response status: 200
+   📋 REGULAR API - Checking response structure...
+
+   📊 Response has data: true
+
+   📋 Response data keys: [ 'status', 'data' ]
+   ❌ Regular API missing data.default_variant
+
+   📋 Available paths: { 'data exists': true, 'default_variant exists': false }
+
+📦 No product data found in v2 API response
+❌ Failed to retrieve data for "شمش طلا ۲۴ عیار پارسیس مدل 01" (Product ID: 9565621)
+⏳ Waiting 3s before next request...
+
+
+🔍 [3/60] Processing: گوشی اپل iPhone 16 Pro Max
+
+📦 Product ID: 17986675 for "گوشی اپل iPhone 16 Pro Max"
+   🔧 Calling getProductData for ID: 17986675
+   🌐 Making HTTP request to: api.digikala.com/v2/product/17986675/
+
+   📡 HTTP Response status: 200
+
+   📄 Response data keys: [ 'status', 'data' ]
+
+📡 Response status: 200
+   📋 REGULAR API - Checking response structure...
+   📊 Response has data: true
+   📋 Response data keys: [ 'status', 'data' ]
+   ❌ Regular API missing data.default_variant
+
+   📋 Available paths: { 'data exists': true, 'default_variant exists': false }
+📦 No product data found in v2 API response
+❌ Failed to retrieve data for "گوشی اپل iPhone 16 Pro Max" (Product ID: 17986675)
+⏳ Waiting 3s before next request...
+
+
+🔍 [4/60] Processing: آینه بغل پراید
+
+📦 Product ID: 6180864 for "آینه بغل پراید"

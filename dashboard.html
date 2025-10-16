@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظارت قیمت - داشبورد</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico?">
+    <link rel="stylesheet" type="text/css" href="dashboard-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazir:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-locale-fa-latest.js"></script>
+    <script src="https://unpkg.com/jalali-moment/dist/jalali-moment.browser.js"></script>
+    <script src="dashboard-script.js"></script>
+    <script>
+        let FF_FOUC_FIX;
+    </script>
+</head>
+<body>
+    <!-- Scroll to top button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" onclick="scrollToTop()">
+        <span>↑</span>
+    </button>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="main-title">📊 pMonitor</h1>
+            <p class="subtitle">نظارت هوشمند قیمت کالاها</p>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalItems">0</span>
+                    <span class="stat-label">کالا</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="lastUpdate">-</span>
+                    <span class="stat-label">آخرین بروزرسانی</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Controls Section -->
+    <section class="controls-section">
+        <div class="controls-container">
+            <div class="chart-controls">
+                <button onclick="adjustChartLayout(1)" class="control-btn active">۱ ردیف</button>
+                <button onclick="adjustChartLayout(2)" class="control-btn">۲ ردیف</button>
+                <button onclick="adjustChartLayout(3)" class="control-btn">۳ ردیف</button>
+            </div>
+            <div class="view-controls">
+                <button onclick="toggleView('grid')" class="control-btn active">نمای شبکه</button>
+                <button onclick="toggleView('list')" class="control-btn">نمای لیست</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="toc-section">
+        <div class="toc-container">
+            <h2 class="section-title">📋 فهرست کالاها</h2>
+            <div id="table-of-contents" class="toc-grid">
+                <!-- Table of contents will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <main class="charts-section">
+        <div class="charts-container">
+            <h2 class="section-title">📈 روند قیمت‌ها</h2>
+            <div id="charts-grid" class="charts-grid">
+                <!-- Charts will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🔗 <a href="https://github.com/eledah/pmonitor" target="_blank">مشاهده سورس کد</a></p>
+            <p>📧 تماس با ما</p>
+            <p>© ۱۴۰۴ pMonitor - نظارت قیمت هوشمند</p>
+        </div>
+    </footer>
+
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>در حال بارگذاری داده‌ها...</p>
+    </div>
+
+    <!-- Error message -->
+    <div id="errorMessage" class="error-message" style="display: none;">
+        <p>خطا در بارگذاری داده‌ها. لطفاً صفحه را مجدداً بارگذاری کنید.</p>
+        <button onclick="location.reload()" class="retry-btn">تلاش مجدد</button>
+    </div>
+</body>
+</html>
