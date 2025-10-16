@@ -407,7 +407,7 @@ function extractPriceInfo(variantData) {
   }
 
   const result = {
-    sellingPrice: String(price.selling_price || 'Price not found'),
+    sellingPrice: price.selling_price ? String(Math.round(price.selling_price / 10)) : 'Price not found',
     discountPercent: String(price.discount_percent || '0'),
     isIncredible: price.is_incredible ? '1' : '0'
   };

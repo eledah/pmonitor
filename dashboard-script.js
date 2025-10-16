@@ -408,10 +408,12 @@ class PriceMonitorDashboard {
         this.chartsPerRow = chartsPerRow;
 
         const chartsGrid = document.getElementById('charts-grid');
+        if (!chartsGrid) return; // Exit if charts grid not found
+
         const chartCards = document.querySelectorAll('.chart-card');
 
         // Update active button only if called from an event handler
-        if (event && event.target) {
+        if (event && typeof event === 'object' && event.target && event.target.classList) {
             document.querySelectorAll('.control-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
@@ -426,10 +428,14 @@ class PriceMonitorDashboard {
         chartCards.forEach(card => {
             const chartContainer = card.querySelector('.chart-container');
             if (chartContainer) {
-                Plotly.relayout(chartContainer, {
-                    width: chartContainer.clientWidth,
-                    height: 300
-                });
+                try {
+                    Plotly.relayout(chartContainer, {
+                        width: chartContainer.clientWidth,
+                        height: 300
+                    });
+                } catch (error) {
+                    console.warn('Error updating chart layout:', error);
+                }
             }
         });
     }
@@ -439,11 +445,14 @@ class PriceMonitorDashboard {
         this.currentView = viewType;
 
         // Update active button only if called from an event handler
-        if (event && event.target) {
-            document.querySelectorAll('.control-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        if (event && typeof event === 'object' && event.target && event.target.classList) {
+            const controlButtons = document.querySelectorAll('.control-btn');
+            if (controlButtons.length > 0) {
+                controlButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+            }
         }
 
         // TODO: Implement list view if needed
