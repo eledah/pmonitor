@@ -68,7 +68,9 @@ class PriceMonitorDashboard {
             const response = await fetch(fileName);
 
             if (!response.ok) {
-                console.warn(`No data file found for ${item.name}`);
+                console.warn(`No data file found for ${item.name} (HTTP ${response.status})`);
+                item.chartData = null; // Explicitly set to null so we know it failed
+                item.dataPoints = 0;
                 return;
             }
 
@@ -78,6 +80,8 @@ class PriceMonitorDashboard {
 
         } catch (error) {
             console.error(`Error loading data for ${item.name}:`, error);
+            item.chartData = null; // Explicitly set to null on any error
+            item.dataPoints = 0;
         }
     }
 
@@ -165,12 +169,32 @@ class PriceMonitorDashboard {
         const container = document.getElementById('charts-grid');
         container.innerHTML = '';
 
-        this.items.forEach((item, index) => {
-            if (item.chartData && item.chartData.length > 0) {
+        const itemsWithCharts = this.items.filter(item => item.chartData && item.chartData.length > 0);
+
+        if (itemsWithCharts.length === 0) {
+            // Show message when no charts are available
+            const noChartsMsg = document.createElement('div');
+            noChartsMsg.className = 'no-charts-message';
+            noChartsMsg.style.cssText = `
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 200px;
+                color: #888;
+                font-family: 'Vazir', Tahoma, sans-serif;
+                font-size: 16px;
+                text-align: center;
+                grid-column: 1 / -1;
+            `;
+            noChartsMsg.textContent = 'هیچ نموداری برای نمایش موجود نیست یا خطا در بارگذاری داده‌ها رخ داده است.';
+            container.appendChild(noChartsMsg);
+        } else {
+            // Render charts for items that have valid data
+            itemsWithCharts.forEach((item, index) => {
                 const chartElement = this.createChartCard(item, index);
                 container.appendChild(chartElement);
-            }
-        });
+            });
+        }
 
         // Update layout based on current settings
         this.adjustChartLayout(this.chartsPerRow);
@@ -202,92 +226,139 @@ class PriceMonitorDashboard {
 
     // Create individual chart
     createChart(containerId, item) {
-        const data = item.chartData;
+        try {
+            const data = item.chartData;
 
-        if (!data || data.length === 0) return;
+            // Validate data before proceeding
+            if (!data || data.length === 0) {
+                console.warn(`No chart data available for ${item.name}`);
+                this.showChartError(containerId, 'اطلاعات نمودار در دسترس نیست');
+                return;
+            }
 
-        // Extract data for plotting
-        const dates = data.map(d => d.jalaliDate);
-        const prices = data.map(d => d.price);
-        const discounts = data.map(d => d.discount);
-        const incredibles = data.map(d => d.incredible);
+            // Extract data for plotting
+            const dates = data.map(d => d.jalaliDate);
+            const prices = data.map(d => d.price);
+            const discounts = data.map(d => d.discount);
+            const incredibles = data.map(d => d.incredible);
 
-        // Determine line color based on price trend
-        const priceChange = this.calculatePriceTrend(prices);
-        const lineColor = priceChange > 0 ? this.colors.priceUp :
-                         priceChange < 0 ? this.colors.priceDown : this.colors.noChange;
+            // Validate that we have valid data
+            if (dates.length === 0 || prices.length === 0) {
+                console.warn(`Invalid chart data for ${item.name}`);
+                this.showChartError(containerId, 'اطلاعات نامعتبر');
+                return;
+            }
 
-        // Create trace with markers colored by discount/incredible status
-        const trace = {
-            x: dates,
-            y: prices,
-            mode: 'lines+markers',
-            type: 'scatter',
-            name: item.name,
-            line: {
-                color: lineColor,
-                width: 3,
-                shape: 'spline'
-            },
-            marker: {
-                size: 8,
-                color: prices.map((price, index) => {
-                    if (incredibles[index] === 1) return this.colors.incredible;
-                    if (discounts[index] > 0) return this.colors.priceDown;
-                    return lineColor;
-                }),
-                symbol: 'circle'
-            },
-            hovertemplate:
-                '<b>%{x}</b><br>' +
-                'قیمت: %{y}<br>' +
-                'تخفیف: %{text}%<br>' +
-                '<extra></extra>',
-            text: discounts.map(d => d > 0 ? d : '')
-        };
+            // Check if all prices are zero or invalid
+            const validPrices = prices.filter(p => p > 0);
+            if (validPrices.length === 0) {
+                console.warn(`No valid prices for ${item.name}`);
+                this.showChartError(containerId, 'قیمت‌ها نامعتبر هستند');
+                return;
+            }
 
-        // Chart layout with RTL support
-        const layout = {
-            font: {
-                family: 'Vazir, Tahoma, sans-serif',
-                size: 12,
-                color: '#e0e0e0'
-            },
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)',
-            margin: { l: 50, r: 30, t: 30, b: 50 },
-            xaxis: {
-                title: 'تاریخ شمسی',
-                tickangle: -45,
-                color: '#e0e0e0',
-                gridcolor: 'rgba(255,255,255,0.1)',
-                showgrid: true
-            },
-            yaxis: {
-                title: 'قیمت (ریال)',
-                color: '#e0e0e0',
-                gridcolor: 'rgba(255,255,255,0.1)',
-                showgrid: true,
-                tickformat: ','
-            },
-            hoverlabel: {
+            // Determine line color based on price trend
+            const priceChange = this.calculatePriceTrend(prices);
+            const lineColor = priceChange > 0 ? this.colors.priceUp :
+                             priceChange < 0 ? this.colors.priceDown : this.colors.noChange;
+
+            // Create trace with markers colored by discount/incredible status
+            const trace = {
+                x: dates,
+                y: prices,
+                mode: 'lines+markers',
+                type: 'scatter',
+                name: item.name,
+                line: {
+                    color: lineColor,
+                    width: 3,
+                    shape: 'spline'
+                },
+                marker: {
+                    size: 8,
+                    color: prices.map((price, index) => {
+                        if (incredibles[index] === 1) return this.colors.incredible;
+                        if (discounts[index] > 0) return this.colors.priceDown;
+                        return lineColor;
+                    }),
+                    symbol: 'circle'
+                },
+                hovertemplate:
+                    '<b>%{x}</b><br>' +
+                    'قیمت: %{y}<br>' +
+                    'تخفیف: %{text}%<br>' +
+                    '<extra></extra>',
+                text: discounts.map(d => d > 0 ? d : '')
+            };
+
+            // Chart layout with RTL support
+            const layout = {
                 font: {
                     family: 'Vazir, Tahoma, sans-serif',
-                    size: 12
+                    size: 12,
+                    color: '#e0e0e0'
+                },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)',
+                margin: { l: 50, r: 30, t: 30, b: 50 },
+                xaxis: {
+                    title: 'تاریخ شمسی',
+                    tickangle: -45,
+                    color: '#e0e0e0',
+                    gridcolor: 'rgba(255,255,255,0.1)',
+                    showgrid: true
+                },
+                yaxis: {
+                    title: 'قیمت (ریال)',
+                    color: '#e0e0e0',
+                    gridcolor: 'rgba(255,255,255,0.1)',
+                    showgrid: true,
+                    tickformat: ','
+                },
+                hoverlabel: {
+                    font: {
+                        family: 'Vazir, Tahoma, sans-serif',
+                        size: 12
+                    }
                 }
-            }
-        };
+            };
 
-        // Chart configuration
-        const config = {
-            locale: 'fa',
-            responsive: true,
-            displayModeBar: false,
-            displaylogo: false
-        };
+            // Chart configuration
+            const config = {
+                locale: 'fa',
+                responsive: true,
+                displayModeBar: false,
+                displaylogo: false
+            };
 
-        // Create the plot
-        Plotly.newPlot(containerId, [trace], layout, config);
+            // Create the plot
+            Plotly.newPlot(containerId, [trace], layout, config);
+
+        } catch (error) {
+            console.error(`Error creating chart for ${item.name}:`, error);
+            this.showChartError(containerId, 'خطا در ایجاد نمودار');
+        }
+    }
+
+    // Show error message in chart container
+    showChartError(containerId, message) {
+        const container = document.getElementById(containerId);
+        if (container) {
+            container.innerHTML = `
+                <div class="chart-error" style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    color: #ff6b35;
+                    font-family: 'Vazir', Tahoma, sans-serif;
+                    font-size: 14px;
+                    text-align: center;
+                ">
+                    ${message}
+                </div>
+            `;
+        }
     }
 
     // Calculate price trend (positive = increasing, negative = decreasing)

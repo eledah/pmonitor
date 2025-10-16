@@ -419,20 +419,91 @@ function extractPriceInfo(variantData) {
   return result;
 }
 
+// Check if data already exists for today for a specific item
+async function hasDataForToday(itemName) {
+  const itemFileName = `${itemName}.xlsx`;
+  const itemFilePath = path.join(ITEMS_DIRECTORY, itemFileName);
+
+  // If file doesn't exist, no data exists
+  if (!fs.existsSync(itemFilePath)) {
+    return false;
+  }
+
+  try {
+    const itemWorkbook = new ExcelJS.Workbook();
+    await itemWorkbook.xlsx.readFile(itemFilePath);
+    const itemWorksheet = itemWorkbook.getWorksheet('Sheet 1');
+
+    if (!itemWorksheet) {
+      return false;
+    }
+
+    // Check if today's data already exists
+    let dataExistsForToday = false;
+    itemWorksheet.eachRow((row, rowNumber) => {
+      if (rowNumber > 1) { // Skip header row
+        const dateCell = row.getCell(1).value;
+        if (dateCell && dateCell.toString() === currentDate) {
+          dataExistsForToday = true;
+        }
+      }
+    });
+
+    return dataExistsForToday;
+  } catch (error) {
+    if (VERBOSE) {
+      console.log(`⚠️ Error checking existing data for ${itemName}: ${error.message}`);
+    }
+    return false; // Default to false on error
+  }
+}
+
 async function writeToExcel(itemName, price, discount, incredible) {
-  // Create a fresh Excel file for each item (start new data collection)
   const itemFileName = `${itemName}.xlsx`;
   const itemFilePath = path.join(ITEMS_DIRECTORY, itemFileName);
 
   const itemWorkbook = new ExcelJS.Workbook();
 
-  // Always create a new worksheet (fresh start)
-  const itemWorksheet = itemWorkbook.addWorksheet('Sheet 1');
-    itemWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
+  // Check if file exists
+  if (fs.existsSync(itemFilePath)) {
+    // Read existing file to check for today's data
+    await itemWorkbook.xlsx.readFile(itemFilePath);
+    const itemWorksheet = itemWorkbook.getWorksheet('Sheet 1');
 
-  // Always add new row (fresh data collection)
+    if (itemWorksheet) {
+      // Check if today's data already exists
+      let dataExistsForToday = false;
+      itemWorksheet.eachRow((row, rowNumber) => {
+        if (rowNumber > 1) { // Skip header row
+          const dateCell = row.getCell(1).value;
+          if (dateCell && dateCell.toString() === currentDate) {
+            dataExistsForToday = true;
+          }
+        }
+      });
+
+      if (dataExistsForToday) {
+        console.log(`⏭️ Data for ${currentDate} already exists in ${itemFileName} - skipping`);
+        return;
+      }
+
+      // Add new row to existing worksheet
+      itemWorksheet.addRow([currentDate, price, discount, incredible]);
+      console.log(`💾 Added new data to existing ${itemFileName} for ${currentDate}`);
+    } else {
+      // Worksheet doesn't exist, create new one
+      const newWorksheet = itemWorkbook.addWorksheet('Sheet 1');
+      newWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
+      newWorksheet.addRow([currentDate, price, discount, incredible]);
+      console.log(`💾 Fresh data created in ${itemFileName} for ${currentDate}`);
+    }
+  } else {
+    // Create a fresh Excel file for each item (start new data collection)
+    const itemWorksheet = itemWorkbook.addWorksheet('Sheet 1');
+    itemWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
     itemWorksheet.addRow([currentDate, price, discount, incredible]);
-  console.log(`💾 Fresh data created in ${itemFileName} for ${currentDate}`);
+    console.log(`💾 Fresh data created in ${itemFileName} for ${currentDate}`);
+  }
 
   await itemWorkbook.xlsx.writeFile(itemFilePath);
 }
@@ -469,6 +540,20 @@ async function scrapeWebpages() {
 
     if (VERBOSE) {
       console.log(`📦 Product ID: ${productId} for "${itemName}"`);
+    }
+
+    // Check if data already exists for today before making API call
+    const dataAlreadyExists = await hasDataForToday(itemName);
+
+    if (dataAlreadyExists) {
+      if (VERBOSE) {
+        console.log(`⏭️ Data for ${currentDate} already exists for "${itemName}" - skipping API call`);
+      }
+      continue; // Skip to next item
+    }
+
+    if (VERBOSE) {
+      console.log(`🔍 No existing data found for ${currentDate} - fetching from API`);
     }
 
     // Get product data from API
