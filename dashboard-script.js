@@ -181,7 +181,7 @@ class PriceMonitorDashboard {
                 justify-content: center;
                 height: 200px;
                 color: #888;
-                font-family: 'Vazir', Tahoma, sans-serif;
+                font-family: 'Sahel', 'Tahoma', sans-serif;
                 font-size: 16px;
                 text-align: center;
                 grid-column: 1 / -1;
@@ -351,7 +351,7 @@ class PriceMonitorDashboard {
                     justify-content: center;
                     height: 100%;
                     color: #ff6b35;
-                    font-family: 'Vazir', Tahoma, sans-serif;
+                    font-family: 'Sahel', 'Tahoma', sans-serif;
                     font-size: 14px;
                     text-align: center;
                 ">
@@ -404,17 +404,19 @@ class PriceMonitorDashboard {
     }
 
     // Adjust chart layout (charts per row)
-    adjustChartLayout(chartsPerRow) {
+    adjustChartLayout(chartsPerRow, event = null) {
         this.chartsPerRow = chartsPerRow;
 
         const chartsGrid = document.getElementById('charts-grid');
         const chartCards = document.querySelectorAll('.chart-card');
 
-        // Update active button
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
+        // Update active button only if called from an event handler
+        if (event && event.target) {
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
 
         // Calculate grid columns
         const columns = chartsPerRow;
@@ -423,22 +425,26 @@ class PriceMonitorDashboard {
         // Update chart containers
         chartCards.forEach(card => {
             const chartContainer = card.querySelector('.chart-container');
-            Plotly.relayout(chartContainer, {
-                width: chartContainer.clientWidth,
-                height: 300
-            });
+            if (chartContainer) {
+                Plotly.relayout(chartContainer, {
+                    width: chartContainer.clientWidth,
+                    height: 300
+                });
+            }
         });
     }
 
     // Toggle between grid and list view (future enhancement)
-    toggleView(viewType) {
+    toggleView(viewType, event = null) {
         this.currentView = viewType;
 
-        // Update active button
-        document.querySelectorAll('.control-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
+        // Update active button only if called from an event handler
+        if (event && event.target) {
+            document.querySelectorAll('.control-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
 
         // TODO: Implement list view if needed
         console.log(`Switched to ${viewType} view`);
