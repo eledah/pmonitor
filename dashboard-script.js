@@ -4,8 +4,6 @@
 class PriceMonitorDashboard {
     constructor() {
         this.items = [];
-        this.chartsPerRow = 2;
-        this.currentView = 'grid';
         this.isLoading = true;
 
         // Colors for different price change scenarios
@@ -114,7 +112,7 @@ class PriceMonitorDashboard {
         if (isNaN(numPrice)) return 'نامشخص';
 
         // Format large numbers with commas
-        return numPrice.toLocaleString('fa-IR') + ' ریال';
+        return numPrice.toLocaleString('fa-IR') + ' تومان';
     }
 
     // Update header statistics
@@ -139,29 +137,80 @@ class PriceMonitorDashboard {
         container.innerHTML = '';
 
         this.items.forEach((item, index) => {
-            const itemElement = this.createTOCItem(item, index);
-            container.appendChild(itemElement);
+            const rowElement = this.createTOCRow(item, index);
+            container.appendChild(rowElement);
         });
     }
 
-    // Create table of contents item
-    createTOCItem(item, index) {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'toc-item slide-in-rtl';
+    // Create table of contents row
+    createTOCRow(item, index) {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'toc-row slide-in-rtl';
 
-        const link = document.createElement('a');
-        link.href = item.link;
-        link.target = '_blank';
-        link.className = 'toc-link';
+        // Product name cell (right column)
+        const nameCell = document.createElement('div');
+        nameCell.className = 'toc-cell';
+
+        const nameLink = document.createElement('a');
+        nameLink.href = item.link;
+        nameLink.target = '_blank';
+        nameLink.className = 'toc-link';
 
         const nameDiv = document.createElement('div');
         nameDiv.className = 'toc-name';
         nameDiv.textContent = item.name;
+        nameDiv.style.fontFamily = "'Vazirmatn', 'Tahoma', sans-serif";
 
-        link.appendChild(nameDiv);
-        itemDiv.appendChild(link);
+        nameLink.appendChild(nameDiv);
+        nameCell.appendChild(nameLink);
 
-        return itemDiv;
+        // Price cell (left column)
+        const priceCell = document.createElement('div');
+        priceCell.className = 'toc-cell';
+
+        const priceInfo = this.getPriceInfo(item);
+        priceCell.innerHTML = priceInfo;
+
+        rowDiv.appendChild(nameCell);
+        rowDiv.appendChild(priceCell);
+
+        return rowDiv;
+    }
+
+    // Get price information for an item (current price and price change)
+    getPriceInfo(item) {
+        if (!item.chartData || item.chartData.length === 0) {
+            return '<span class="toc-price">ناموجود</span>';
+        }
+
+        const latestData = item.chartData[item.chartData.length - 1];
+        const currentPrice = latestData.price;
+
+        if (currentPrice === 0 || currentPrice === 'Price not found') {
+            return '<span class="toc-price">ناموجود</span>';
+        }
+
+        const formattedPrice = this.formatPrice(currentPrice);
+        let priceChangeHTML = '';
+
+        // Calculate price change if we have more than one data point
+        if (item.chartData.length > 1) {
+            const previousData = item.chartData[item.chartData.length - 2];
+            const previousPrice = previousData.price;
+
+            if (previousPrice > 0 && currentPrice > 0) {
+                const changePercent = ((currentPrice - previousPrice) / previousPrice) * 100;
+                const changeSign = changePercent > 0 ? '+' : '';
+                const changeColor = changePercent > 0 ? 'price-up' : changePercent < 0 ? 'price-down' : 'price-neutral';
+
+                priceChangeHTML = `<span class="price-change ${changeColor}">(${changeSign}${changePercent.toFixed(0)}٪)</span>`;
+            }
+        }
+
+        return `<div class="price-container">
+            <span class="toc-price">${formattedPrice}</span>
+            ${priceChangeHTML}
+        </div>`;
     }
 
     // Render all charts
@@ -196,8 +245,6 @@ class PriceMonitorDashboard {
             });
         }
 
-        // Update layout based on current settings
-        this.adjustChartLayout(this.chartsPerRow);
     }
 
     // Create chart card for an item
@@ -207,7 +254,15 @@ class PriceMonitorDashboard {
 
         const titleDiv = document.createElement('div');
         titleDiv.className = 'chart-title';
-        titleDiv.textContent = item.name;
+
+        const titleLink = document.createElement('a');
+        titleLink.href = item.link;
+        titleLink.target = '_blank';
+        titleLink.textContent = item.name;
+        titleLink.style.color = 'inherit';
+        titleLink.style.textDecoration = 'none';
+
+        titleDiv.appendChild(titleLink);
 
         const chartContainerDiv = document.createElement('div');
         chartContainerDiv.className = 'chart-container';
@@ -284,17 +339,16 @@ class PriceMonitorDashboard {
                     symbol: 'circle'
                 },
                 hovertemplate:
-                    '<b>%{x}</b><br>' +
-                    'قیمت: %{y}<br>' +
-                    'تخفیف: %{text}%<br>' +
+                    '<b>%{y}</b><br>' +
+                    '%{text}' +
                     '<extra></extra>',
-                text: discounts.map(d => d > 0 ? d : '')
+                text: discounts.map(d => d > 0 ? d + '% OFF<br>' : '')
             };
 
             // Chart layout with RTL support
             const layout = {
                 font: {
-                    family: 'Vazir, Tahoma, sans-serif',
+                    family: 'Vazirmatn, Vazir, Tahoma, sans-serif',
                     size: 12,
                     color: '#e0e0e0'
                 },
@@ -302,14 +356,12 @@ class PriceMonitorDashboard {
                 plot_bgcolor: 'rgba(0,0,0,0)',
                 margin: { l: 50, r: 30, t: 30, b: 50 },
                 xaxis: {
-                    title: 'تاریخ شمسی',
                     tickangle: -45,
                     color: '#e0e0e0',
                     gridcolor: 'rgba(255,255,255,0.1)',
                     showgrid: true
                 },
                 yaxis: {
-                    title: 'قیمت (ریال)',
                     color: '#e0e0e0',
                     gridcolor: 'rgba(255,255,255,0.1)',
                     showgrid: true,
@@ -317,7 +369,7 @@ class PriceMonitorDashboard {
                 },
                 hoverlabel: {
                     font: {
-                        family: 'Vazir, Tahoma, sans-serif',
+                        family: 'Vazirmatn, Vazir, Tahoma, sans-serif',
                         size: 12
                     }
                 }
@@ -376,10 +428,6 @@ class PriceMonitorDashboard {
 
     // Setup event listeners
     setupEventListeners() {
-        // Window resize handler for responsive charts
-        window.addEventListener('resize', () => {
-            this.adjustChartLayout(this.chartsPerRow);
-        });
     }
 
     // Setup scroll to top functionality
@@ -403,61 +451,6 @@ class PriceMonitorDashboard {
         });
     }
 
-    // Adjust chart layout (charts per row)
-    adjustChartLayout(chartsPerRow, event = null) {
-        this.chartsPerRow = chartsPerRow;
-
-        const chartsGrid = document.getElementById('charts-grid');
-        if (!chartsGrid) return; // Exit if charts grid not found
-
-        const chartCards = document.querySelectorAll('.chart-card');
-
-        // Update active button only if called from an event handler
-        if (event && typeof event === 'object' && event.target && event.target.classList) {
-            document.querySelectorAll('.control-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
-
-        // Calculate grid columns
-        const columns = chartsPerRow;
-        chartsGrid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
-
-        // Update chart containers
-        chartCards.forEach(card => {
-            const chartContainer = card.querySelector('.chart-container');
-            if (chartContainer) {
-                try {
-                    Plotly.relayout(chartContainer, {
-                        width: chartContainer.clientWidth,
-                        height: 300
-                    });
-                } catch (error) {
-                    console.warn('Error updating chart layout:', error);
-                }
-            }
-        });
-    }
-
-    // Toggle between grid and list view (future enhancement)
-    toggleView(viewType, event = null) {
-        this.currentView = viewType;
-
-        // Update active button only if called from an event handler
-        if (event && typeof event === 'object' && event.target && event.target.classList) {
-            const controlButtons = document.querySelectorAll('.control-btn');
-            if (controlButtons.length > 0) {
-                controlButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                event.target.classList.add('active');
-            }
-        }
-
-        // TODO: Implement list view if needed
-        console.log(`Switched to ${viewType} view`);
-    }
 
     // Show loading overlay
     showLoading() {
