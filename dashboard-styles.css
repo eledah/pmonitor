@@ -6,7 +6,7 @@
   --hover-bg: #3a3a3a;
   --primary-text: #e0e0e0;
   --secondary-text: #b0b0b0;
-  --accent-color: #ff6b35;
+  --accent-color: rgb(243, 57, 119);
   --success-color: #4caf50;
   --warning-color: #ff9800;
   --error-color: #f44336;
@@ -34,6 +34,7 @@
 html {
   scroll-behavior: smooth;
   direction: rtl;
+  overflow-x: hidden;
 }
 
 body {
@@ -43,6 +44,17 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Ensure no element causes horizontal overflow */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Additional overflow protection */
+.container, .toc-container, .charts-container, .footer-content {
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Scrollbar Styling */
@@ -80,15 +92,15 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,107,53,0.1)"/></svg>');
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(243,57,119,0.1)"/></svg>');
   background-size: 50px 50px;
   animation: float 20s infinite linear;
   pointer-events: none;
 }
 
 @keyframes float {
-  0% { transform: translateX(-100px); }
-  100% { transform: translateX(100px); }
+  0% { transform: translateX(-50px); }
+  100% { transform: translateX(50px); }
 }
 
 .header-content {
@@ -104,7 +116,7 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 10px;
-  text-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+  text-shadow: 0 0 20px rgba(243, 57, 119, 0.3);
 }
 
 .subtitle {
@@ -406,7 +418,7 @@ body {
   visibility: hidden;
   transition: all var(--transition-speed);
   z-index: 1000;
-  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 5px 15px rgba(243, 57, 119, 0.4);
 }
 
 .scroll-to-top.visible {
@@ -416,7 +428,7 @@ body {
 
 .scroll-to-top:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+  box-shadow: 0 8px 25px rgba(243, 57, 119, 0.6);
 }
 
 /* Loading and Error States */

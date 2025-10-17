@@ -8,10 +8,10 @@ class PriceMonitorDashboard {
 
         // Colors for different price change scenarios
         this.colors = {
-            priceUp: '#ff6b35',      // Orange for price increase
-            priceDown: '#4caf50',    // Green for price decrease
+            priceUp: 'rgb(243, 57, 119)',      // Pink for price increase
+            priceDown: 'rgb(243, 57, 119)',    // Pink for price decrease (discounted items)
             noChange: '#e0e0e0',     // Gray for no change
-            incredible: '#ffb74d'    // Yellow for incredible offers
+            incredible: '#ffeb3b'    // Bright yellow for incredible offers
         };
 
         this.init();
@@ -341,6 +341,7 @@ class PriceMonitorDashboard {
                 hovertemplate:
                     '<b>%{y}</b><br>' +
                     '%{text}' +
+                    '<b>تاریخ: %{x}</b>' +
                     '<extra></extra>',
                 text: discounts.map(d => d > 0 ? d + '% OFF<br>' : '')
             };
