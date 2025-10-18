@@ -312,12 +312,7 @@ class PriceMonitorDashboard {
                 return;
             }
 
-            // Determine line color based on price trend
-            const priceChange = this.calculatePriceTrend(prices);
-            const lineColor = priceChange > 0 ? this.colors.priceUp :
-                             priceChange < 0 ? this.colors.priceDown : this.colors.noChange;
-
-            // Create trace with markers colored by discount/incredible status
+            // Line is always grey, markers change color based on discount/incredible status
             const trace = {
                 x: dates,
                 y: prices,
@@ -325,16 +320,16 @@ class PriceMonitorDashboard {
                 type: 'scatter',
                 name: item.name,
                 line: {
-                    color: lineColor,
-                    width: 3,
-                    shape: 'spline'
+                    color: '#808080',  // Always grey
+                    width: 3
+                    // Removed 'shape: 'spline'' to use straight lines
                 },
                 marker: {
                     size: 8,
                     color: prices.map((price, index) => {
                         if (incredibles[index] === 1) return this.colors.incredible;
                         if (discounts[index] > 0) return this.colors.priceDown;
-                        return lineColor;
+                        return '#808080';  // Grey for normal prices
                     }),
                     symbol: 'circle'
                 },
