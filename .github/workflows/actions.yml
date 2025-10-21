@@ -23,8 +23,9 @@ jobs:
     - name: Install dependencies
       run: |
         cd scripts
-        npm ci
-      timeout-minutes: 5
+        npm cache clean --force
+        npm ci --verbose
+      timeout-minutes: 15
 
     - name: Run webScraping.js script
       run: |
