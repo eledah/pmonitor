@@ -46,5 +46,11 @@
     "Price": "124000",
     "Discount": "25",
     "Incredible": "1"
+  },
+  {
+    "Date": "2025-10-25",
+    "Price": "148500",
+    "Discount": "10",
+    "Incredible": "0"
   }
 ]
