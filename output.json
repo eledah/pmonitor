@@ -22,8 +22,8 @@
   },
   {
     "Name": "بخاری برقی پارس خزر",
-    "Price": "2557600",
-    "Discount": "11",
+    "Price": "2877400",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-3986553/",
     "Incredible": "0"
   },
@@ -92,7 +92,7 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "3520000",
+    "Price": "3365000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/",
     "Incredible": "0"
@@ -106,8 +106,8 @@
   },
   {
     "Name": "تونر پاک کننده صورت لافارر",
-    "Price": "175700",
-    "Discount": "40",
+    "Price": "292800",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-4012333/",
     "Incredible": "0"
   },
@@ -127,16 +127,23 @@
   },
   {
     "Name": "خیارشور درجه یک مکنزی - ۶۶۰ گرم",
-    "Price": "113000",
-    "Discount": "0",
+    "Price": "85000",
+    "Discount": "25",
     "Link": "https://www.digikala.com/fresh/product/dkp-6293548/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "دوربین دیجیتال کانن مدل EOS 5D Mark IV",
     "Price": "187000000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-170831/",
+    "Incredible": "0"
+  },
+  {
+    "Name": "گوشی خورشتی بدون استخوان گوسفند مهیا پروتئین - ۱ کیلوگرم",
+    "Price": "1280000",
+    "Discount": "0",
+    "Link": "https://www.digikala.com/fresh/product/dkp-792421/",
     "Incredible": "0"
   },
   {
@@ -148,10 +155,10 @@
   },
   {
     "Name": "روغن آفتابگردان غنچه پلاس - ۹۰۰ میلی لیتر",
-    "Price": "71140",
-    "Discount": "2",
+    "Price": "72600",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-8511786/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "زیرپوش رکابی مردانه امیدنو",
@@ -162,10 +169,10 @@
   },
   {
     "Name": "ژل شستشوی صورت لافارر",
-    "Price": "631900",
-    "Discount": "0",
+    "Price": "379140",
+    "Discount": "40",
     "Link": "https://www.digikala.com/product/dkp-515367/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "بسته لوازم تحریر مدل فلزی ۵ تایی",
@@ -204,15 +211,15 @@
   },
   {
     "Name": "عسل سنتی چند گیاه زنبورداران - ۱۰۰۰ گرم",
-    "Price": "329900",
-    "Discount": "43",
+    "Price": "575000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-18041116/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "عطر مردانه ساواج دیور ۱۰۰ میلی لیتر",
-    "Price": "550000",
-    "Discount": "8",
+    "Price": "497000",
+    "Discount": "17",
     "Link": "https://www.digikala.com/product/dkp-7608527/",
     "Incredible": "0"
   },
@@ -295,8 +302,8 @@
   },
   {
     "Name": "گوشی موبایل شیائومی مدل Redmi Note 14 4G",
-    "Price": "17061600",
-    "Discount": "2",
+    "Price": "17190000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-17580036/",
     "Incredible": "0"
   },
@@ -309,7 +316,7 @@
   },
   {
     "Name": "ماشین لباسشویی ۹ کیلوگرمی دوو",
-    "Price": "47000000",
+    "Price": "47100000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-18889150/",
     "Incredible": "0"
@@ -344,10 +351,10 @@
   },
   {
     "Name": "نوشابه  پپسی - ۱٫۵ لیتر بسته ۶ عددی",
-    "Price": "231000",
-    "Discount": "20",
+    "Price": "287700",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-1923615/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "نیم‌بوت زنانه چرم مشهد",
