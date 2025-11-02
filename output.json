@@ -1,9 +1,16 @@
 [
   {
     "Name": "آب معدنی میوا - ۱٫۵ لیتر بسته ۶ عددی ",
-    "Price": "90000",
-    "Discount": "0",
+    "Price": "63000",
+    "Discount": "30",
     "Link": "https://www.digikala.com/fresh/product/dkp-3439306/",
+    "Incredible": "1"
+  },
+  {
+    "Name": "شمش طلا ۲۴ عیار پارسیس مدل 01",
+    "Price": "16310000",
+    "Discount": "2",
+    "Link": "https://www.digikala.com/product/dkp-9565621/",
     "Incredible": "0"
   },
   {
@@ -22,15 +29,15 @@
   },
   {
     "Name": "بخاری برقی پارس خزر",
-    "Price": "2790000",
+    "Price": "2780000",
     "Discount": "3",
     "Link": "https://www.digikala.com/product/dkp-3986553/",
     "Incredible": "0"
   },
   {
     "Name": "برنج هاشمی گیلان رفتاری - ۱۰ کیلوگرم",
-    "Price": "3102340",
-    "Discount": "10",
+    "Price": "3447050",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-19978231/",
     "Incredible": "0"
   },
@@ -43,16 +50,23 @@
   },
   {
     "Name": "پنیر پیتزا رنده شده کالین - ۱ کیلوگرم",
-    "Price": "586500",
-    "Discount": "0",
+    "Price": "527850",
+    "Discount": "10",
     "Link": "https://www.digikala.com/fresh/product/dkp-1023378/",
     "Incredible": "0"
   },
   {
     "Name": "پنیر فتا دوشه هراز- ۴۰۰ گرم",
-    "Price": "67830",
-    "Discount": "30",
+    "Price": "96900",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-1485597/",
+    "Incredible": "0"
+  },
+  {
+    "Name": "پوشک بچه هانیز",
+    "Price": "313000",
+    "Discount": "15",
+    "Link": "https://www.digikala.com/fresh/product/dkp-7932748/",
     "Incredible": "1"
   },
   {
@@ -64,10 +78,10 @@
   },
   {
     "Name": "تخم مرغ Fresh بسته ۲۰ عددی گرید A ",
-    "Price": "172620",
-    "Discount": "10",
+    "Price": "135000",
+    "Discount": "30",
     "Link": "https://www.digikala.com/fresh/product/dkp-17729012/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "ترازو دیجیتال کمری فیت",
@@ -85,24 +99,24 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "3530000",
+    "Price": "3450000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/",
     "Incredible": "0"
   },
   {
     "Name": "تلویزیون ال ای دی هوشمند ایکس ویژن ۵۵ اینچ",
-    "Price": "34750000",
-    "Discount": "22",
+    "Price": "34700000",
+    "Discount": "23",
     "Link": "https://www.digikala.com/product/dkp-8502180/",
     "Incredible": "0"
   },
   {
     "Name": "تونر پاک کننده صورت لافارر",
-    "Price": "146400",
-    "Discount": "50",
+    "Price": "186500",
+    "Discount": "36",
     "Link": "https://www.digikala.com/product/dkp-4012333/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "جعبه ابزار ۱۲۵ عددی",
@@ -134,10 +148,10 @@
   },
   {
     "Name": "گوشی خورشتی بدون استخوان گوسفند مهیا پروتئین - ۱ کیلوگرم",
-    "Price": "1280000",
-    "Discount": "0",
+    "Price": "1267200",
+    "Discount": "1",
     "Link": "https://www.digikala.com/fresh/product/dkp-792421/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "رژ لب جامد الیزا مدل Mini",
@@ -162,15 +176,15 @@
   },
   {
     "Name": "ژل شستشوی صورت لافارر",
-    "Price": "379140",
-    "Discount": "40",
+    "Price": "433400",
+    "Discount": "31",
     "Link": "https://www.digikala.com/product/dkp-515367/",
-    "Incredible": "1"
+    "Incredible": "0"
   },
   {
     "Name": "بسته لوازم تحریر مدل فلزی ۵ تایی",
-    "Price": "378000",
-    "Discount": "0",
+    "Price": "275840",
+    "Discount": "27",
     "Link": "https://www.digikala.com/product/dkp-20435174/",
     "Incredible": "0"
   },
@@ -281,17 +295,17 @@
   },
   {
     "Name": "کنسرو ماهی تن در روغن مایع شیلتون - ۱۸۰ گرم",
-    "Price": "107910",
-    "Discount": "10",
+    "Price": "119900",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-1888876/",
     "Incredible": "0"
   },
   {
     "Name": "کنسول Playstation 5",
-    "Price": "55973970",
-    "Discount": "0",
+    "Price": "53499000",
+    "Discount": "4",
     "Link": "https://www.digikala.com/product/dkp-13867812/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "کیف کمری چرمی",
@@ -302,8 +316,8 @@
   },
   {
     "Name": "گوشی موبایل شیائومی مدل Redmi Note 14 4G",
-    "Price": "17285600",
-    "Discount": "2",
+    "Price": "17187000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-17580036/",
     "Incredible": "0"
   },
@@ -330,16 +344,9 @@
   },
   {
     "Name": "مانیتور جی پلاس ۲۴ اینچ",
-    "Price": "11200000",
+    "Price": "10800000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-18831672/",
-    "Incredible": "0"
-  },
-  {
-    "Name": "مبل تخت‌خواب شو تک‌نفره",
-    "Price": "10790000",
-    "Discount": "17",
-    "Link": "https://www.digikala.com/product/dkp-16926607/",
     "Incredible": "0"
   },
   {
@@ -379,23 +386,23 @@
   },
   {
     "Name": "ویدئو پروژکتور T6 Max",
-    "Price": "23700000",
+    "Price": "26500000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-7717879/",
     "Incredible": "0"
   },
   {
     "Name": "یخچال و فریزر ایستکول",
-    "Price": "19406300",
-    "Discount": "13",
+    "Price": "20735700",
+    "Discount": "14",
     "Link": "https://www.digikala.com/product/dkp-15113124/",
     "Incredible": "0"
   },
   {
     "Name": "کرم ضدآفتاب لافارر",
-    "Price": "450890",
-    "Discount": "45",
+    "Price": "521400",
+    "Discount": "36",
     "Link": "https://www.digikala.com/product/dkp-714982/",
-    "Incredible": "1"
+    "Incredible": "0"
   }
 ]
