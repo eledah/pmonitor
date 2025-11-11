@@ -1,14 +1,21 @@
 [
   {
     "Name": "آب معدنی میوا - ۱٫۵ لیتر بسته ۶ عددی ",
-    "Price": "59000",
-    "Discount": "34",
+    "Price": "90000",
+    "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-3439306/",
-    "Incredible": "1"
+    "Incredible": "0"
+  },
+  {
+    "Name": "شمش طلا ۲۴ عیار پارسیس مدل 01",
+    "Price": "16735000",
+    "Discount": "2",
+    "Link": "https://www.digikala.com/product/dkp-9565621/",
+    "Incredible": "0"
   },
   {
     "Name": "گوشی اپل iPhone 16 Pro Max",
-    "Price": "193895000",
+    "Price": "194420000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-17986675/",
     "Incredible": "0"
@@ -57,24 +64,24 @@
   },
   {
     "Name": "پوشک بچه هانیز",
-    "Price": "367500",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/fresh/product/dkp-7932748/",
-    "Incredible": "0"
-  },
-  {
-    "Name": "پوشک مولفیکس سایز ۴",
-    "Price": "299000",
+    "Price": "313000",
     "Discount": "15",
-    "Link": "https://www.digikala.com/fresh/product/dkp-3765912/",
+    "Link": "https://www.digikala.com/fresh/product/dkp-7932748/",
     "Incredible": "1"
   },
   {
-    "Name": "تخم مرغ Fresh بسته ۲۰ عددی گرید A ",
-    "Price": "191800",
+    "Name": "پوشک مولفیکس سایز ۴",
+    "Price": "351400",
     "Discount": "0",
-    "Link": "https://www.digikala.com/fresh/product/dkp-17729012/",
+    "Link": "https://www.digikala.com/fresh/product/dkp-3765912/",
     "Incredible": "0"
+  },
+  {
+    "Name": "تخم مرغ Fresh بسته ۲۰ عددی گرید A ",
+    "Price": "166000",
+    "Discount": "13",
+    "Link": "https://www.digikala.com/fresh/product/dkp-17729012/",
+    "Incredible": "1"
   },
   {
     "Name": "ترازو دیجیتال کمری فیت",
@@ -92,14 +99,14 @@
   },
   {
     "Name": "تلفن بی‌سیم پاناسونیک",
-    "Price": "3286810",
+    "Price": "3280360",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-14762/",
     "Incredible": "0"
   },
   {
     "Name": "تلویزیون ال ای دی هوشمند ایکس ویژن ۵۵ اینچ",
-    "Price": "35300000",
+    "Price": "35200000",
     "Discount": "21",
     "Link": "https://www.digikala.com/product/dkp-8502180/",
     "Incredible": "0"
@@ -119,13 +126,6 @@
     "Incredible": "0"
   },
   {
-    "Name": "چای سیاه گلستان مدل ممتاز هندوستان - ۵۰۰ گرم",
-    "Price": "574900",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/fresh/product/dkp-581175/",
-    "Incredible": "0"
-  },
-  {
     "Name": "خیارشور درجه یک مکنزی - ۶۶۰ گرم",
     "Price": "113000",
     "Discount": "0",
@@ -138,6 +138,13 @@
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-170831/",
     "Incredible": "0"
+  },
+  {
+    "Name": "گوشی خورشتی بدون استخوان گوسفند مهیا پروتئین - ۱ کیلوگرم",
+    "Price": "1255000",
+    "Discount": "2",
+    "Link": "https://www.digikala.com/fresh/product/dkp-792421/",
+    "Incredible": "1"
   },
   {
     "Name": "رژ لب جامد الیزا مدل Mini",
@@ -162,14 +169,14 @@
   },
   {
     "Name": "ژل شستشوی صورت لافارر",
-    "Price": "410800",
-    "Discount": "35",
+    "Price": "415500",
+    "Discount": "34",
     "Link": "https://www.digikala.com/product/dkp-515367/",
     "Incredible": "0"
   },
   {
     "Name": "ساعت هوشمند مدل T900 Pro Max",
-    "Price": "630000",
+    "Price": "660000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-12510113/",
     "Incredible": "0"
@@ -186,13 +193,6 @@
     "Price": "165000",
     "Discount": "0",
     "Link": "https://www.digikala.com/fresh/product/dkp-8307752/",
-    "Incredible": "0"
-  },
-  {
-    "Name": "ران مرغ بی پوست مهیا پروتئین - ۹۰۰ گرم",
-    "Price": "208800",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/fresh/product/dkp-792129/",
     "Incredible": "0"
   },
   {
@@ -246,10 +246,10 @@
   },
   {
     "Name": "کپسول آتش نشانی دریا ۳ کیلوگرم",
-    "Price": "685000",
-    "Discount": "0",
+    "Price": "599000",
+    "Discount": "13",
     "Link": "https://www.digikala.com/product/dkp-4804773/",
-    "Incredible": "0"
+    "Incredible": "1"
   },
   {
     "Name": "کتاب هر دو در نهایت می میرند",
@@ -294,13 +294,6 @@
     "Incredible": "0"
   },
   {
-    "Name": "گوشی موبایل شیائومی مدل Redmi Note 14 4G",
-    "Price": "17199000",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/product/dkp-17580036/",
-    "Incredible": "0"
-  },
-  {
     "Name": "لپ تاپ 15.6 اینچی اچ‌پی G10 255",
     "Price": "34800000",
     "Discount": "0",
@@ -309,7 +302,7 @@
   },
   {
     "Name": "ماشین لباسشویی ۹ کیلوگرمی دوو",
-    "Price": "46700000",
+    "Price": "46400000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-18889150/",
     "Incredible": "0"
@@ -330,16 +323,9 @@
   },
   {
     "Name": "موتور برق آسترا",
-    "Price": "14034810",
-    "Discount": "0",
+    "Price": "14200000",
+    "Discount": "12",
     "Link": "https://www.digikala.com/product/dkp-9192254/",
-    "Incredible": "0"
-  },
-  {
-    "Name": "نوشابه  پپسی - ۱٫۵ لیتر بسته ۶ عددی",
-    "Price": "287700",
-    "Discount": "0",
-    "Link": "https://www.digikala.com/fresh/product/dkp-1923615/",
     "Incredible": "0"
   },
   {
@@ -351,21 +337,21 @@
   },
   {
     "Name": "هارد اکسترنال وسترن دیجیتال ۱ ترابایت",
-    "Price": "6299000",
-    "Discount": "26",
+    "Price": "5963000",
+    "Discount": "11",
     "Link": "https://www.digikala.com/product/dkp-2309086/",
     "Incredible": "0"
   },
   {
     "Name": "هندزفری QKZ",
-    "Price": "288000",
+    "Price": "285000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-2891227/",
     "Incredible": "0"
   },
   {
     "Name": "ویدئو پروژکتور T6 Max",
-    "Price": "26400000",
+    "Price": "26300000",
     "Discount": "0",
     "Link": "https://www.digikala.com/product/dkp-7717879/",
     "Incredible": "0"
