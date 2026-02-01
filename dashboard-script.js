@@ -83,15 +83,53 @@ class PriceMonitorDashboard {
         }
     }
 
-    // Process raw data for chart display
+    // Process raw data for chart display with date gap handling
     processChartData(rawData) {
-        return rawData.map(item => ({
-            date: item.Date,
-            price: parseInt(item.Price) || 0,
-            discount: parseInt(item.Discount) || 0,
-            incredible: parseInt(item.Incredible) || 0,
-            jalaliDate: this.convertToJalali(item.Date)
-        }));
+        if (!rawData || rawData.length === 0) return [];
+
+        // Sort by date
+        const sortedData = [...rawData].sort((a, b) => new Date(a.Date) - new Date(b.Date));
+
+        const filledData = [];
+        let previousDate = null;
+
+        sortedData.forEach((item, index) => {
+            const currentDate = new Date(item.Date);
+
+            if (previousDate !== null) {
+                // Calculate days between current and previous date
+                const daysDiff = Math.floor((currentDate - previousDate) / (1000 * 60 * 60 * 24));
+
+                // If there's a gap > 1 day, fill with null values
+                if (daysDiff > 1) {
+                    for (let i = 1; i < daysDiff; i++) {
+                        const gapDate = new Date(previousDate);
+                        gapDate.setDate(gapDate.getDate() + i);
+                        filledData.push({
+                            date: gapDate.toISOString().split('T')[0],
+                            price: null,  // null creates the gap in the line
+                            discount: 0,
+                            incredible: 0,
+                            jalaliDate: this.convertToJalali(gapDate.toISOString().split('T')[0]),
+                            isGap: true
+                        });
+                    }
+                }
+            }
+
+            filledData.push({
+                date: item.Date,
+                price: parseInt(item.Price) || 0,
+                discount: parseInt(item.Discount) || 0,
+                incredible: parseInt(item.Incredible) || 0,
+                jalaliDate: this.convertToJalali(item.Date),
+                isGap: false
+            });
+
+            previousDate = currentDate;
+        });
+
+        return filledData;
     }
 
     // Convert Gregorian date to Jalali
@@ -313,24 +351,33 @@ class PriceMonitorDashboard {
             }
 
             // Line is always grey, markers change color based on discount/incredible status
+            // Filter out gap markers for display (only show markers for real data points)
+            const markerColors = data.map((d, index) => {
+                if (d.isGap) return 'rgba(0,0,0,0)';  // Transparent for gap points
+                if (d.incredible === 1) return this.colors.incredible;
+                if (d.discount > 0) return this.colors.priceDown;
+                return '#808080';  // Grey for normal prices
+            });
+
+            const markerSizes = data.map((d, index) => {
+                if (d.isGap) return 0;  // No marker for gap points
+                return 8;
+            });
+
             const trace = {
                 x: dates,
                 y: prices,
                 mode: 'lines+markers',
                 type: 'scatter',
                 name: item.name,
+                connectgaps: false,  // This is key - it creates the gap in the line
                 line: {
                     color: '#808080',  // Always grey
                     width: 3
-                    // Removed 'shape: 'spline'' to use straight lines
                 },
                 marker: {
-                    size: 8,
-                    color: prices.map((price, index) => {
-                        if (incredibles[index] === 1) return this.colors.incredible;
-                        if (discounts[index] > 0) return this.colors.priceDown;
-                        return '#808080';  // Grey for normal prices
-                    }),
+                    size: markerSizes,
+                    color: markerColors,
                     symbol: 'circle'
                 },
                 hovertemplate:
@@ -338,7 +385,10 @@ class PriceMonitorDashboard {
                     '%{text}' +
                     '<b>تاریخ: %{x}</b>' +
                     '<extra></extra>',
-                text: discounts.map(d => d > 0 ? d + '% OFF<br>' : '')
+                text: data.map(d => {
+                    if (d.isGap) return '';
+                    return d.discount > 0 ? d.discount + '% OFF<br>' : '';
+                })
             };
 
             // Chart layout with RTL support
