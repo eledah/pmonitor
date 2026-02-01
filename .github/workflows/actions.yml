@@ -1,48 +1,339 @@
-name: Daily Automation
+name: Daily Price Scraping
 
 on:
   workflow_dispatch:
+    inputs:
+      verbose:
+        description: 'Enable verbose logging'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
   schedule:
-    - cron: '0 8 * * *'
+    - cron: '0 8 * * *'  # 8 AM UTC daily (11:30 AM Tehran time)
+
+env:
+  VERBOSE: ${{ github.event.inputs.verbose || 'true' }}
+  OUTPUT: 'true'
+  NODE_VERSION: '20'
 
 jobs:
-  build:
+  scrape-and-commit:
+    name: Scrape Prices and Commit Results
     runs-on: ubuntu-latest
-
+    timeout-minutes: 45
+    
+    outputs:
+      stats: ${{ steps.scrape.outputs.stats }}
+      success: ${{ steps.scrape.outputs.success }}
+      commit-sha: ${{ steps.commit.outputs.sha }}
+    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: 'scripts/package-lock.json'
+      
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        id: npm-cache
+        with:
+          path: scripts/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('scripts/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Install dependencies
+        working-directory: scripts
+        run: |
+          if [ "${{ steps.npm-cache.outputs.cache-hit }}" != 'true' ]; then
+            npm ci --prefer-offline --no-audit
+          fi
+        timeout-minutes: 5
+      
+      - name: Run price scraper
+        id: scrape
+        working-directory: scripts
+        run: |
+          node webScraping.js
+          
+          # Read stats and set outputs
+          if [ -f stats.json ]; then
+            STATS=$(cat stats.json)
+            echo "stats=$STATS" >> $GITHUB_OUTPUT
+            
+            # Extract individual values for commit message
+            PROCESSED=$(echo "$STATS" | jq -r '.processed')
+            FAILED=$(echo "$STATS" | jq -r '.failed')
+            SKIPPED=$(echo "$STATS" | jq -r '.skipped')
+            TOTAL=$(echo "$STATS" | jq -r '.total')
+            
+            echo "processed=$PROCESSED" >> $GITHUB_OUTPUT
+            echo "failed=$FAILED" >> $GITHUB_OUTPUT
+            echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+            echo "total=$TOTAL" >> $GITHUB_OUTPUT
+            
+            # Success if we processed at least 50% or if all were skipped (already done)
+            if [ "$FAILED" -eq 0 ] || [ "$PROCESSED" -gt 0 ]; then
+              echo "success=true" >> $GITHUB_OUTPUT
+            else
+              echo "success=false" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "success=false" >> $GITHUB_OUTPUT
+          fi
+        timeout-minutes: 30
+        continue-on-error: true
+      
+      - name: Convert Excel to JSON
+        if: steps.scrape.outputs.success == 'true'
+        working-directory: scripts
+        run: node xl-json.js
+        timeout-minutes: 10
+        continue-on-error: true
+      
+      - name: Prepare commit message
+        id: commit-msg
+        if: steps.scrape.outputs.success == 'true'
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          PROCESSED="${{ steps.scrape.outputs.processed }}"
+          FAILED="${{ steps.scrape.outputs.failed }}"
+          SKIPPED="${{ steps.scrape.outputs.skipped }}"
+          TOTAL="${{ steps.scrape.outputs.total }}"
+          
+          # Calculate success rate
+          if [ "$TOTAL" -gt 0 ]; then
+            SUCCESS_RATE=$(( PROCESSED * 100 / TOTAL ))
+          else
+            SUCCESS_RATE=0
+          fi
+          
+          # Create commit message file
+          cat > commit-msg.txt << 'ENDOFMESSAGE'
+          📊 Price update for ${{ DATE }}
+          
+          ✅ Products with price data: ${{ PROCESSED }}
+          ⚠️ Out of stock / Failed: ${{ FAILED }}
+          ⏭️ Skipped (already updated): ${{ SKIPPED }}
+          📊 Total tracked: ${{ TOTAL }}
+          📈 Success rate: ${{ SUCCESS_RATE }}%
+          
+          Scraped at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
+          ENDOFMESSAGE
+          
+          # Export values for next step
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "processed=$PROCESSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+          echo "skipped=$SKIPPED" >> $GITHUB_OUTPUT
+          echo "total=$TOTAL" >> $GITHUB_OUTPUT
+          echo "rate=$SUCCESS_RATE" >> $GITHUB_OUTPUT
+      
+      - name: Commit and push changes
+        id: commit
+        if: steps.scrape.outputs.success == 'true'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage all changes
+          git add -A
+          
+          # Check if there are changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "sha=none" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Create commit message
+          DATE="${{ steps.commit-msg.outputs.date }}"
+          PROCESSED="${{ steps.commit-msg.outputs.processed }}"
+          FAILED="${{ steps.commit-msg.outputs.failed }}"
+          SKIPPED="${{ steps.commit-msg.outputs.skipped }}"
+          TOTAL="${{ steps.commit-msg.outputs.total }}"
+          RATE="${{ steps.commit-msg.outputs.rate }}"
+          
+          COMMIT_MSG="📊 Price update for $DATE
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-        cache: 'npm'
-        cache-dependency-path: 'scripts/package-lock.json'
+          ✅ Products with price data: $PROCESSED
+          ⚠️ Out of stock / Failed: $FAILED
+          ⏭️ Skipped (already updated): $SKIPPED
+          📊 Total tracked: $TOTAL
+          📈 Success rate: ${RATE}%"
+          
+          # Commit with message
+          git commit -m "$COMMIT_MSG"
+          
+          # Push changes
+          git push
+          
+          # Get commit SHA
+          SHA=$(git rev-parse HEAD)
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+          echo "Committed: $SHA"
+      
+      - name: Upload stats artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraping-stats-${{ github.run_id }}
+          path: scripts/stats.json
+          retention-days: 30
+          if-no-files-found: warn
+      
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-logs-${{ github.run_id }}
+          path: |
+            scripts/*.log
+            scripts/output.json
+          retention-days: 7
+          if-no-files-found: ignore
 
-    - name: Install dependencies
-      run: |
-        cd scripts
-        npm cache clean --force
-        npm ci --verbose
-      timeout-minutes: 15
+  # Job to notify on failure
+  notify-on-failure:
+    name: Send Failure Notification
+    needs: scrape-and-commit
+    if: failure() || needs.scrape-and-commit.outputs.success == 'false'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare failure notification
+        id: notify
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          echo "subject=❌ Price scraping failed for $DATE" >> $GITHUB_OUTPUT
+          echo "date=$DATE" >> $GITHUB_OUTPUT
+          echo "url=$RUN_URL" >> $GITHUB_OUTPUT
+      
+      # Option 1: Send email via SMTP (requires secrets)
+      - name: Send email notification (SMTP)
+        if: secrets.SMTP_SERVER != ''
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT || '587' }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: ${{ steps.notify.outputs.subject }}
+          body: |
+            The daily price scraping job failed on ${{ steps.notify.outputs.date }}.
+            
+            Run URL: ${{ steps.notify.outputs.url }}
+            
+            Repository: ${{ github.repository }}
+            Workflow: ${{ github.workflow }}
+            Run ID: ${{ github.run_id }}
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: ${{ secrets.SMTP_FROM || 'pmonitor@github-actions.com' }}
+        continue-on-error: true
+      
+      # Option 2: Send email via SendGrid (requires SENDGRID_API_KEY secret)
+      - name: Send email notification (SendGrid)
+        if: secrets.SENDGRID_API_KEY != ''
+        uses: mmazzarolo/sendgrid-mail-action@v1
+        with:
+          api-key: ${{ secrets.SENDGRID_API_KEY }}
+          from-email: ${{ secrets.FROM_EMAIL || 'notifications@pmonitor.com' }}
+          to-email: ${{ secrets.NOTIFICATION_EMAIL }}
+          subject: ${{ steps.notify.outputs.subject }}
+          body: |
+            The daily price scraping job failed on ${{ steps.notify.outputs.date }}.
+            
+            Run URL: ${{ steps.notify.outputs.url }}
+            
+            Repository: ${{ github.repository }}
+            Workflow: ${{ github.workflow }}
+            Run ID: ${{ github.run_id }}
+        env:
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        continue-on-error: true
+      
+      # Option 3: Create GitHub Issue for tracking
+      - name: Create GitHub Issue
+        if: github.event_name == 'schedule'  # Only for scheduled runs, not manual
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = `❌ Scraping failed on ${new Date().toISOString().split('T')[0]}`;
+            const body = `The daily price scraping job failed.
+            
+            **Run Details:**
+            - Workflow: ${{ github.workflow }}
+            - Run ID: ${{ github.run_id }}
+            - Run URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            
+            **Next Steps:**
+            1. Check the logs for error details
+            2. Verify API endpoints are accessible
+            3. Check if Digikala API structure changed
+            
+            cc: @${{ github.repository_owner }}`;
+            
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['bug', 'automation-failure']
+            });
+        continue-on-error: true
+      
+      # Option 4: Slack notification (requires SLACK_WEBHOOK secret)
+      - name: Send Slack notification
+        if: secrets.SLACK_WEBHOOK_URL != ''
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          text: ${{ steps.notify.outputs.subject }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true
+      
+      # Option 5: Discord notification (requires DISCORD_WEBHOOK secret)
+      - name: Send Discord notification
+        if: secrets.DISCORD_WEBHOOK != ''
+        uses: Ilshidur/action-discord@master
+        with:
+          args: |
+            ${{ steps.notify.outputs.subject }}
+            Check ${{ steps.notify.outputs.url }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        continue-on-error: true
 
-    - name: Run webScraping.js script
-      run: |
-        cd scripts
-        node webScraping.js
-      timeout-minutes: 30
-
-    - name: Run xl-json.js script
-      run: |
-        cd scripts
-        node xl-json.js
-      timeout-minutes: 10
-
-    - name: Commit changes
-      run: |
-        git config --global user.name "eledah"
-        git config --global user.email "eledah@eledah.com"
-        git add .
-        git commit -m "Automated commit at 8 AM" || echo "No changes to commit"
-        git push
+  # Optional: Update dashboard metadata
+  update-dashboard:
+    name: Update Dashboard Metadata
+    needs: scrape-and-commit
+    if: needs.scrape-and-commit.outputs.success == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Update last-run metadata
+        run: |
+          DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          echo "{\"lastRun\": \"$DATE\", \"status\": \"success\", \"commit\": \"${{ needs.scrape-and-commit.outputs.commit-sha }}\"}" > last-run.json
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add last-run.json
+          git diff --cached --quiet || (git commit -m "🤖 Update last-run metadata [skip ci]" && git push)

@@ -537,11 +537,30 @@ async function scrapeWebpages() {
     logger.info(`Summary saved to ${OUTPUT_FILE_PATH}`, '📋');
   }
 
+  // Output statistics for CI/CD parsing
+  const stats = {
+    date: currentDate,
+    total: items.length,
+    processed: processed,
+    skipped: skipped,
+    failed: failed,
+    inStock: processed,  // Products with price data
+    outOfStock: failed,  // Products that returned null (includes API failures and actually out of stock)
+    timestamp: new Date().toISOString()
+  };
+  
+  // Save stats to file for workflow to read
+  fs.writeFileSync('stats.json', JSON.stringify(stats, null, 2));
+  
+  // Also output to console for logs
   console.log(`\n🎊 Scraping completed!`);
-  console.log(`   ✅ Processed: ${processed}`);
-  console.log(`   ⏭️  Skipped: ${skipped}`);
-  console.log(`   ❌ Failed: ${failed}`);
+  console.log(`   ✅ Processed (with price): ${processed}`);
+  console.log(`   ⚠️  Out of stock / Failed: ${failed}`);
+  console.log(`   ⏭️  Skipped (already have data): ${skipped}`);
+  console.log(`   📊 Total items: ${items.length}`);
   console.log(`   📅 Date: ${currentDate}`);
+  
+  return stats;
 }
 
 // Start scraping

@@ -1,17 +1,19 @@
 {
-  "name": "scripts",
-  "version": "1.0.0",
-  "description": "",
+  "name": "pmonitor-scraper",
+  "version": "2.0.0",
+  "description": "Digikala price monitoring scraper",
   "main": "webScraping.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node webScraping.js",
+    "test": "echo \"No tests specified\" && exit 0"
   },
-  "author": "",
+  "author": "eledah",
   "license": "ISC",
   "dependencies": {
-    "exceljs": "^4.3.0",
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7",
+    "exceljs": "^4.4.0",
     "xlsx": "^0.18.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
