@@ -3,51 +3,131 @@ const ExcelJS = require('exceljs');
 const fs = require('fs');
 const path = require('path');
 
-// Set this constant to true to enable verbose logging
-const VERBOSE = true;
+// ============================================================================
+// CONFIGURATION
+// ============================================================================
+const config = {
+  verbose: process.env.VERBOSE !== 'false', // Default: true
+  output: process.env.OUTPUT !== 'false',   // Default: true
+  inputFile: process.env.INPUT_FILE || '../items.xlsx',
+  outputDir: process.env.OUTPUT_DIR || '../items',
+  outputFile: process.env.OUTPUT_FILE || '../output.xlsx',
+  maxRetries: parseInt(process.env.MAX_RETRIES) || 3,
+  retryDelay: parseInt(process.env.RETRY_DELAY) || 1000,
+  requestTimeout: parseInt(process.env.REQUEST_TIMEOUT) || 30000,
+  delayBetweenRequests: parseInt(process.env.DELAY) || 2500,
+};
 
-// Set this constant to true to enable ultra-detailed logging
-const ULTRA_VERBOSE = true;
+// Constants
+const ITEMS_DIRECTORY = config.outputDir;
+const INPUT_FILE_PATH = config.inputFile;
+const OUTPUT_FILE_PATH = config.outputFile;
+const SHEET_NAME = 'Sheet 1';
+const HEADERS = ['Date', 'Price', 'Discount', 'Incredible'];
+const MAX_REDIRECTS = 3;
 
-// Set OUTPUT to true to alter .xlsx files, or false to skip altering
-const OUTPUT = true;
+// Get current date in Tehran timezone (YYYY-MM-DD)
+const currentDate = new Date().toLocaleDateString('en-CA', {
+  timeZone: 'Asia/Tehran'
+});
 
-const INPUT_FILE_PATH = '../items.xlsx';
-const OUTPUT_DIRECTORY = '../items';
-const OUTPUT_FILE_PATH = '../output.xlsx';
+// ============================================================================
+// LOGGER UTILITY
+// ============================================================================
+const logger = {
+  debug: (msg, data) => {
+    if (config.verbose) {
+      const prefix = data ? `[DEBUG] ${msg}:` : `[DEBUG] ${msg}`;
+      console.log(prefix, data || '');
+    }
+  },
+  info: (msg, emoji = '') => {
+    if (config.verbose) {
+      console.log(`${emoji} ${msg}`);
+    }
+  },
+  success: (msg) => console.log(`✅ ${msg}`),
+  error: (msg, err) => console.error(`❌ ${msg}`, err ? `- ${err.message || err}` : ''),
+  warn: (msg) => console.log(`⚠️  ${msg}`),
+  progress: (current, total, item) => console.log(`\n🔍 [${current}/${total}] Processing: ${item}`),
+  skip: (msg) => console.log(`⏭️  ${msg}`),
+  stats: (price, discount, isIncredible) => {
+    const discountEmoji = parseInt(discount) > 0 ? '💰' : '🆓';
+    const incredibleEmoji = isIncredible === '1' ? '🔥' : '📦';
+    console.log(`${discountEmoji} Price: ${price} | Discount: ${discount}% | ${incredibleEmoji} Incredible: ${isIncredible}`);
+  }
+};
 
-// Ensure we're creating fresh data in items folder
-const ITEMS_DIRECTORY = '../items';
+// ============================================================================
+// INPUT VALIDATION
+// ============================================================================
 
-// Declare currentDate at the beginning of the script
-const currentDate = new Date().toISOString().split('T')[0];
-
-// Extract product ID from Digikala URL
 function extractProductId(url) {
+  if (!url || typeof url !== 'string') return null;
+  
   // Support both regular products and fresh products
-  // Regular: /product/dkp-123456/
-  // Fresh: /fresh/product/dkp-123456/
-  const match = url.match(/\/(?:fresh\/)?product\/dkp-(\d+)\//);
+  const match = url.match(/\/(?:fresh\/)?product\/dkp-(\d{1,20})\//);
   return match ? match[1] : null;
 }
 
-// Make HTTP request and return a promise
-function makeHttpRequest(options, maxRedirects = 3) {
+function validateItem(url, name, rowNum) {
+  const errors = [];
+  
+  if (!url || typeof url !== 'string') {
+    errors.push(`Row ${rowNum}: URL is missing or invalid`);
+  } else if (!url.startsWith('https://www.digikala.com/')) {
+    errors.push(`Row ${rowNum}: URL is not a valid Digikala URL`);
+  }
+  
+  if (!name || typeof name !== 'string') {
+    errors.push(`Row ${rowNum}: Name is missing or invalid`);
+  }
+  
+  const productId = extractProductId(url);
+  if (url && !productId) {
+    errors.push(`Row ${rowNum}: Could not extract product ID from URL`);
+  }
+  
+  return { isValid: errors.length === 0, errors, productId };
+}
+
+// ============================================================================
+// FILESYSTEM UTILITIES
+// ============================================================================
+
+function sanitizeFilename(name) {
+  if (!name || typeof name !== 'string') return 'unknown';
+  
+  // Replace characters that are invalid in filenames
+  return name
+    .replace(/[<>:"/\\|?*]/g, '_')  // Windows reserved characters
+    .replace(/\s+/g, ' ')              // Normalize whitespace
+    .trim()
+    .substring(0, 200);                // Prevent extremely long filenames
+}
+
+function getSafeFilePath(itemName) {
+  const safeName = sanitizeFilename(itemName);
+  return path.join(ITEMS_DIRECTORY, `${safeName}.xlsx`);
+}
+
+// ============================================================================
+// HTTP CLIENT
+// ============================================================================
+
+function makeHttpRequest(options, maxRedirects = MAX_REDIRECTS) {
   return new Promise((resolve, reject) => {
     const attemptRequest = (currentOptions, redirectCount = 0) => {
       const req = https.request(currentOptions, (res) => {
-      let data = '';
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
+        let data = '';
+        res.on('data', (chunk) => { data += chunk; });
 
-      res.on('end', () => {
-          // Check if we got a redirect
+        res.on('end', () => {
+          // Handle HTTP redirects
           if (res.statusCode === 302 && res.headers.location && redirectCount < maxRedirects) {
             const redirectUrl = res.headers.location;
-
-            // Handle relative URLs
             let newPath;
+            
             if (redirectUrl.startsWith('http')) {
               const url = new URL(redirectUrl);
               newPath = url.pathname + url.search;
@@ -55,355 +135,209 @@ function makeHttpRequest(options, maxRedirects = 3) {
               newPath = redirectUrl;
             }
 
-            const newOptions = {
-              ...currentOptions,
-              path: newPath
-            };
-
-            if (VERBOSE) {
-              console.log(`Redirecting to: ${newPath}`);
-            }
-
-            attemptRequest(newOptions, redirectCount + 1);
+            logger.debug(`Redirecting to: ${newPath}`);
+            attemptRequest({ ...currentOptions, path: newPath }, redirectCount + 1);
           } else {
-        try {
-          const jsonData = JSON.parse(data);
-              resolve({
-                status: res.statusCode,
-                data: jsonData
-              });
-        } catch (error) {
-          reject(new Error(`Failed to parse JSON: ${error.message}`));
-        }
+            try {
+              const jsonData = JSON.parse(data);
+              resolve({ status: res.statusCode, data: jsonData });
+            } catch (error) {
+              reject(new Error(`Failed to parse JSON: ${error.message}`));
+            }
           }
         });
-    });
+      });
 
-    req.on('error', (error) => {
-      reject(new Error(`Request failed: ${error.message}`));
-    });
-
-    req.on('timeout', () => {
-      req.destroy();
-      reject(new Error('Request timeout'));
-    });
-
-    req.setTimeout(30000); // 30 seconds timeout
-    req.end();
+      req.on('error', (error) => reject(new Error(`Request failed: ${error.message}`)));
+      req.on('timeout', () => { req.destroy(); reject(new Error('Request timeout')); });
+      req.setTimeout(config.requestTimeout);
+      req.end();
     };
 
     attemptRequest(options);
   });
 }
 
+// ============================================================================
+// API RESPONSE PARSING
+// ============================================================================
+
+/**
+ * Extracts variant data from product response
+ * Handles both object (in stock) and array (out of stock) default_variant formats
+ * @param {Object} product - The product object from API response
+ * @returns {Object|null} - Variant with price data or null if unavailable
+ */
+function extractVariantFromProduct(product) {
+  if (!product || product.default_variant === undefined) {
+    logger.debug('Product or default_variant undefined');
+    return null;
+  }
+
+  const defaultVariant = product.default_variant;
+  logger.debug('Extracting variant', { type: Array.isArray(defaultVariant) ? 'array' : 'object' });
+
+  // Handle array case (out of stock or multiple variants)
+  if (Array.isArray(defaultVariant)) {
+    if (defaultVariant.length > 0 && defaultVariant[0].price) {
+      logger.debug('Using first item from default_variant array');
+      return defaultVariant[0];
+    }
+    
+    // Empty array - try variants array as fallback
+    if (product.variants && Array.isArray(product.variants) && product.variants.length > 0) {
+      const variantWithPrice = product.variants.find(v => v.price);
+      if (variantWithPrice) {
+        logger.debug('Using variant from variants array');
+        return variantWithPrice;
+      }
+    }
+    
+    logger.debug('No variants with price available');
+    return null;
+  }
+
+  // Handle object case (in stock)
+  if (defaultVariant && typeof defaultVariant === 'object' && defaultVariant.price) {
+    logger.debug('Using default_variant object');
+    return defaultVariant;
+  }
+
+  logger.debug('No valid variant structure found');
+  return null;
+}
+
+// ============================================================================
+// PRODUCT DATA FETCHING (with retry logic)
+// ============================================================================
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function fetchWithRetry(operation, retries = config.maxRetries, delayMs = config.retryDelay) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await operation();
+    } catch (err) {
+      const isLastAttempt = i === retries - 1;
+      const isRetryable = err.message.includes('timeout') || 
+                          err.message.includes('ECONNRESET') ||
+                          err.message.includes('ETIMEDOUT');
+      
+      if (!isRetryable || isLastAttempt) {
+        throw err;
+      }
+      
+      logger.warn(`Retry ${i + 1}/${retries} after error: ${err.message}`);
+      await delay(delayMs * (i + 1)); // Exponential backoff
+    }
+  }
+}
+
+async function fetchProductFromAPI(productId, isFresh = false) {
+  const apiPath = isFresh 
+    ? `/fresh/v1/product/${productId}/`
+    : `/v2/product/${productId}/`;
+  
+  logger.debug(`Fetching from ${isFresh ? 'Fresh' : 'Regular'} API`, { path: apiPath });
+  
+  const options = {
+    hostname: 'api.digikala.com',
+    path: apiPath,
+    method: 'GET',
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+      'Accept': 'application/json',
+      'Accept-Language': 'en-US,en;q=0.9',
+      'Referer': 'https://www.digikala.com/'
+    }
+  };
+
+  const response = await makeHttpRequest(options);
+  logger.debug(`API Response`, { status: response.status, hasData: !!response.data });
+  
+  return response;
+}
+
 async function getProductData(productId) {
   try {
-    if (ULTRA_VERBOSE) {
-      console.log(`   🔧 Calling getProductData for ID: ${productId}`);
-    }
-
-    const options = {
-      hostname: 'api.digikala.com',
-      path: `/v2/product/${productId}/`, // Always include trailing slash
-      method: 'GET',
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-        'Accept': 'application/json',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Referer': 'https://www.digikala.com/'
-      }
-    };
-
-    if (ULTRA_VERBOSE) {
-      console.log(`   🌐 Making HTTP request to: ${options.hostname}${options.path}`);
-    }
-
-    const response = await makeHttpRequest(options);
-
-    if (ULTRA_VERBOSE) {
-      console.log(`   📡 HTTP Response status: ${response.status}`);
-      console.log(`   📄 Response data keys:`, Object.keys(response.data));
-    }
-
-    if (VERBOSE) {
-      console.log(`📡 Response status: ${response.status}`);
-    }
-
-    // Check if this is a redirect response (status 302 in JSON, not HTTP status)
-    if (response.data && response.data.redirect_url) {
-      if (ULTRA_VERBOSE) {
-        console.log(`   🔄 REDIRECT DETECTED!`);
-        console.log(`   📋 Redirect data:`, response.data.redirect_url);
-      }
-
-      if (VERBOSE) {
-        console.log(`🔄 Got redirect response for product ${productId}`);
-      }
-
-      // Extract the redirect URI
+    logger.debug(`Getting product data`, { productId });
+    
+    // Try regular API first
+    const response = await fetchWithRetry(() => fetchProductFromAPI(productId, false));
+    
+    // Handle redirect to Fresh API
+    if (response.data?.redirect_url?.uri) {
       const redirectUri = response.data.redirect_url.uri;
-      if (!redirectUri) {
-        console.log(`❌ Redirect response missing URI`);
-        throw new Error('Redirect response missing URI');
-      }
-
-      if (ULTRA_VERBOSE) {
-        console.log(`   🔗 Raw redirect URI: "${redirectUri}"`);
-      }
-
-      // For fresh products, use the /fresh/v1/product/ endpoint format
-      // Extract product ID from the redirect URI
-      const redirectMatch = redirectUri.match(/\/fresh\/product\/dkp-(\d+)\//);
-      if (redirectMatch) {
-        const freshProductId = redirectMatch[1];
-        const freshUri = `/fresh/v1/product/${freshProductId}/`;
-
-        if (ULTRA_VERBOSE) {
-          console.log(`   🎯 Extracted product ID from redirect: ${freshProductId}`);
-          console.log(`   🔗 Original URI: ${redirectUri}`);
-          console.log(`   🆕 Fresh API URI: ${freshUri}`);
-        }
-
-        if (VERBOSE) {
-          console.log(`🔗 Original URI: ${redirectUri}`);
-          console.log(`🆕 Fresh API URI: ${freshUri}`);
-        }
-
-        // Make request to the fresh API endpoint
-        const freshOptions = {
-          hostname: 'api.digikala.com',
-          path: freshUri,
-          method: 'GET',
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept': 'application/json',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Referer': 'https://www.digikala.com/'
-          }
-        };
-
-        if (ULTRA_VERBOSE) {
-          console.log(`   🌐 Making fresh API request to: ${freshOptions.hostname}${freshOptions.path}`);
-        }
-
-        const freshResponse = await makeHttpRequest(freshOptions);
-
-        if (ULTRA_VERBOSE) {
-          console.log(`   📡 Fresh API HTTP status: ${freshResponse.status}`);
-          console.log(`   📄 Fresh API response keys:`, Object.keys(freshResponse.data));
-          if (freshResponse.data.product) {
-            console.log(`   📦 Fresh API product keys:`, Object.keys(freshResponse.data.product));
-          }
-        }
-
-        if (VERBOSE) {
-          console.log(`🆕 Fresh API response status: ${freshResponse.status}`);
-        }
-
-        // Handle fresh API response
-        if (freshResponse.status === 200 && freshResponse.data) {
-          if (ULTRA_VERBOSE) {
-            console.log(`   ✅ Fresh API returned 200 - checking structure...`);
-            console.log(`   📋 Fresh response keys:`, Object.keys(freshResponse.data));
-          }
-
-          // Check for the correct fresh API structure: data.data.product.default_variant (object)
-          if (freshResponse.data.data && freshResponse.data.data.product && freshResponse.data.data.product.default_variant) {
-            const defaultVariant = freshResponse.data.data.product.default_variant;
-
-            if (ULTRA_VERBOSE) {
-              console.log(`   🎯 Found default_variant in fresh API data.data.product`);
-              console.log(`   📊 default_variant type:`, typeof defaultVariant);
-              console.log(`   💰 Has price property:`, !!defaultVariant.price);
-            }
-
-            // Fresh API returns default_variant as an object, not an array
-            if (defaultVariant && typeof defaultVariant === 'object' && defaultVariant.price) {
-              if (ULTRA_VERBOSE) {
-                console.log(`   ✅ Fresh API structure correct - returning variant object`);
-              }
-              return defaultVariant; // Return the variant object directly
-            } else {
-              if (ULTRA_VERBOSE) {
-                console.log(`   ❌ Fresh API default_variant missing price property`);
-                console.log(`   📋 default_variant:`, defaultVariant);
-              }
-            }
-          } else {
-            if (ULTRA_VERBOSE) {
-              console.log(`   ❌ Fresh API missing data.data.product.default_variant`);
-              console.log(`   📋 Available paths:`, {
-                'response.data exists': !!freshResponse.data,
-                'response.data.data exists': !!(freshResponse.data && freshResponse.data.data),
-                'product exists': !!(freshResponse.data && freshResponse.data.data && freshResponse.data.data.product),
-                'default_variant exists': !!(freshResponse.data && freshResponse.data.data && freshResponse.data.data.product && freshResponse.data.data.product.default_variant)
-              });
-            }
-          }
-
-          // Fallback: check if data itself has the price info
-          if (freshResponse.data.data && freshResponse.data.data.price) {
-            if (ULTRA_VERBOSE) {
-              console.log(`   🔄 Using fallback price extraction`);
-            }
-            return freshResponse.data.data;
-          }
-
-          if (ULTRA_VERBOSE) {
-            console.log(`   ❌ No price data found in fresh API response`);
-          }
-        } else if (freshResponse.status === 404) {
-          if (VERBOSE) {
-            console.log('🚫 Fresh API returned 404 - product may not exist in fresh API');
-          }
-          return null;
-        }
-
-        if (ULTRA_VERBOSE) {
-          console.log(`   🚨 Fresh API response issue - status: ${freshResponse.status}`);
-        }
-        throw new Error('Unable to extract product data from fresh API response');
-      } else {
-        if (VERBOSE) {
-          console.log(`❌ Could not extract product ID from redirect URI: ${redirectUri}`);
-        }
+      const redirectMatch = redirectUri.match(/\/fresh\/product\/dkp-(\d{1,20})\//);
+      
+      if (!redirectMatch) {
+        logger.warn(`Could not extract fresh product ID from redirect: ${redirectUri}`);
         return null;
       }
+      
+      const freshProductId = redirectMatch[1];
+      logger.info(`Redirecting to Fresh API`, '🔗');
+      logger.debug(`Fresh API details`, { originalId: productId, freshId: freshProductId });
+      
+      const freshResponse = await fetchWithRetry(() => fetchProductFromAPI(freshProductId, true));
+      
+      if (freshResponse.status === 200 && freshResponse.data?.data?.product) {
+        return extractVariantFromProduct(freshResponse.data.data.product);
+      }
+      
+      if (freshResponse.status === 404) {
+        logger.warn(`Fresh API returned 404 for product ${freshProductId}`);
+        return null;
+      }
+      
+      throw new Error(`Fresh API error: ${freshResponse.status}`);
     }
-
-    // Handle normal v2 API response - check response structure
-    if (response.status === 200 && response.data) {
-      if (ULTRA_VERBOSE) {
-        console.log(`   📋 REGULAR API - Checking response structure...`);
-        console.log(`   📊 Response has data:`, !!response.data);
-        console.log(`   📋 Response data keys:`, Object.keys(response.data));
-      }
-
-      // Check if this response has actual product data (not a redirect response)
-      if (response.data.data && response.data.data.product && response.data.data.product.default_variant) {
-        const defaultVariant = response.data.data.product.default_variant;
-
-        if (ULTRA_VERBOSE) {
-          console.log(`   🎯 Found default_variant in regular API data.data.product`);
-          console.log(`   📊 default_variant type:`, typeof defaultVariant);
-          console.log(`   💰 Has price property:`, !!defaultVariant.price);
-        }
-
-        // Both fresh and regular APIs return default_variant as an object with price property
-        if (defaultVariant && typeof defaultVariant === 'object' && defaultVariant.price) {
-          if (ULTRA_VERBOSE) {
-            console.log(`   ✅ Regular API structure correct - returning variant object`);
-          }
-          return defaultVariant;
-        } else {
-          if (ULTRA_VERBOSE) {
-            console.log(`   ❌ Regular API default_variant missing price property`);
-            console.log(`   📋 default_variant:`, defaultVariant);
-          }
-        }
-      } else {
-        if (ULTRA_VERBOSE) {
-          console.log(`   ❌ Regular API missing data.data.product.default_variant`);
-          console.log(`   📋 Available paths:`, {
-            'response.data exists': !!response.data,
-            'response.data.data exists': !!(response.data && response.data.data),
-            'product exists': !!(response.data && response.data.data && response.data.data.product),
-            'default_variant exists': !!(response.data && response.data.data && response.data.data.product && response.data.data.product.default_variant)
-          });
-        }
-      }
-
-      // If no product data found, it might be out of stock or a different structure
-      if (VERBOSE) {
-        console.log('📦 No product data found in v2 API response');
-      }
-      return null;
-    } else {
-      if (ULTRA_VERBOSE) {
-        console.log(`   ❌ Regular API - No response data or wrong status`);
-        console.log(`   📊 Response status: ${response.status}`);
-        console.log(`   📋 Response data exists:`, !!response.data);
-      }
+    
+    // Handle regular API response
+    if (response.status === 200 && response.data?.data?.product) {
+      return extractVariantFromProduct(response.data.data.product);
     }
-
-    throw new Error(`Invalid API response structure. Status: ${response.status}`);
+    
+    logger.warn(`Unexpected API response status: ${response.status}`);
+    return null;
+    
   } catch (error) {
-    console.error(`🚨 Error fetching data for product ${productId}: ${error.message}`);
+    logger.error(`Failed to fetch product ${productId}`, error);
     return null;
   }
 }
 
+// ============================================================================
+// PRICE EXTRACTION
+// ============================================================================
+
 function extractPriceInfo(variantData) {
-  if (ULTRA_VERBOSE) {
-    console.log(`   💰 EXTRACTING PRICE INFO:`);
-    console.log(`   📋 Input variantData type:`, typeof variantData);
-    console.log(`   📋 Input variantData:`, variantData ? JSON.stringify(variantData, null, 2).substring(0, 500) : 'null');
-  }
-
   if (!variantData) {
-    if (ULTRA_VERBOSE) {
-      console.log(`   ❌ variantData is null/undefined`);
-    }
-    return {
-      sellingPrice: 'Price not found',
-      discountPercent: '0',
-      isIncredible: '0'
-    };
+    logger.debug('variantData is null/undefined');
+    return { sellingPrice: 'Price not found', discountPercent: '0', isIncredible: '0' };
   }
 
-  // Handle different possible structures for price information
   let price = null;
 
-  // Check if variantData is an object with price property (both fresh and regular APIs)
-  if (variantData && typeof variantData === 'object' && variantData.price && typeof variantData.price === 'object') {
+  // Standard case: variant with nested price object
+  if (variantData?.price && typeof variantData.price === 'object') {
     price = variantData.price;
-    if (ULTRA_VERBOSE) {
-      console.log(`   ✅ Found price object in variantData.price`);
-      console.log(`   💰 Price object:`, price);
-    }
+    logger.debug('Found price in variantData.price');
   }
-  // Check if variantData is an array (legacy structure - shouldn't happen with current API)
-  else if (Array.isArray(variantData)) {
-    if (ULTRA_VERBOSE) {
-      console.log(`   ⚠️ variantData is an array (legacy structure)`);
-    }
-    if (variantData.length === 0) {
-      if (ULTRA_VERBOSE) {
-        console.log(`   ❌ Empty array`);
-      }
-      return {
-        sellingPrice: 'Price not found',
-        discountPercent: '0',
-        isIncredible: '0'
-      };
-    }
-    // Use the first variant from the array
-    const firstVariant = variantData[0];
-    if (firstVariant && firstVariant.price && typeof firstVariant.price === 'object') {
-      price = firstVariant.price;
-      if (ULTRA_VERBOSE) {
-        console.log(`   ✅ Found price in array[0].price`);
-      }
-    }
+  // Legacy array case (shouldn't happen with current API)
+  else if (Array.isArray(variantData) && variantData.length > 0 && variantData[0]?.price) {
+    price = variantData[0].price;
+    logger.debug('Found price in array[0].price (legacy)');
   }
-  // Check if variantData has direct price properties (fallback)
-  else if (variantData && (variantData.selling_price || variantData.discount_percent || variantData.is_incredible)) {
+  // Direct price properties fallback
+  else if (variantData?.selling_price || variantData?.discount_percent !== undefined) {
     price = variantData;
-    if (ULTRA_VERBOSE) {
-      console.log(`   🔄 Using direct price properties`);
-    }
+    logger.debug('Using direct price properties');
   }
 
   if (!price) {
-    if (ULTRA_VERBOSE) {
-      console.log(`   ❌ No price object found`);
-      console.log(`   📋 variantData keys:`, Object.keys(variantData));
-    }
-    return {
-      sellingPrice: 'Price not found',
-      discountPercent: '0',
-      isIncredible: '0'
-    };
+    logger.debug('No price object found', { keys: Object.keys(variantData) });
+    return { sellingPrice: 'Price not found', discountPercent: '0', isIncredible: '0' };
   }
 
   const result = {
@@ -412,205 +346,206 @@ function extractPriceInfo(variantData) {
     isIncredible: price.is_incredible ? '1' : '0'
   };
 
-  if (ULTRA_VERBOSE) {
-    console.log(`   🎉 Extracted price info:`, result);
-  }
-
+  logger.debug('Price extracted', result);
   return result;
 }
 
-// Check if data already exists for today for a specific item
-async function hasDataForToday(itemName) {
-  const itemFileName = `${itemName}.xlsx`;
-  const itemFilePath = path.join(ITEMS_DIRECTORY, itemFileName);
+// ============================================================================
+// EXCEL OPERATIONS
+// ============================================================================
 
-  // If file doesn't exist, no data exists
+async function hasDataForToday(itemName) {
+  const itemFilePath = getSafeFilePath(itemName);
+
   if (!fs.existsSync(itemFilePath)) {
     return false;
   }
 
   try {
-    const itemWorkbook = new ExcelJS.Workbook();
-    await itemWorkbook.xlsx.readFile(itemFilePath);
-    const itemWorksheet = itemWorkbook.getWorksheet('Sheet 1');
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(itemFilePath);
+    const worksheet = workbook.getWorksheet(SHEET_NAME);
 
-    if (!itemWorksheet) {
-      return false;
-    }
+    if (!worksheet) return false;
 
-    // Check if today's data already exists
-    let dataExistsForToday = false;
-    itemWorksheet.eachRow((row, rowNumber) => {
-      if (rowNumber > 1) { // Skip header row
+    // Check if today's date exists in any row
+    let found = false;
+    worksheet.eachRow((row, rowNum) => {
+      if (rowNum > 1 && !found) { // Skip header
         const dateCell = row.getCell(1).value;
-        if (dateCell && dateCell.toString() === currentDate) {
-          dataExistsForToday = true;
+        if (dateCell?.toString() === currentDate) {
+          found = true;
         }
       }
     });
 
-    return dataExistsForToday;
+    return found;
   } catch (error) {
-    if (VERBOSE) {
-      console.log(`⚠️ Error checking existing data for ${itemName}: ${error.message}`);
-    }
-    return false; // Default to false on error
+    logger.warn(`Error checking data for ${itemName}: ${error.message}`);
+    return false;
   }
 }
 
 async function writeToExcel(itemName, price, discount, incredible) {
-  const itemFileName = `${itemName}.xlsx`;
-  const itemFilePath = path.join(ITEMS_DIRECTORY, itemFileName);
+  const itemFilePath = getSafeFilePath(itemName);
+  const workbook = new ExcelJS.Workbook();
+  let worksheet;
+  let isNewFile = false;
 
-  const itemWorkbook = new ExcelJS.Workbook();
-
-  // Check if file exists
   if (fs.existsSync(itemFilePath)) {
-    // Read existing file to check for today's data
-    await itemWorkbook.xlsx.readFile(itemFilePath);
-    const itemWorksheet = itemWorkbook.getWorksheet('Sheet 1');
-
-    if (itemWorksheet) {
-      // Check if today's data already exists
-      let dataExistsForToday = false;
-      itemWorksheet.eachRow((row, rowNumber) => {
-        if (rowNumber > 1) { // Skip header row
-          const dateCell = row.getCell(1).value;
-          if (dateCell && dateCell.toString() === currentDate) {
-            dataExistsForToday = true;
-          }
-        }
-      });
-
-      if (dataExistsForToday) {
-        console.log(`⏭️ Data for ${currentDate} already exists in ${itemFileName} - skipping`);
-        return;
-      }
-
-      // Add new row to existing worksheet
-      itemWorksheet.addRow([currentDate, price, discount, incredible]);
-      console.log(`💾 Added new data to existing ${itemFileName} for ${currentDate}`);
-    } else {
-      // Worksheet doesn't exist, create new one
-      const newWorksheet = itemWorkbook.addWorksheet('Sheet 1');
-      newWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
-      newWorksheet.addRow([currentDate, price, discount, incredible]);
-      console.log(`💾 Fresh data created in ${itemFileName} for ${currentDate}`);
-    }
-  } else {
-    // Create a fresh Excel file for each item (start new data collection)
-    const itemWorksheet = itemWorkbook.addWorksheet('Sheet 1');
-    itemWorksheet.addRow(['Date', 'Price', 'Discount', 'Incredible']); // Header row
-    itemWorksheet.addRow([currentDate, price, discount, incredible]);
-    console.log(`💾 Fresh data created in ${itemFileName} for ${currentDate}`);
+    await workbook.xlsx.readFile(itemFilePath);
+    worksheet = workbook.getWorksheet(SHEET_NAME);
   }
 
-  await itemWorkbook.xlsx.writeFile(itemFilePath);
+  if (!worksheet) {
+    worksheet = workbook.addWorksheet(SHEET_NAME);
+    worksheet.addRow(HEADERS);
+    isNewFile = true;
+  }
+
+  // Check for existing data today
+  let exists = false;
+  worksheet.eachRow((row, rowNum) => {
+    if (rowNum > 1 && !exists) {
+      if (row.getCell(1).value?.toString() === currentDate) {
+        exists = true;
+      }
+    }
+  });
+
+  if (exists) {
+    logger.skip(`Data for ${currentDate} already exists - skipping`);
+    return;
+  }
+
+  worksheet.addRow([currentDate, price, discount, incredible]);
+  await workbook.xlsx.writeFile(itemFilePath);
+  
+  logger.success(`${isNewFile ? 'Created' : 'Updated'} ${sanitizeFilename(itemName)}.xlsx`);
+}
+
+// ============================================================================
+// MAIN SCRAPER
+// ============================================================================
+
+async function loadItemsFromExcel() {
+  try {
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(INPUT_FILE_PATH);
+    const worksheet = workbook.getWorksheet(1);
+    
+    const items = [];
+    for (let i = 2; i <= worksheet.rowCount; i++) {
+      const url = worksheet.getCell(`A${i}`).value;
+      const name = worksheet.getCell(`B${i}`).value;
+      
+      const validation = validateItem(url, name, i);
+      if (validation.isValid) {
+        items.push({ url, name, productId: validation.productId, row: i });
+      } else {
+        validation.errors.forEach(err => logger.error(err));
+      }
+    }
+    
+    return items;
+  } catch (error) {
+    logger.error(`Failed to load items from Excel`, error);
+    throw error;
+  }
+}
+
+async function processItem(item, outputWorkbook) {
+  logger.progress(item.row - 1, totalItems, item.name);
+  logger.debug(`Product ID: ${item.productId}`);
+
+  // Check if already scraped today
+  const exists = await hasDataForToday(item.name);
+  if (exists) {
+    logger.skip(`Data already exists for ${currentDate} - skipping API call`);
+    return { success: true, skipped: true };
+  }
+
+  logger.info(`Fetching from API...`, '🔍');
+  
+  const variantData = await getProductData(item.productId);
+  
+  if (!variantData) {
+    logger.error(`No data retrieved for "${item.name}" (may be out of stock)`);
+    return { success: false, error: 'No data' };
+  }
+
+  const priceInfo = extractPriceInfo(variantData);
+  logger.stats(priceInfo.sellingPrice, priceInfo.discountPercent, priceInfo.isIncredible);
+
+  if (config.output) {
+    await writeToExcel(item.name, priceInfo.sellingPrice, priceInfo.discountPercent, priceInfo.isIncredible);
+  }
+
+  // Add to summary workbook
+  let outputSheet = outputWorkbook.getWorksheet(currentDate);
+  if (!outputSheet) {
+    outputSheet = outputWorkbook.addWorksheet(currentDate);
+    outputSheet.addRow(['Name', 'Price', 'Discount', 'Link', 'Incredible']);
+  }
+  outputSheet.addRow([item.name, priceInfo.sellingPrice, priceInfo.discountPercent, item.url, priceInfo.isIncredible]);
+
+  logger.success(`Processed "${item.name}"`);
+  return { success: true, skipped: false };
 }
 
 async function scrapeWebpages() {
   console.log(`🚀 Starting pMonitor scraping session...`);
   console.log(`📅 Date: ${currentDate}`);
+  
+  // Create items directory if needed
+  if (!fs.existsSync(ITEMS_DIRECTORY)) {
+    fs.mkdirSync(ITEMS_DIRECTORY, { recursive: true });
+  }
 
-  const workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.readFile(INPUT_FILE_PATH);
-  const worksheet = workbook.getWorksheet(1);
-  const totalItems = worksheet.rowCount - 1; // Subtract header row
-
+  // Load items from Excel
+  const items = await loadItemsFromExcel();
+  global.totalItems = items.length;
+  
   console.log(`📊 Total items to process: ${totalItems}`);
-
+  
   const outputWorkbook = new ExcelJS.Workbook();
+  let processed = 0;
+  let skipped = 0;
+  let failed = 0;
 
-  for (let i = 2; i <= worksheet.rowCount; i++) {
-    const currentItem = i - 1; // Current item number (starting from 1)
-    const url = worksheet.getCell(`A${i}`).value;
-    const itemName = worksheet.getCell(`B${i}`).value;
-
-    if (VERBOSE) {
-      console.log(`\n🔍 [${currentItem}/${totalItems}] Processing: ${itemName}`);
+  for (const item of items) {
+    try {
+      const result = await processItem(item, outputWorkbook);
+      if (result.skipped) skipped++;
+      else if (result.success) processed++;
+      else failed++;
+    } catch (error) {
+      logger.error(`Unexpected error processing ${item.name}`, error);
+      failed++;
     }
 
-    // Extract product ID from URL
-    const productId = extractProductId(url);
-
-    if (!productId) {
-      console.log(`❌ Could not extract product ID from URL: ${url}`);
-      continue;
-    }
-
-    if (VERBOSE) {
-      console.log(`📦 Product ID: ${productId} for "${itemName}"`);
-    }
-
-    // Check if data already exists for today before making API call
-    const dataAlreadyExists = await hasDataForToday(itemName);
-
-    if (dataAlreadyExists) {
-      if (VERBOSE) {
-        console.log(`⏭️ Data for ${currentDate} already exists for "${itemName}" - skipping API call`);
-      }
-      continue; // Skip to next item
-    }
-
-    if (VERBOSE) {
-      console.log(`🔍 No existing data found for ${currentDate} - fetching from API`);
-    }
-
-    // Get product data from API
-    const variantData = await getProductData(productId);
-
-    if (variantData) {
-      if (VERBOSE) {
-        console.log(`✅ API data retrieved successfully for "${itemName}"`);
-      }
-
-      const priceInfo = extractPriceInfo(variantData);
-
-      if (VERBOSE) {
-        const discountEmoji = priceInfo.discountPercent > 0 ? '💰' : '🆓';
-        const incredibleEmoji = priceInfo.isIncredible === '1' ? '🔥' : '📦';
-        console.log(`${discountEmoji} Price: ${priceInfo.sellingPrice} | Discount: ${priceInfo.discountPercent}% | ${incredibleEmoji} Incredible: ${priceInfo.isIncredible}`);
-      }
-
-      if (OUTPUT) {
-        await writeToExcel(itemName, priceInfo.sellingPrice, priceInfo.discountPercent, priceInfo.isIncredible);
-      }
-
-      // Add the program's output to the outputWorkbook
-      let outputSheet = outputWorkbook.getWorksheet(currentDate);
-      if (!outputSheet) {
-        outputSheet = outputWorkbook.addWorksheet(currentDate);
-        outputSheet.addRow(['Name', 'Price', 'Discount', 'Link', 'Incredible']); // Header row
-      }
-
-      outputSheet.addRow([itemName, priceInfo.sellingPrice, priceInfo.discountPercent, url, priceInfo.isIncredible]);
-      console.log(`🎉 Data processed for "${itemName}"`);
-    } else {
-      console.log(`❌ Failed to retrieve data for "${itemName}" (Product ID: ${productId})`);
-    }
-
-    // Add a delay between requests to be respectful to the API (2-3 seconds)
-    if (i < worksheet.rowCount) { // Don't delay after the last item
-      const delay = 2000 + Math.random() * 1000; // 2-3 second random delay
-      if (VERBOSE) {
-        console.log(`⏳ Waiting ${Math.round(delay/1000)}s before next request...`);
-      }
-      await new Promise(resolve => setTimeout(resolve, delay));
+    // Delay between requests (except last item)
+    if (items.indexOf(item) < items.length - 1) {
+      const wait = config.delayBetweenRequests + Math.random() * 500;
+      logger.debug(`Waiting ${Math.round(wait)}ms before next request`);
+      await delay(wait);
     }
   }
 
-  if (OUTPUT) {
-    // Save the outputWorkbook to output.xlsx in the main directory
+  if (config.output) {
     await outputWorkbook.xlsx.writeFile(OUTPUT_FILE_PATH);
-    console.log(`📋 Summary saved to ${OUTPUT_FILE_PATH}`);
+    logger.info(`Summary saved to ${OUTPUT_FILE_PATH}`, '📋');
   }
 
-  console.log(`🎊 Scraping session completed! Processed ${totalItems} items on ${currentDate}`);
+  console.log(`\n🎊 Scraping completed!`);
+  console.log(`   ✅ Processed: ${processed}`);
+  console.log(`   ⏭️  Skipped: ${skipped}`);
+  console.log(`   ❌ Failed: ${failed}`);
+  console.log(`   📅 Date: ${currentDate}`);
 }
 
-// Create the "items" directory if it doesn't exist
-if (!fs.existsSync(ITEMS_DIRECTORY)) {
-  fs.mkdirSync(ITEMS_DIRECTORY);
-}
-
-scrapeWebpages();
+// Start scraping
+scrapeWebpages().catch(err => {
+  logger.error('Fatal error in scraper', err);
+  process.exit(1);
+});
