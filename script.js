@@ -74,20 +74,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         const discounts = data.map(item => parseInt(item.Discount || 0));
                         const incredibles = data.map(item => parseInt(item.Incredible || 0));
 
-                        // const formattedDates = dates.map(date => new Date(date).toISOString().slice(0, 10));
+                        // Keep dates as JavaScript Date objects for proper time-scale axis
+                        // This ensures gaps in data (missing days) are shown as empty space
+                        const dateObjects = dates.map(date => new Date(date));
 
-                        // Convert Gregorian dates to Persian (Jalali) dates
+                        // Format dates for hover display (Persian/Jalali)
                         const formattedDates = dates.map(date => {
                             const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYY/jMM/jDD');
-                            // const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jYYYY/jMM/jDD');
-                            // const jalaliDate = moment(date, 'YYYY-MM-DD').locale('fa').format('jMM/jDD');
                             return jalaliDate;
                         });
 
-
                         const trace = {
                             name: '',
-                            x: formattedDates,
+                            x: dateObjects,  // Use Date objects for time-scale axis
                             y: prices,
                             mode: 'lines+markers',
                             type: 'scatter',
@@ -101,25 +100,33 @@ document.addEventListener('DOMContentLoaded', function () {
                             line: {
                                 color: colors.tx3,
                                 width: 2,
+                                shape: 'linear',  // Connect points with straight lines
                             },
                             hovertemplate: '<b>%{y}</b><br>%{text}% OFF',
-                            text: discounts
+                            text: formattedDates  // Show Persian dates in hover
                         };
 
-                        
+                        // Custom tick text function to convert Gregorian to Persian dates
+                        const tickText = dateObjects.map(date => {
+                            return moment(date).locale('fa').format('jYY/jMM/jDD');
+                        });
 
                         const layout = {
                             plot_bgcolor: colors.bg2,
                             paper_bgcolor: colors.bg2,
                             xaxis: {
-                                // title: 'تاریخ',
+                                type: 'date',  // Set to date type for time-scale
+                                tickmode: 'array',
+                                tickvals: dateObjects,
+                                ticktext: tickText,
                                 automargin: true,
                                 color: colors.tx,
                                 gridcolor: colors.ui2,
-                                zerolinecolor: colors.ui2
+                                zerolinecolor: colors.ui2,
+                                tickangle: -45,
+                                nticks: 8,
                             },
                             yaxis: {
-                                // title: 'قیمت',
                                 automargin: true,
                                 color: colors.tx,
                                 gridcolor: colors.ui2,
@@ -132,8 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             },
                             hoverlabel: {
                                 font: {
-                                  family: 'Sahel FD', // Specify the desired font family
-                                  size: 12, // Specify the font size
+                                  family: 'Sahel FD',
+                                  size: 12,
                                 }
                             },
                             margin: {l:70, t:0, r:30, b:70}
