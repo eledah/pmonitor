@@ -14,6 +14,10 @@ on:
   schedule:
     - cron: '0 8 * * *'  # 8 AM UTC daily (11:30 AM Tehran time)
 
+permissions:
+  contents: write
+  issues: write
+
 env:
   VERBOSE: ${{ github.event.inputs.verbose || 'true' }}
   OUTPUT: 'true'
@@ -69,9 +73,13 @@ jobs:
           
           # Read stats and set outputs
           if [ -f stats.json ]; then
-            STATS=$(cat stats.json)
-            echo "stats=$STATS" >> $GITHUB_OUTPUT
+            {
+              echo "stats<<EOF"
+              cat stats.json
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
             
+            STATS=$(cat stats.json)
             # Extract individual values for commit message
             PROCESSED=$(echo "$STATS" | jq -r '.processed')
             FAILED=$(echo "$STATS" | jq -r '.failed')
@@ -120,17 +128,15 @@ jobs:
           fi
           
           # Create commit message file
-          cat > commit-msg.txt << 'ENDOFMESSAGE'
-          📊 Price update for ${{ DATE }}
-          
-          ✅ Products with price data: ${{ PROCESSED }}
-          ⚠️ Out of stock / Failed: ${{ FAILED }}
-          ⏭️ Skipped (already updated): ${{ SKIPPED }}
-          📊 Total tracked: ${{ TOTAL }}
-          📈 Success rate: ${{ SUCCESS_RATE }}%
-          
-          Scraped at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')
-          ENDOFMESSAGE
+          echo "📊 Price update for $DATE" > commit-msg.txt
+          echo "" >> commit-msg.txt
+          echo "✅ Products with price data: $PROCESSED" >> commit-msg.txt
+          echo "⚠️ Out of stock / Failed: $FAILED" >> commit-msg.txt
+          echo "⏭️ Skipped (already updated): $SKIPPED" >> commit-msg.txt
+          echo "📊 Total tracked: $TOTAL" >> commit-msg.txt
+          echo "📈 Success rate: $SUCCESS_RATE%" >> commit-msg.txt
+          echo "" >> commit-msg.txt
+          echo "Scraped at: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> commit-msg.txt
           
           # Export values for next step
           echo "date=$DATE" >> $GITHUB_OUTPUT
@@ -154,27 +160,13 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
             echo "sha=none" >> $GITHUB_OUTPUT
+            rm -f commit-msg.txt
             exit 0
           fi
           
-          # Create commit message
-          DATE="${{ steps.commit-msg.outputs.date }}"
-          PROCESSED="${{ steps.commit-msg.outputs.processed }}"
-          FAILED="${{ steps.commit-msg.outputs.failed }}"
-          SKIPPED="${{ steps.commit-msg.outputs.skipped }}"
-          TOTAL="${{ steps.commit-msg.outputs.total }}"
-          RATE="${{ steps.commit-msg.outputs.rate }}"
-          
-          COMMIT_MSG="📊 Price update for $DATE
-
-          ✅ Products with price data: $PROCESSED
-          ⚠️ Out of stock / Failed: $FAILED
-          ⏭️ Skipped (already updated): $SKIPPED
-          📊 Total tracked: $TOTAL
-          📈 Success rate: ${RATE}%"
-          
-          # Commit with message
-          git commit -m "$COMMIT_MSG"
+          # Commit with message from file
+          git commit -F commit-msg.txt
+          rm -f commit-msg.txt
           
           # Push changes
           git push
