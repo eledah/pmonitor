@@ -7,8 +7,8 @@ const path = require('path');
 // CONFIGURATION
 // ============================================================================
 const config = {
-  verbose: process.env.VERBOSE !== 'false', // Default: true
-  output: process.env.OUTPUT !== 'false',   // Default: true
+  verbose: process.env.VERBOSE !== 'false',
+  output: process.env.OUTPUT !== 'false',
   inputFile: process.env.INPUT_FILE || '../items.xlsx',
   outputDir: process.env.OUTPUT_DIR || '../items',
   outputFile: process.env.OUTPUT_FILE || '../output.xlsx',
@@ -16,6 +16,8 @@ const config = {
   retryDelay: parseInt(process.env.RETRY_DELAY) || 1000,
   requestTimeout: parseInt(process.env.REQUEST_TIMEOUT) || 30000,
   delayBetweenRequests: parseInt(process.env.DELAY) || 2500,
+  jitterRange: 500,
+  cookies: process.env.DIGIKALA_COOKIES || '',
 };
 
 // Constants
@@ -120,10 +122,10 @@ function makeHttpRequest(options, maxRedirects = MAX_REDIRECTS) {
     const attemptRequest = (currentOptions, redirectCount = 0) => {
       const req = https.request(currentOptions, (res) => {
         let data = '';
+        res.setEncoding('utf8');
         res.on('data', (chunk) => { data += chunk; });
 
         res.on('end', () => {
-          // Handle HTTP redirects
           if (res.statusCode === 302 && res.headers.location && redirectCount < maxRedirects) {
             const redirectUrl = res.headers.location;
             let newPath;
@@ -137,11 +139,21 @@ function makeHttpRequest(options, maxRedirects = MAX_REDIRECTS) {
 
             logger.debug(`Redirecting to: ${newPath}`);
             attemptRequest({ ...currentOptions, path: newPath }, redirectCount + 1);
+          } else if (res.statusCode === 429) {
+            logger.warn(`Rate limited (429). Response headers: ${JSON.stringify(res.headers)}`);
+            resolve({ status: 429, data: { retry_after: res.headers['retry-after'] } });
           } else {
             try {
+              if (data.trim().startsWith('<') || data.trim().startsWith('<!--')) {
+                logger.warn(`Received HTML response instead of JSON. Status: ${res.statusCode}`);
+                logger.debug(`HTML preview: ${data.substring(0, 200)}`);
+                reject(new Error(`Received HTML response (possible bot detection). Status: ${res.statusCode}`));
+                return;
+              }
               const jsonData = JSON.parse(data);
               resolve({ status: res.statusCode, data: jsonData });
             } catch (error) {
+              logger.debug(`Parse error. Response preview: ${data.substring(0, 300)}`);
               reject(new Error(`Failed to parse JSON: ${error.message}`));
             }
           }
@@ -213,22 +225,82 @@ function extractVariantFromProduct(product) {
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+const jitter = () => Math.floor(Math.random() * config.jitterRange * 2) - config.jitterRange;
+
+const USER_AGENTS = [
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:132.0) Gecko/20100101 Firefox/132.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.1 Safari/605.1.15',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/131.0.0.0',
+];
+
+let currentUserAgentIndex = 0;
+
+function getNextUserAgent() {
+  const ua = USER_AGENTS[currentUserAgentIndex];
+  currentUserAgentIndex = (currentUserAgentIndex + 1) % USER_AGENTS.length;
+  return ua;
+}
+
+function getRequestHeaders(isFresh = false) {
+  const userAgent = getNextUserAgent();
+  const chromeVersion = userAgent.match(/Chrome\/(\d+)/)?.[1] || '131';
+  
+  const headers = {
+    'User-Agent': userAgent,
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'en-US,en;q=0.9,fa;q=0.8',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Referer': 'https://www.digikala.com/',
+    'Origin': 'https://www.digikala.com',
+    'sec-ch-ua': `"Google Chrome";v="${chromeVersion}", "Chromium";v="${chromeVersion}", "Not_A Brand";v="24"`,
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-site',
+    'dnt': '1',
+    'priority': 'u=1, i',
+    'connection': 'keep-alive',
+  };
+
+  if (config.cookies) {
+    headers['Cookie'] = config.cookies;
+  }
+
+  return headers;
+}
+
 async function fetchWithRetry(operation, retries = config.maxRetries, delayMs = config.retryDelay) {
   for (let i = 0; i < retries; i++) {
     try {
-      return await operation();
+      const result = await operation();
+      
+      if (result.status === 429) {
+        const retryAfter = result.data?.retry_after || (delayMs * Math.pow(2, i + 1));
+        const waitTime = typeof retryAfter === 'number' ? retryAfter * 1000 : delayMs * Math.pow(2, i + 1);
+        logger.warn(`Rate limited (429). Waiting ${waitTime}ms before retry ${i + 1}/${retries}`);
+        await delay(waitTime + jitter());
+        continue;
+      }
+      
+      return result;
     } catch (err) {
       const isLastAttempt = i === retries - 1;
       const isRetryable = err.message.includes('timeout') || 
                           err.message.includes('ECONNRESET') ||
-                          err.message.includes('ETIMEDOUT');
+                          err.message.includes('ETIMEDOUT') ||
+                          err.message.includes('rate') ||
+                          err.message.includes('429');
       
       if (!isRetryable || isLastAttempt) {
         throw err;
       }
       
-      logger.warn(`Retry ${i + 1}/${retries} after error: ${err.message}`);
-      await delay(delayMs * (i + 1)); // Exponential backoff
+      const backoffDelay = delayMs * Math.pow(2, i) + Math.abs(jitter());
+      logger.warn(`Retry ${i + 1}/${retries} after error: ${err.message}. Waiting ${backoffDelay}ms`);
+      await delay(backoffDelay);
     }
   }
 }
@@ -244,12 +316,7 @@ async function fetchProductFromAPI(productId, isFresh = false) {
     hostname: 'api.digikala.com',
     path: apiPath,
     method: 'GET',
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-      'Accept': 'application/json',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Referer': 'https://www.digikala.com/'
-    }
+    headers: getRequestHeaders(isFresh)
   };
 
   const response = await makeHttpRequest(options);
@@ -526,7 +593,7 @@ async function scrapeWebpages() {
 
     // Delay between requests (except last item)
     if (items.indexOf(item) < items.length - 1) {
-      const wait = config.delayBetweenRequests + Math.random() * 500;
+      const wait = config.delayBetweenRequests + jitter();
       logger.debug(`Waiting ${Math.round(wait)}ms before next request`);
       await delay(wait);
     }
