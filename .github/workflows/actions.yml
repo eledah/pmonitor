@@ -213,50 +213,7 @@ jobs:
           echo "date=$DATE" >> $GITHUB_OUTPUT
           echo "url=$RUN_URL" >> $GITHUB_OUTPUT
       
-      # Option 1: Send email via SMTP (requires secrets)
-      - name: Send email notification (SMTP)
-        if: secrets.SMTP_SERVER != ''
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: ${{ secrets.SMTP_PORT || '587' }}
-          username: ${{ secrets.SMTP_USERNAME }}
-          password: ${{ secrets.SMTP_PASSWORD }}
-          subject: ${{ steps.notify.outputs.subject }}
-          body: |
-            The daily price scraping job failed on ${{ steps.notify.outputs.date }}.
-            
-            Run URL: ${{ steps.notify.outputs.url }}
-            
-            Repository: ${{ github.repository }}
-            Workflow: ${{ github.workflow }}
-            Run ID: ${{ github.run_id }}
-          to: ${{ secrets.NOTIFICATION_EMAIL }}
-          from: ${{ secrets.SMTP_FROM || 'pmonitor@github-actions.com' }}
-        continue-on-error: true
-      
-      # Option 2: Send email via SendGrid (requires SENDGRID_API_KEY secret)
-      - name: Send email notification (SendGrid)
-        if: secrets.SENDGRID_API_KEY != ''
-        uses: mmazzarolo/sendgrid-mail-action@v1
-        with:
-          api-key: ${{ secrets.SENDGRID_API_KEY }}
-          from-email: ${{ secrets.FROM_EMAIL || 'notifications@pmonitor.com' }}
-          to-email: ${{ secrets.NOTIFICATION_EMAIL }}
-          subject: ${{ steps.notify.outputs.subject }}
-          body: |
-            The daily price scraping job failed on ${{ steps.notify.outputs.date }}.
-            
-            Run URL: ${{ steps.notify.outputs.url }}
-            
-            Repository: ${{ github.repository }}
-            Workflow: ${{ github.workflow }}
-            Run ID: ${{ github.run_id }}
-        env:
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
-        continue-on-error: true
-      
-      # Option 3: Create GitHub Issue for tracking
+      # Create GitHub Issue for tracking
       - name: Create GitHub Issue
         if: github.event_name == 'schedule'  # Only for scheduled runs, not manual
         uses: actions/github-script@v7
@@ -284,30 +241,6 @@ jobs:
               body: body,
               labels: ['bug', 'automation-failure']
             });
-        continue-on-error: true
-      
-      # Option 4: Slack notification (requires SLACK_WEBHOOK secret)
-      - name: Send Slack notification
-        if: secrets.SLACK_WEBHOOK_URL != ''
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          text: ${{ steps.notify.outputs.subject }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        continue-on-error: true
-      
-      # Option 5: Discord notification (requires DISCORD_WEBHOOK secret)
-      - name: Send Discord notification
-        if: secrets.DISCORD_WEBHOOK != ''
-        uses: Ilshidur/action-discord@master
-        with:
-          args: |
-            ${{ steps.notify.outputs.subject }}
-            Check ${{ steps.notify.outputs.url }}
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         continue-on-error: true
 
   # Optional: Update dashboard metadata
