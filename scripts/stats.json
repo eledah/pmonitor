@@ -1,10 +1,10 @@
 {
   "date": "2026-02-08",
   "total": 60,
-  "processed": 0,
+  "processed": 47,
   "skipped": 0,
-  "failed": 60,
-  "inStock": 0,
-  "outOfStock": 60,
-  "timestamp": "2026-02-08T17:07:02.600Z"
+  "failed": 13,
+  "inStock": 47,
+  "outOfStock": 13,
+  "timestamp": "2026-02-08T19:27:13.619Z"
 }
