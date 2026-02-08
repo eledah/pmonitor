@@ -22,6 +22,7 @@ env:
   VERBOSE: ${{ github.event.inputs.verbose || 'true' }}
   OUTPUT: 'true'
   NODE_VERSION: '20'
+  DIGIKALA_COOKIES: ${{ secrets.DIGIKALA_COOKIES }}
 
 jobs:
   scrape-and-commit:
